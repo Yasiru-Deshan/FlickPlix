@@ -48,38 +48,38 @@ const Navbar = ({ toggle}) => {
 
                   <NavMenu>
                       <NavItem>
-                          <NavLinks to='about'
+                          <NavLinks to='home'
                                     smooth={true} 
                                     duration={500} 
                                     spy={true} 
                                     exact='true' 
                                     offset={-80}
                                 
-                                    >Browse</NavLinks>
+                                    >Home</NavLinks>
                       </NavItem>
                       <NavItem>
-                          <NavLinks to="discover"
+                          <NavLinks to="browse"
                                     smooth={true} 
                                     duration={500} 
                                     spy={true} 
                                     exact='true' 
-                                    offset={-80}>Discover</NavLinks>
+                                    offset={-80}>Browse</NavLinks>
                       </NavItem>
                       <NavItem>
-                          <NavLinks to="services"
+                          <NavLinks to="favorites"
                                     smooth={true} 
                                     duration={500} 
                                     spy={true} 
                                     exact='true' 
-                                    offset={-80}>Services</NavLinks>
+                                    offset={-80}>Favorites</NavLinks>
                       </NavItem>
                       <NavItem>
-                          <NavLinks to="signup"
+                          <NavLinks to="events"
                                     smooth={true} 
                                     duration={500} 
                                     spy={true} 
                                     exact='true' 
-                                    offset={-80}>Sign Up</NavLinks>
+                                    offset={-80}>Events</NavLinks>
                       </NavItem>
 
                   </NavMenu>

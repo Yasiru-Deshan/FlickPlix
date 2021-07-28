@@ -1,5 +1,7 @@
-import React from 'react'
+import React,{ useEffect} from 'react'
 import { Button } from '../ButtonElements';
+import Aos from 'aos';
+import "aos/dist/aos.css";
 
 
 import { InfoContainer,
@@ -17,11 +19,16 @@ import { InfoContainer,
           } from './InfoElements';
 
 const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headline,darkText,description,buttonLabel,img,alt,primary,dark,dark2}) => {
+   
+    useEffect(()=>{
+        Aos.init({duration: 2000 });
+    },[])
+   
     return (
         <>
         <InfoContainer lightBg = {lightBg} id={id}>
             <InfoWrapper>
-                <InfoRow imgStart={imgStart}>
+                <InfoRow data-aos="fade-up" imgStart={imgStart}>
                     <Column1>
                       <TextWrapper>
                           <TopLine>

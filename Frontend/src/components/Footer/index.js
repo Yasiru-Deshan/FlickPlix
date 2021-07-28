@@ -76,8 +76,7 @@ const Footer = () => {
                         <SocialLogo to='/'>
                             FlickPlix
                         </SocialLogo>
-                        <WebsiteRights>FlickPlix @ {new Date().getFullYear()}
-                         All rights reserved.</WebsiteRights>
+                        <WebsiteRights>FlickPlix © {new Date().getFullYear()} All rights reserved.</WebsiteRights>
                         <SocialIcons>
                             <SocialIconLink href='/' target="_blank" aria-label="Facebook">
                                 <FaFacebook/>
