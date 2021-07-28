@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import Video from '../../videos/video1.mp4'; 
 import { Button } from '../ButtonElements'
 import { HeroContainer,
@@ -9,8 +9,11 @@ import { HeroContainer,
          HeroP,
          HeroBtnWrapper,
          ArrowForward,
-         ArrowRight
+         ArrowRight,
+         Buttong,
           } from './HeroElements';
+import Aos from 'aos';
+import "aos/dist/aos.css";
 
 const HeroSection = () => {
 
@@ -19,29 +22,28 @@ const HeroSection = () => {
     const onHover = ()=>{
         setHover(!hover)
     }
+
+    useEffect(()=>{
+        Aos.init({duration: 2000 });
+    },[])
+
     return (
         <HeroContainer id='home'>
             <HeroBg>
                 <VideoBg autoPlay loop muted src={Video} type='video/mp4'/>
             </HeroBg>
             <HeroContent>
-                <HeroH1>Welcome to FlickPlix</HeroH1>
-                <HeroP>
+                <HeroH1 data-aos="fade-right">Welcome to FlickPlix</HeroH1>
+                <HeroP data-aos="fade-left">
                 Enjoy popular movies and TV shows. Join FlickPlix now 
                 for USD 5.99 per month. Cancel anytime.
                 </HeroP>
-                <HeroBtnWrapper>
-                    <Button to='signup' onMouseEnter = {onHover} 
+                <HeroBtnWrapper data-aos="fade-up">
+                    <Buttong to='signup' onMouseEnter = {onHover} 
                     onMouseLeave = {onHover}
-                    primary='true'
-                    dark='true'
-                    smooth={true} 
-                    duration={500} 
-                    spy={true} 
-                    exact='true' 
-                    offset={-80}>
+                    >
                         Get started {hover ? <ArrowForward/>:<ArrowRight/>}
-                    </Button>
+                    </Buttong>
                 </HeroBtnWrapper>
             </HeroContent>
 
