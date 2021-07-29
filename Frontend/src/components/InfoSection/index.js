@@ -28,7 +28,7 @@ const InfoSection = ({lightBg,id,imgStart,topLine,lightText,headline,darkText,de
         <>
         <InfoContainer lightBg = {lightBg} id={id}>
             <InfoWrapper>
-                <InfoRow data-aos="fade-up" imgStart={imgStart}>
+                <InfoRow  imgStart={imgStart}>
                     <Column1>
                       <TextWrapper>
                           <TopLine>

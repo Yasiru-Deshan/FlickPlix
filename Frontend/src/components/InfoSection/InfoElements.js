@@ -16,6 +16,10 @@ export const InfoContainer = styled.div`
      max-width: 1100px;
      margin-right: auto;
      margin-left: auto;
+
+
+
+
      padding: 0 24px;
      justify-content:center;
     `
@@ -66,7 +70,7 @@ export const InfoContainer = styled.div`
      color: ${({ lightText }) => (lightText ? '#f7f8fa' :
       '#010606')};
      
-     @media.screen and (max-width: 480px){
+     @media screen and (max-width: 480px){
          font-size: 32px;
      }
     ` ;
