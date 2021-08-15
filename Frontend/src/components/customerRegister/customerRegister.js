@@ -36,7 +36,7 @@ export default function CustomerRegister(props) {
 
     return (
         <div>
-            <form onSubmit={customerFormSubmit} className="form-group myForm">
+            <form onSubmit={customerFormSubmit} className="it19184722-myForm">
                 <h2>Customer Register Form</h2>
                 {errors ? errors.map((error) => {
                     return (

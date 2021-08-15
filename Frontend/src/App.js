@@ -38,7 +38,7 @@ const App = ()=> {
       
 
       </Switch>
-      <Footer/>
+      
 	  
 	  {/*customers */}
 		<Route exact path="/customers" component = {CustomerTable} exact></Route>
@@ -48,6 +48,7 @@ const App = ()=> {
 		<PrivateRoute path="/customer/profile" component = {CustomerUserProfile} exact></PrivateRoute>
 		<PrivateRoute path="/customer/profile/password-reset" component = {CustomerPasswordReset} exact></PrivateRoute>
     
+    <Footer/>
 	</Router>
   );
 }
