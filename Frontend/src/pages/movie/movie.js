@@ -6,8 +6,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import Aos from 'aos';
 import "aos/dist/aos.css";
-//import Comments from '../../components/CommentSection/comments';
-//import ReactPlayer from 'react-player';
+import Comments from '../../components/CommentSection/comments';
+import ReactPlayer from 'react-player';
 
 
 const Movie = () =>{
@@ -87,7 +87,7 @@ const Movie = () =>{
                    </div>
                 </div>
 
-               {/* <div className="commentcontainer">
+                <div className="commentcontainer">
                 <div className="commenttrailerWrapper">
                      <div className="commentRow">
                      <div className="commentSection">
@@ -122,7 +122,7 @@ const Movie = () =>{
        
            
             </div>
-</div>*/}
+</div>
         </div>
     )
 }
