@@ -9,7 +9,7 @@
 .MovieWrapper{
      display: grid;
      z-index: 1;
-     height: 560px;
+     height: clac(500px + 5vw);
      width: 100%;
      max-width: 1100px;
      margin-top: 0.1vw;
@@ -41,7 +41,7 @@
 .Column2{
   
     margin-left: 4vw;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     padding: 0 15px;
     grid-area: 'col1'; 
 }
@@ -56,7 +56,7 @@
         }
 .Img{
     
-    margin:100px 0 10px 0;
+    margin:150px 0 10px 0;
     padding-right: 0;
     border-radius: 10px;  
     border: 2px solid white;
@@ -73,7 +73,7 @@
 
 .Heading{
    
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     font-size: calc(24px + 1vw);
     line-height: 1.1;
     font-weight: 600;
@@ -97,7 +97,7 @@
     font-weight: 700;
     letter-spacing: 1.4px;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 0px;
 }
 
 .Syno{
@@ -121,7 +121,7 @@
 }
 
 .icons{
-    margin-top: 100px;
+    margin-top: 60px;
 }
 
 .fi{
@@ -141,3 +141,121 @@
 
 }
 
+.commenttrailerWrapper{
+    display: grid;
+     z-index: 1;
+     height: clac(500px + 5vw);
+     width: 100%;
+    
+     margin-top: 0.1vw;
+     margin-right: auto;
+     margin-left: auto;
+     padding: 0 24px;
+     justify-content:center;
+
+}
+
+.commentRow{
+    display: grid;
+    grid-auto-columns: minmax(auto, 1fr);
+    grid-template-areas: 'col1 col2';
+    display: flex;
+
+    flex-wrap: wrap;
+}
+
+.commentSection{
+    margin-top: calc(-50px + 1vw);
+    margin-left: 3vw;
+    margin-bottom: 15px;
+    grid-area: 'cl2'; 
+ }
+
+.trailer{
+  
+    
+    margin-left: calc(1px + 2.5vw);
+    padding:  0 15px;
+    align-items: center;
+    grid-area: 'cl1'; 
+    margin-top: calc( 15px + 2vw);
+    
+}
+
+.comments{
+    width: calc(410px + 3vw);
+    
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.37);
+    box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.37);
+    margin: 20px 20px 20px 3vw;
+}
+
+.commentwrapper{
+    padding: 10px;
+    display: flex;
+    flex: 0.7;
+}
+
+.commentinput{
+    border: none;
+    width: 80%;
+    
+}
+
+.commentinput:focus{
+    outline: none;
+
+}
+.commenttitle{
+    font-size: 24px;
+    margin-left: 3vw;
+   
+}
+.commentbutton{
+    border: none;
+    width: 100px;
+    height: 50px;
+    padding:7px;
+    border-radius: 5px;
+    background-color: #01BF71;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 10px;
+    cursor: pointer;
+    color: white;
+    
+}
+
+.tbutton{
+    margin-top: 20px;
+    width: 100px;
+    height: 50px;
+    color: white;
+    background-color: #01BF71;
+    border-radius: 5px;
+    border: none;
+    
+
+}
+
+.playercontainer{
+    
+    width: 100%;
+    height: 1000px;
+    justify-content: center;
+    align-items: center;
+    background:  #AA076B;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #61045F, #AA076B);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #61045F, #AA076B);
+
+}
+
+.watchplayer{
+    margin-top: 100px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+
+    
+}

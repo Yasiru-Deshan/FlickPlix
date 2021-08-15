@@ -5,6 +5,8 @@ import Movie from './pages/movie/movie';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import { useState } from 'react';
+import Footer from './components/Footer';
+import Watch from './pages/movie/watch';
 
 
 const App = ()=> {
@@ -23,9 +25,10 @@ const App = ()=> {
      
         <Route path='/' component={Home} exact/>
         <Route path='/movie' component={Movie} exact/>
-      
+        <Route path='/watch' component={Watch} exact/>
 
       </Switch>
+      <Footer/>
     </Router>
   );
 }

@@ -2,11 +2,12 @@ import React, { useEffect} from 'react';
 import img from '../../images/movie.jpg';
 import img2 from '../../images/prof.jpg';
 import './movie.css';
-import './moviemedia.css';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import Aos from 'aos';
 import "aos/dist/aos.css";
+import Comments from '../../components/CommentSection/comments';
+import ReactPlayer from 'react-player';
 
 
 const Movie = () =>{
@@ -53,8 +54,9 @@ const Movie = () =>{
                                     <FavoriteIcon className="fi"/>
                                     <AddBoxIcon className="bi"/>
                                  </div>
+                                 <button className="tbutton">Watch Now</button>
                                  <div>
-                              {/*}   <img className="profileuserimg"
+                          {/*     <img className="profileuserimg"
                                   src={img2}
     alt=''/>*/}
                          </div>
@@ -85,9 +87,42 @@ const Movie = () =>{
                    </div>
                 </div>
 
-         
+                <div className="commentcontainer">
+                <div className="commenttrailerWrapper">
+                     <div className="commentRow">
+                     <div className="commentSection">
+                     <h1 className="commenttitle">Comments</h1>
+              <Comments/>
+
+                <div>
+
+                <div className="comments">
+                <div className="commentwrapper">
+                   
+                    <input placeholder="Leave a comment here..."
+                           type="text"
+                           className="commentinput"/>
+                       
+                    <button className="commentbutton">Send</button>
+                </div>
            
-            
+                </div>
+                </div>
+                      </div>
+
+                    <div className="trailer">
+                          <ReactPlayer className="player"
+                            width="440px"
+                            height="240px"
+                            controls
+                            url="blob:https://lecturecapture.sliit.lk/c12d79da-fb9b-455e-a29d-eed19307927e"/>
+</div>
+
+            </div>
+       
+           
+            </div>
+            </div>
         </div>
     )
 }
