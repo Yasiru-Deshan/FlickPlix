@@ -6,11 +6,21 @@ const dotenv = require("dotenv");
 const app = express(); 
 require("dotenv").config();
 
+//Customers
+const customerRouter = require('./routes/customer.routes');
+const authRouter = require('./routes/auth.routes');
+
 const PORT = process.env.PORT||8070;
+const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
+const urlEncodedParser = express.urlencoded({ extended: false });
+app.listen(port, (error) => {
+    if(error) console.log(error);
+    console.log('Server listening to PORT '+ port);
+});
 
 const URL = process.env.MONGODB_URL;
 
@@ -30,3 +40,7 @@ connection.once("open", ()=>{
 app.listen(PORT,()=>{
     console.log(`Server is up and running on port ${PORT}`)
 });
+
+//customers
+app.use('/customers',urlEncodedParser,customerRouter);
+app.use('/customer', authRouter);
