@@ -37,16 +37,18 @@ const App = ()=> {
         <Route path='/watch' component={Watch} exact/>
       
 
+        {/*customers */}
+		  <Route exact path="/customers" component = {CustomerTable} exact></Route>
+		  <Route path="/updateCustomer/:id" component = {UpdateCustomer} exact></Route>
+		  <PublicRoute path="/customer/login" component = {CustomerLogin} exact></PublicRoute>
+		  <PublicRoute path="/customer/register" component = {CustomerRegister} exact></PublicRoute>
+		  <PrivateRoute path="/customer/profile" component = {CustomerUserProfile} exact></PrivateRoute>
+		  <PrivateRoute path="/customer/profile/password-reset" component = {CustomerPasswordReset} exact></PrivateRoute>
+    
       </Switch>
       
 	  
-	  {/*customers */}
-		<Route exact path="/customers" component = {CustomerTable} exact></Route>
-		<Route path="/updateCustomer/:id" component = {UpdateCustomer} exact></Route>
-		<PublicRoute path="/customer/login" component = {CustomerLogin} exact></PublicRoute>
-		<PublicRoute path="/customer/register" component = {CustomerRegister} exact></PublicRoute>
-		<PrivateRoute path="/customer/profile" component = {CustomerUserProfile} exact></PrivateRoute>
-		<PrivateRoute path="/customer/profile/password-reset" component = {CustomerPasswordReset} exact></PrivateRoute>
+	  
     
     <Footer/>
 	</Router>

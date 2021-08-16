@@ -65,11 +65,11 @@ export default function CustomerTable() {
         const doc = new jsPDF({orientation:"portrait"});
         var time = new Date().toLocaleString();
         doc.setFontSize(27);
-        doc.text(`Customer Details Report`, 105, 13, null, null, "center");
+        doc.text(`User Details Report`, 105, 13, null, null, "center");
         doc.setFontSize(10);
         doc.text(`(Generated on ${time})`, 105, 17, null, null, "center");
         doc.setFontSize(12);
-        doc.text("Thilina Hardware - No 55, Main Road, Horana", 105, 22, null, null, "center");
+        doc.text("FlickPilx Online Platform", 105, 22, null, null, "center");
         //doc.text("No 55, Main Road, Horana", 105, 30, null, null, "center"); 
         //doc.addImage(img, "JPEG",0,20);
         doc.autoTable({
@@ -80,12 +80,12 @@ export default function CustomerTable() {
             head: [['Customer ID','Fname','Lname', 'Email', 'Address', 'Phone No']],
             body: bodyData
         })
-        doc.save('CustomerReport.pdf');
+        doc.save('UserReport.pdf');
     }//report generation function
 
     return(
     <div className="it19184722-containner">
-        <h2 className="it19184722-h2">Customer Managment</h2>
+        <h2 className="it19184722-h2">User Managment</h2>
         <div className="it19184722-headerSection">
         <Link to="/customer/add" className="btn it19184722-green-btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person-plus-fill" viewBox="0 0 16 16">
         <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>

@@ -77,7 +77,7 @@ router.post('/edit/:id', validator.validate('editUser'), async(req, res) => {
         });
         
         const emailHTML = `Hi ${customer.fname} ${customer.lname}😃,<br><br>
-                    Your account details has been changed! Please use this email and password to log in to our website.<br><br>
+                    Your account details has been changed! Please use this email and password to log in to our web Appilcation.<br><br>
                     First Name:- ${customer.fname}<br>
                     Last Name:- ${customer.lname}<br>
                     Email:- ${customer.email}<br>
@@ -140,7 +140,7 @@ router.post('/add', validator.validate('addUser'),async(req, res) => {
             });
 
             const emailHTML = `Hi ${newCustomer.fname} ${newCustomer.lname}😃,<br><br>
-            An account has been created for you on our website! Please use this email and password to log in to our website.<br><br>
+            An account has been created for you on our website! Please use this email and password to log in to our web Application.<br><br>
             Email:- ${newCustomer.email}<br>
             Password:- ${password}<br><br>
             Thank you!<br>
