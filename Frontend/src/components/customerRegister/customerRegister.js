@@ -37,7 +37,9 @@ export default function CustomerRegister(props) {
     return (
         <div>
             <form onSubmit={customerFormSubmit} className="it19184722-myForm">
-                <h2>Customer Register Form</h2>
+                <h2>Create A New Account</h2>
+                <center><h4>It's quick and easy</h4></center>
+                <br/>
                 {errors ? errors.map((error) => {
                     return (
                         <div class="alert alert-danger" role="alert">
@@ -50,19 +52,19 @@ export default function CustomerRegister(props) {
                     {emailerror}
                     </div>: null}
                 <label>First Name</label>
-                <input type="text" className="form-control" name="fname" onChange={(e) => {setfname(e.target.value);}} value={fname} /><br/>
+                <input placeholder="Enter your first name" type="text" className="form-control" name="fname" onChange={(e) => {setfname(e.target.value);}} value={fname} /><br/>
                 <label>Last Name</label>
-                <input type="text" className="form-control" name="lname" onChange={(e) => {setlname(e.target.value);}} value={lname}/><br/>
+                <input placeholder="Enter your last name" type="text" className="form-control" name="lname" onChange={(e) => {setlname(e.target.value);}} value={lname}/><br/>
                 <label>Email</label>
-                <input type="email" className="form-control" name="email" onChange={(e) => {setemail(e.target.value);}} value={email}/><br/>
+                <input placeholder="Enter your email" type="email" className="form-control" name="email" onChange={(e) => {setemail(e.target.value);}} value={email}/><br/>
                 <label>Address</label>
-                <input type="text" className="form-control" name="address" onChange={(e) => {setaddress(e.target.value);}} value={address}/><br/>
+                <input placeholder="Enter your address" type="text" className="form-control" name="address" onChange={(e) => {setaddress(e.target.value);}} value={address}/><br/>
                 <label>Phone No</label>
-                <input type="text" className="form-control" name="pNo" onChange={(e) => {setpNo(e.target.value);}} value={pNo}/><br/>
+                <input placeholder="Enter your phone number" type="text" className="form-control" name="pNo" onChange={(e) => {setpNo(e.target.value);}} value={pNo}/><br/>
                 <label>Password</label>
-                <input type="password" className="form-control" name = "password" onChange={(e) => {setpassword(e.target.value);}} value={password}/><br/>
-                <p className="it19184722-centerDiv">Already have an account? <Link className="it19184722-link" to="/customer/login"> Login here</Link></p>
-                <div className="it19184722-centerDiv"><input type="submit" value="Register" className="btn it19184722-green-btn it19184722-mybtn "/></div><br/>
+                <input placeholder="Enter your password" type="password" className="form-control" name = "password" onChange={(e) => {setpassword(e.target.value);}} value={password}/><br/>
+                <p className="it19184722-centerDiv">Already have an account?... <Link className="it19184722-link" to="/customer/login"> Sign In here</Link></p>
+                <div className="it19184722-centerDiv"><input type="submit" value="Sign Up" className="btn it19184722-green-btn it19184722-mybtn "/></div><br/>
             </form>
         </div>
     )

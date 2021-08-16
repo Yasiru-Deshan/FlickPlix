@@ -18,6 +18,9 @@ import PrivateRoute from './components/privateRoute/PrivateRoute';
 import PublicRoute from './components/publicRoute/PublicRoute';
 import CustomerPasswordReset from './components/customerPasswordReset/customerPasswordReset';
 
+//Contact Page
+import Contact from './components/ContactPage/test';
+
 const App = ()=> {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -37,13 +40,16 @@ const App = ()=> {
         <Route path='/watch' component={Watch} exact/>
       
 
-        {/*customers */}
+      {/*Customers */}
 		  <Route exact path="/customers" component = {CustomerTable} exact></Route>
 		  <Route path="/updateCustomer/:id" component = {UpdateCustomer} exact></Route>
 		  <PublicRoute path="/customer/login" component = {CustomerLogin} exact></PublicRoute>
 		  <PublicRoute path="/customer/register" component = {CustomerRegister} exact></PublicRoute>
 		  <PrivateRoute path="/customer/profile" component = {CustomerUserProfile} exact></PrivateRoute>
 		  <PrivateRoute path="/customer/profile/password-reset" component = {CustomerPasswordReset} exact></PrivateRoute>
+
+      {/*Contact Page */}
+      <Route path="/contact" component={Contact}/>
     
       </Switch>
       
