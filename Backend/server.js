@@ -38,7 +38,7 @@ connection.once("open", ()=>{
     console.log("Mongodb connection success!");
 });
 
-app.use("/api/comments", commentRoute);
+
 
 app.listen(PORT,()=>{
     console.log(`Server is up and running on port ${PORT}`)
@@ -47,3 +47,6 @@ app.listen(PORT,()=>{
 //customers
 app.use('/customers',urlEncodedParser,customerRouter);
 app.use('/customer', authRouter);
+
+//
+app.use("/api/comments", commentRoute);

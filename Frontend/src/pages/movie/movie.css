@@ -197,10 +197,15 @@
     flex: 0.7;
 }
 
+.commenting{
+    border: none;
+    width: 100%;
+    
+}
+
 .commentinput{
     border: none;
     width: 80%;
-    
 }
 
 .commentinput:focus{
@@ -214,8 +219,8 @@
 }
 .commentbutton{
     border: none;
-    width: 100px;
-    height: 50px;
+    width: 70px;
+    height: 40px;
     padding:7px;
     border-radius: 5px;
     background-color: #01BF71;
@@ -224,6 +229,7 @@
     margin-left: 10px;
     cursor: pointer;
     color: white;
+
     
 }
 
