@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useRef} from 'react';
 import img from '../../images/movie.jpg';
 import img2 from '../../images/prof.jpg';
 import './movie.css';
@@ -8,10 +8,27 @@ import Aos from 'aos';
 import "aos/dist/aos.css";
 import Comments from '../../components/CommentSection/comments';
 import ReactPlayer from 'react-player';
+import {Link} from 'react-router-dom';
+import axios from 'axios'; 
 
 
 const Movie = () =>{
 
+   const desc = useRef();
+ 
+   const submitHandler = async (e)=>{
+       e.preventDefault()
+       const newComment = {
+           userId: '611b74dd16f8353848675308',
+           desc: desc.current.value,
+       }
+
+       try{
+           await axios.post("http://localhost:8070/api/comments",newComment)
+       }catch(err){
+           console.log(err)
+       }
+   }
     
     useEffect(()=>{
         Aos.init({duration: 2000 });
@@ -54,7 +71,8 @@ const Movie = () =>{
                                     <FavoriteIcon className="fi"/>
                                     <AddBoxIcon className="bi"/>
                                  </div>
-                                 <button className="tbutton">Watch Now</button>
+                                 <Link to='/watch'>
+                                 <button className="tbutton">Watch Now</button></Link>
                                  <div>
                           {/*     <img className="profileuserimg"
                                   src={img2}
@@ -98,12 +116,26 @@ const Movie = () =>{
 
                 <div className="comments">
                 <div className="commentwrapper">
+
+
+
                    
+
+                   <form className="commenting" onSubmit={submitHandler}>
                     <input placeholder="Leave a comment here..."
                            type="text"
-                           className="commentinput"/>
+                           required
+                           className="commentinput"
+                           ref={desc}    
+                           />
                        
-                    <button className="commentbutton">Send</button>
+                    <button className="commentbutton" type="submit">Send</button>
+                    </form>
+
+
+
+
+
                 </div>
            
                 </div>
@@ -115,7 +147,7 @@ const Movie = () =>{
                             width="440px"
                             height="240px"
                             controls
-                            url="blob:https://lecturecapture.sliit.lk/c12d79da-fb9b-455e-a29d-eed19307927e"/>
+                            url="https://youtu.be/3BSSoD73TSk"/>
 </div>
 
             </div>

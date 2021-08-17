@@ -15,14 +15,7 @@ function Comments() {
 
             </div>
 
-            <div className="commentsbox">
-                <div className="commentboxwrapper">
-                <p className="author">Jason Roy</p>
-
-                <p className="commentbox">Overall fun but forgettable movie with plenty of blood for everyone!</p> 
-                </div>
-
-            </div>
+        
     
             </div>
             
