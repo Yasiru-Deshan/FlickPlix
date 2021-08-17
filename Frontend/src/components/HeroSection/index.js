@@ -39,7 +39,7 @@ const HeroSection = () => {
                 for USD 5.99 per month. Cancel anytime.
                 </HeroP>
                 <HeroBtnWrapper data-aos="fade-up">
-                    <Buttong to='signup' onMouseEnter = {onHover} 
+                    <Buttong to='/customer/register' onMouseEnter = {onHover} 
                     onMouseLeave = {onHover}
                     >
                         Get started {hover ? <ArrowForward/>:<ArrowRight/>}

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon server.js"
+    "start": "nodemon server.js"
   },
   "author": "yasiru,dilanka,chamathka & miyelandi",
   "license": "ISC",
@@ -12,7 +12,12 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-validator": "^6.12.1",
     "mongoose": "^5.13.3",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "bcrypt": "^5.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "jspdf": "^2.3.1",
+    "nodemailer": "^6.4.18"
   }
 }
