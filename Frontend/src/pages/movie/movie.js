@@ -1,4 +1,4 @@
-import React, { useEffect, useRef} from 'react';
+import React, { useEffect, useRef, useState} from 'react';
 import img from '../../images/movie.jpg';
 import img2 from '../../images/prof.jpg';
 import './movie.css';
@@ -33,6 +33,41 @@ const Movie = () =>{
     useEffect(()=>{
         Aos.init({duration: 2000 });
     },[])
+
+
+
+
+
+
+    const [allComments,setAllComments] = useState([]);
+
+    useEffect(()=>{
+
+        const getComments = () =>{
+        axios.get('http://localhost:8070/api/comments/all').then((res)=>{
+            setAllComments(res.data);
+        })
+    }
+       getComments();
+    },[])
+
+    const CommentList = ()=>{
+        return allComments.map((comment)=>{
+
+            return(
+                <Comments
+                   key={comment.id}
+                   author={comment.userId}
+                   desc={comment.desc}/>
+            )
+        })
+    }
+
+
+
+
+
+
 
     return (
 
@@ -69,6 +104,7 @@ const Movie = () =>{
 
                                  <div className="icons">
                                     <FavoriteIcon className="fi"/>
+                                    <p className="likesCount">50</p>
                                     <AddBoxIcon className="bi"/>
                                  </div>
                                  <Link to='/watch'>
@@ -110,7 +146,7 @@ const Movie = () =>{
                      <div className="commentRow">
                      <div className="commentSection">
                      <h1 className="commenttitle">Comments</h1>
-              <Comments/>
+             <CommentList/>
 
                 <div>
 

@@ -1,16 +1,17 @@
-import React from 'react'
-import './comment.css'
+import React from 'react';
+import './comment.css';
 
-function Comments() {
+function Comments(props) {
+
+
     return (
         <div>
 
             <div className="commentcontainer">
             <div className="commentsbox">
                 <div className="commentboxwrapper">
-                    <p className="author">Liam livingstone</p>
-                    
-                    <p className="commentbox">This is the worst i've ever watched</p> 
+                    <p className="author">{props.author}</p>     
+                    <p className="commentbox">{props.desc}</p> 
                 </div>
 
             </div>
