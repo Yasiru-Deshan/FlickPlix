@@ -1,5 +1,7 @@
 import './App.css'; 
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+
 import Home from './pages';
 import Movie from './pages/movie/movie';
 import Watch from './pages/movie/watch.js';
@@ -7,6 +9,7 @@ import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import { useState } from 'react';
 import Footer from './components/Footer';
+import './components/Footer/FooterElements'
 
 //customers
 import CustomerTable from './components/customerTable/customerTable';
