@@ -10,6 +10,7 @@ import Comments from '../../components/CommentSection/comments';
 import ReactPlayer from 'react-player';
 import {Link} from 'react-router-dom';
 import axios from 'axios'; 
+import Footer from '../../components/Footer';
 
 
 const Movie = () =>{
@@ -191,6 +192,7 @@ const Movie = () =>{
            
             </div>
 </div>
+
         </div>
     )
 }
