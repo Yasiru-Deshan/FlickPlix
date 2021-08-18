@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const validator = require('../functions/validators');
+const con = require('../server');
 const Customer = require('../models/customer.model');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -16,7 +17,7 @@ router.post('/register', validator.validate('regCus'),async(req,res) => {
     const password = req.body.password;
     let hashedPassword = "";
     let cus_id;
-  //
+
   const errors = validationResult(req); // Finds the validation errors in this request and wraps them in an object with handy functions
   
         if (!errors.isEmpty()) {
@@ -32,7 +33,7 @@ router.post('/register', validator.validate('regCus'),async(req,res) => {
           cus_id = await generateCusID.call();
           const newCustomer = new Customer({cus_id,fname,lname,email,hashedPassword,address,pNo});
           await newCustomer.save();
-          res.json({"success": "Acoount creation is successfull"});
+          res.json({"success": "Account creation is successfull"});
         }            
     } catch (error) {
       res.json(error);   
@@ -64,7 +65,6 @@ router.post('/login', validator.validate('cusLogin'),async (req,res) => {
     }
     else{
     const token = jwt.sign({id:doc._id}, process.env.JWT_TOKEN, {expiresIn: '24h'});
-    //return res.cookie('token', token, { httpOnly:true, maxAge : 60000 * 60 * 24}).json({"success":"Login was successful", 'id':doc.cus_id});
     res.json({"success":"Login was successful", 'id':doc.cus_id,'token':token});
     }
     
@@ -85,7 +85,7 @@ router.get('/profile/:id', async(req,res) => {
        res.status(400);
     }
   
-  });//customer profile data
+  });//view customer profile data
   
 router.post('/profile/update/:id', validator.validate('cusProfUpdate'),async(req,res) => {
     const id = req.params.id;
@@ -109,7 +109,7 @@ router.post('/profile/update/:id', validator.validate('cusProfUpdate'),async(req
       customer.pNo = pNo;
           
       await customer.save();
-      res.json({"success":"Profile data successfully updated"})
+      res.json({"success":"Profile data updated, Successfully"})
     } catch (error) {
       res.json({"emailerror":"Profile data update failed"})
       console.log(error);

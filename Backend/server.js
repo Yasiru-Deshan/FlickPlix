@@ -10,8 +10,11 @@ require("dotenv").config();
 const customerRouter = require('./routes/customer.routes');
 const authRouter = require('./routes/auth.routes');
 
-const PORT = process.env.PORT||8070;
-const port = process.env.PORT || 5000;
+//Contact Us
+const ContactUs = require('./routes/contactUs');
+const ViewMsg = require('./routes/viewMsg');
+
+const port = process.env.PORT || 8070;
 
 app.use(cors());
 app.use(express.json());
@@ -24,23 +27,19 @@ app.listen(port, (error) => {
 
 const URL = process.env.MONGODB_URL;
 
-mongoose.connect(URL,{
-       useCreateIndex: true,
-       useNewUrlParser: true,
-       useUnifiedTopology: true,
-       useFindAndModify: false
-});
+mongoose.connect(URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true})
+    .then(() => {
+    console.log('MongoDB connected');})
+    .catch((error) => {
+    console.log(error);})
 
-
-const connection = mongoose.connection;
-connection.once("open", ()=>{
-    console.log("Mongodb connection success!");
-});
-
-app.listen(PORT,()=>{
-    console.log(`Server is up and running on port ${PORT}`)
-});
 
 //customers
 app.use('/customers',urlEncodedParser,customerRouter);
 app.use('/customer', authRouter);
+
+//Contact Us
+app.use('/', ContactUs);
+app.use('/admin',ViewMsg);

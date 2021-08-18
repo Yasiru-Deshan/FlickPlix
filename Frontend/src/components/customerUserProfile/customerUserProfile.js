@@ -84,6 +84,7 @@ export default function CustomerUserProfile(props) {
         }
     }
     return (
+        <div id="it19184722-Profile">
             <form className="form-group it19184722-myForm">
                 <h2>User Profile</h2>
                 <button className="btn-danger btn it19184722-red-btn" id="it19184722-logout-btn" onClick={logoutHandler}>Log out</button>
@@ -106,10 +107,10 @@ export default function CustomerUserProfile(props) {
                 <div class="alert alert-success" role="alert">
                     {success}
                 </div>: null}
-                <label>First Name</label>
+                <label>First name</label>
                 <input className="form-control" type="text" onChange={(e) => setfirstName(e.target.value)} value={fname} disabled/><br/>  
 
-                <label>Last Name</label>
+                <label>Last name</label>
                 <input className="form-control" type="text" onChange={(e) => setlastName(e.target.value)} value={lname} disabled/><br/>     
 
                 <label>Email</label>
@@ -128,5 +129,6 @@ export default function CustomerUserProfile(props) {
                     <input id="cancelButton" type="button" value="Cancel" onClick={cancelUpdate} className="btn-danger btn it19184722-red-btn" hidden/>
                 </div>
             </form>
+        </div>
     )
 }
