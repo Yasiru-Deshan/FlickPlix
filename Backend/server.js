@@ -16,7 +16,12 @@ const ViewMsg = require('./routes/viewMsg');
 
 const port = process.env.PORT || 8070;
 
-app.use(cors());
+app.use(cors({
+    origin: [
+    'http://localhost:3000'
+  ],
+  credentials: true
+    }));
 app.use(express.json());
 
 const urlEncodedParser = express.urlencoded({ extended: false });
