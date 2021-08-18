@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const validator = require('../functions/validators');
+const con = require('../server');
 const Customer = require('../models/customer.model');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt');
@@ -53,7 +54,6 @@ router.post('/edit/:id', validator.validate('editUser'), async(req, res) => {
         return;
       }
 
-    //
     try {
         hashedPassword = await bcrypt.hash(password, 10);
         const customer = await Customer.findOne({cus_id:id});
@@ -77,7 +77,7 @@ router.post('/edit/:id', validator.validate('editUser'), async(req, res) => {
         });
         
         const emailHTML = `Hi ${customer.fname} ${customer.lname}😃,<br><br>
-                    Your account details has been changed! Please use this email and password to log in to our web Appilcation.<br><br>
+                    Your account details has been changed! Please use this email and password to log in to our web application.<br><br>
                     First Name:- ${customer.fname}<br>
                     Last Name:- ${customer.lname}<br>
                     Email:- ${customer.email}<br>
@@ -140,7 +140,7 @@ router.post('/add', validator.validate('addUser'),async(req, res) => {
             });
 
             const emailHTML = `Hi ${newCustomer.fname} ${newCustomer.lname}😃,<br><br>
-            An account has been created for you on our website! Please use this email and password to log in to our web Application.<br><br>
+            An account has been created for you on our website! Please use this email and password to log in to our web application.<br><br>
             Email:- ${newCustomer.email}<br>
             Password:- ${password}<br><br>
             Thank you!<br>
@@ -153,7 +153,7 @@ router.post('/add', validator.validate('addUser'),async(req, res) => {
             };
 
             await transporter.sendMail(mailOptions);
-            res.json({"success": "Acoount creation is successfull","cus_id": cus_id});
+            res.json({"Success": "Acoount creation is successfull","cus_id": cus_id});
             }
                    
     } catch (errors) {

@@ -1,81 +1,62 @@
-.DNbodyC {
-  background: linear-gradient(200deg, #BBDEFB 60%, #42A5F5 60%);
-  }
-
-.second a:hover {
-  color: rgb(92, 92, 92)
+/*Contact sectiom*/
+.it19184722-content-header {
+  font-family: "Oleo Script", cursive;
+  color: #fcc500;
+  font-size: 45px;
 }
 
-.DNbreadcrumb>li+li:before {
-  content: ">>" !important
+.it19184722-section-content {
+  text-align: center;
+}
+#it19184722-contact {
+  font-family: "Teko", sans-serif;
+  padding-top: 110px;
+  width: 100%;
+  height: 800px;
+  background: #3a6186; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #3a6186,
+    #89253e
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #3a6186,
+    #89253e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+}
+.it19184722-contact-section {
+  padding-top: 40px;
+}
+.it19184722-contact-section .it19184722-col-md-6 {
+  width: 50%;
 }
 
-.breadcrumb {
-  padding: 0px;
-  font-size: 10px;
-  color: #aaa !important
+.it19184722-form-line {
+  border-right: 1px solid #b29999;
 }
 
-.first {
-  background-color: white
+.it19184722-form-group {
+  margin-top: 10px;
+}
+.it19184722-lbl {
+  font-size: 1.3em;
+  line-height: 1em;
+  font-weight: normal;
+}
+.form-control-it19184722 {
+  font-size: 1.1em;
+  color: #080808;
+  margin-bottom: 15px;
+}
+textarea.form-control-it19184722 {
+  height: 135px;
+  /* margin-top: px;*/
 }
 
-.DNa {
-  text-decoration: none !important;
-  color: #aaa
-}
-
-.btn-lg,
-.form-control-sm:focus,
-.form-control-sm:active,
-a:focus,
-a:active {
-  outline: none !important;
-  box-shadow: none !important
-}
-
-.form-control-sm:focus {
-  border: 1.5px solid #4bb8a9
-}
-
-.btn-group-lg>.btn,
-.btn-lg {
-  padding: .5rem 0.1rem;
-  font-size: 1rem;
-  border-radius: 0;
-  color: white !important;
-  background-color: #4bb8a9;
-  height: 2.8rem !important;
-  border-radius: 0.2rem !important
-}
-
-.btn-group-lg>.btn:hover,
-.btn-lg:hover {
-  background-color: #26A69A
-}
-
-.btn-outline-primary {
-  background-color: #fff !important;
-  color: #4bb8a9 !important;
-  border-radius: 0.2rem !important;
-  border: 1px solid #4bb8a9
-}
-
-.btn-outline-primary:hover {
-  background-color: #4bb8a9 !important;
-  color: #fff !important;
-  border: 1px solid #4bb8a9
-}
-
-.DNcard-2{
-  margin-top: 40px !important
-}
-
-.card-header {
-  background-color: #fff;
-  border-bottom: 0px solid #aaaa !important
-}
-
-p {
-  font-size: 13px
+.submit-it19184722 {
+  font-size: 1.1em;
+  float: right;
+  width: 150px;
 }

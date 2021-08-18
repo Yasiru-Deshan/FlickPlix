@@ -37,7 +37,7 @@ export default function CustomerPasswordReset(props) {
     }
 
     return (
-        <div name="password-form">
+        <div id="it19184722-PWResetForm">
             <form className="form-group it19184722-myForm">
             <h2>Reset Password</h2>
             {errors ? errors.map((error) => {
@@ -52,10 +52,10 @@ export default function CustomerPasswordReset(props) {
                     {emailerror}
                     </div>: null}
             <label>New Password</label> 
-            <input placeholder="Enter new password" className="form-control" type="password" value={password} onChange={(e) => setpassword(e.target.value.trim())} /><br/>
+            <input placeholder="Enter New Password" className="form-control" type="password" value={password} onChange={(e) => setpassword(e.target.value.trim())} /><br/>
 
-            <label>Re-type Password</label> 
-            <input placeholder="Enter password again" className="form-control" type="password" value={repassword} onChange={(e) => setrepassword(e.target.value.trim())} /><br/> 
+            <label>Re-type Password</label>   
+            <input placeholder="Enter Password Again" className="form-control" type="password" value={repassword} onChange={(e) => setrepassword(e.target.value.trim())} /><br/> 
 
             <div className="it19184722-btn-section">
             <input id="resetPassword" type="button" value="Reset" onClick={resetPassword} className="it19184722-green-btn btn" style={{marginRight:'5px'}}/>
