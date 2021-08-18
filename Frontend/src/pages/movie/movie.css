@@ -121,7 +121,13 @@
 }
 
 .icons{
-    margin-top: 60px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.likesCount{
+    margin-top: -30px;
+    margin-left: 30px;
 }
 
 .fi{
@@ -141,13 +147,15 @@
 
 }
 
+
+
 .commenttrailerWrapper{
     display: grid;
      z-index: 1;
      height: clac(500px + 5vw);
      width: 100%;
     
-     margin-top: 0.1vw;
+     margin-top: calc(50px + 3vw);
      margin-right: auto;
      margin-left: auto;
      padding: 0 24px;
@@ -197,10 +205,15 @@
     flex: 0.7;
 }
 
+.commenting{
+    border: none;
+    width: 100%;
+    
+}
+
 .commentinput{
     border: none;
     width: 80%;
-    
 }
 
 .commentinput:focus{
@@ -209,13 +222,14 @@
 }
 .commenttitle{
     font-size: 24px;
+    font-style: bold;
     margin-left: 3vw;
    
 }
 .commentbutton{
     border: none;
-    width: 100px;
-    height: 50px;
+    width: 70px;
+    height: 40px;
     padding:7px;
     border-radius: 5px;
     background-color: #01BF71;
@@ -224,6 +238,7 @@
     margin-left: 10px;
     cursor: pointer;
     color: white;
+
     
 }
 
@@ -235,6 +250,7 @@
     background-color: #01BF71;
     border-radius: 5px;
     border: none;
+    cursor: pointer;
     
 
 }

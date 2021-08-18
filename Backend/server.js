@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express(); 
+const commentRoute = require("./routes/comment");
 require("dotenv").config();
 
 //Customers
@@ -41,10 +42,16 @@ mongoose.connect(URL, {
     console.log(error);})
 
 
+
 //customers
 app.use('/customers',urlEncodedParser,customerRouter);
 app.use('/customer', authRouter);
 
+
 //Contact Us
 app.use('/', ContactUs);
 app.use('/admin',ViewMsg);
+
+//Comments
+app.use("/api/comments", commentRoute);
+
