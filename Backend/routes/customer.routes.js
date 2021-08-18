@@ -94,7 +94,7 @@ router.post('/edit/:id', validator.validate('editUser'), async(req, res) => {
             html: emailHTML
         };
         await transporter.sendMail(mailOptions);
-        res.json({"success": "Acoount update is successfull","cus_id":id});
+        res.json({"success": "Account is updated, Successfully","cus_id":id});
     } catch (errors) {
         res.json(errors);
     } 
