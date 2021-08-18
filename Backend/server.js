@@ -37,10 +37,16 @@ mongoose.connect(URL, {
     console.log(error);})
 
 
+
 //customers
 app.use('/customers',urlEncodedParser,customerRouter);
 app.use('/customer', authRouter);
 
+
 //Contact Us
 app.use('/', ContactUs);
 app.use('/admin',ViewMsg);
+
+//Comments
+app.use("/api/comments", commentRoute);
+

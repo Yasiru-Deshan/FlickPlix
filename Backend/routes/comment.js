@@ -14,4 +14,16 @@ router.post('/', async(req,res)=>{
     };
 });
 
+//get comments
+
+router.get('/all', async(req,res)=>{
+
+     Comment.find().then((comments)=>{
+         res.json(comments)
+     }).catch((err)=>{
+         console.log(err)
+     })
+
+})
+
 module.exports = router;
