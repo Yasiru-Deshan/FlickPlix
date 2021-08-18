@@ -10,6 +10,7 @@ import Navbar from './components/Navbar';
 import { useState } from 'react';
 import Footer from './components/Footer';
 import './components/Footer/FooterElements'
+import Favorites from './pages/favorites/favorites';
 
 //customers
 import CustomerTable from './components/customerTable/customerTable';
@@ -41,6 +42,7 @@ const App = ()=> {
         <Route path='/' component={Home} exact/>
         <Route path='/movie' component={Movie} exact/>
         <Route path='/watch' component={Watch} exact/>
+        <Route path='/favorites' component={Favorites} exact/>
       
 
       {/*Customers */}
