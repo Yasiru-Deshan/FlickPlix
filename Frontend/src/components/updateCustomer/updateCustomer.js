@@ -45,7 +45,7 @@ export default function UpdateCustomer(props) {
     })
  
     return (
-        <div>
+        <div className="it19184722-myForm-adminDashboard">
             <form onSubmit={customerFormSubmit} className="form-group it19184722-myForm">
                 <h2>Edit Customer Details</h2>
                 {errors ? errors.map((error) => {

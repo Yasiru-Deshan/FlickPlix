@@ -1,0 +1,28 @@
+.IT19184722body {
+  height: fit-content;
+  border: 4px solid transparent;
+  box-shadow: 5px 8px 20px #888888;
+  padding: 100px;
+  top: 20%;
+  background: linear-gradient(150deg, #bbdefb 60%, #506a7c 60%);
+}
+
+.card-it19184722 {
+  margin-bottom: 5%;
+}
+
+.IT19184722DashTitle {
+  text-align: center;
+}
+
+.card-h-label {
+  text-align: center;
+}
+
+.IT19184722btn {
+  text-align: right;
+}
+
+.IT19184722form {
+  margin-top: 2%;
+}
