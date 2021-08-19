@@ -1,9 +1,10 @@
 import React from 'react';
 import img from '../../images/movie.jpg';
 import { MDBInput, MDBCol } from "mdbreact"
-import FavoritesItem from './favoriteItem';
+import FavoritesItem from '../../components/Favorites/favoriteItem';
 import Carousel from "react-elastic-carousel";
 import './favorites.css';
+import Playlist from '../../components/Playlist/playlist';
 
 
 const breakPoints = [
@@ -60,6 +61,8 @@ function Favorites() {
         </Carousel>
       </div>
       </div>
+
+      <Playlist/>
     
             
         </React.Fragment>
