@@ -2,7 +2,7 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 
-import Home from './pages';
+import Home from './pages/home/index';
 import Movie from './pages/movie/movie';
 import Watch from './pages/movie/watch.js';
 import Sidebar from './components/Sidebar';
