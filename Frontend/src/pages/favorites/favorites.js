@@ -10,7 +10,7 @@ const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2 },
     { width: 768, itemsToShow: 3 },
-    { width: 1200, itemsToShow: 4 },
+    { width: 1200, itemsToShow: 5 },
   ];
 
 
@@ -18,9 +18,9 @@ function Favorites() {
     return (
 
         <div>
-        <div style={{background: '#2C3E50', /* fallback for old browsers */
-            background: '-webkit-linear-gradient(to right, #4CA1AF, #2C3E50)',  /* Chrome 10-25, Safari 5.1-6 */
-            background: 'linear-gradient(to right, #4CA1AF, #2C3E50)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        <div style={{ background: '#0F2027',  /* fallback for old browsers */
+    background: '-webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)',  /* Chrome 10-25, Safari 5.1-6 */
+    background: 'linear-gradient(to right, #2C5364, #203A43, #0F2027)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             }}>
         <React.Fragment>
 
@@ -29,18 +29,24 @@ function Favorites() {
            <MDBCol md="6" className="searchbar">
                <input className="form-control" 
                       type="text"
-                      placeholder="Search"
+                      placeholder="Search playlists"
                       aria-label="Search"
                        />
            </MDBCol>
+
            
           </center> 
 
         <div className="MenuContainer" >
 
          
-            
+            <div className="headingWrapper">
+            <div>
         <h1 className="fHeading">Favorites</h1>
+        </div>
+        <div>
+        <button className="newPlaylist">Create New playlist</button></div>
+        </div>
       <div className="carousel">
         <Carousel breakPoints={breakPoints}>
           <FavoritesItem>One</FavoritesItem>
