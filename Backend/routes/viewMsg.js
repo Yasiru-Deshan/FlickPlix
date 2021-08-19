@@ -20,7 +20,7 @@ router.route('/viewmsg/status').post(async(req, res)=>{
     const addingStatus = req.body.status;
     try {
         const updateStatus = await viewMsg.findOne({_id:msgId});
-        updateStatus.addingStatus = addingStatus;
+        updateStatus.status = addingStatus;
         const updated = await updateStatus.save();
 
     if(updated){
