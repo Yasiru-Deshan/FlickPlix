@@ -110,7 +110,7 @@ export default function Contact(){
                       </div>
                     </div>
                     <div className="it19184722-col-md-6 ">
-                        <button type="Submit" className="btn btn-danger it19184722-mybtn it19184722-red-btn submit-it19184722">
+                        <button type="Submit" className="btn btn-danger float-right">
                           <i className="fa fa-paper-plane" aria-hidden="true" /> Send
                           Message
                         </button>
