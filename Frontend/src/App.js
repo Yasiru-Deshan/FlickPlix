@@ -1,12 +1,16 @@
 import './App.css'; 
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import Home from './pages';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+
+import Home from './pages/home/index';
 import Movie from './pages/movie/movie';
 import Watch from './pages/movie/watch.js';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 import { useState } from 'react';
 import Footer from './components/Footer';
+import './components/Footer/FooterElements'
+import Favorites from './pages/favorites/favorites';
 
 //customers
 import CustomerTable from './components/customerTable/customerTable';
@@ -40,6 +44,7 @@ const App = ()=> {
         <Route path='/' component={Home} exact/>
         <Route path='/movie' component={Movie} exact/>
         <Route path='/watch' component={Watch} exact/>
+        <Route path='/favorites' component={Favorites} exact/>
       
 
       {/*Customers */}

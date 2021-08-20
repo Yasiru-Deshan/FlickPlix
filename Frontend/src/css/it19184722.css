@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 
+
 #it19184722-Profile {
   padding-top: 70px;
   width: 100%;
@@ -46,7 +47,7 @@
     #3a6186,
     #89253e
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+
 
 .it19184722-myForm-adminDashboard {
   height: fit-content;
