@@ -8,7 +8,7 @@ export default function Order(){
 
         let [search, setSearch] = useState("");
         let [msg,setMsg] = useState([]);
-        let [status, setStatus] = useState("");
+        let [Status, setStatus] = useState("");
         
         useEffect(()=>{
             function viewMsg(){
@@ -35,11 +35,11 @@ export default function Order(){
         const assignStatus = async(id,fullName) => {
         let assign;
      
-        if(window.confirm("Are you "+ status +" Customer : " + fullName + "'s message?")){
-          assign = await axios.post(`http://localhost:8070/admin/viewmsg/status`,{id,status});
+        if(window.confirm("Are you "+ Status +" Customer : " + fullName + "'s message?")){
+          assign = await axios.post(`http://localhost:8070/admin/viewmsg/status`,{id,Status});
         }
         if(assign) {
-            localStorage.setItem('assignStatus', "Assigned status to " + fullName +"'s, message, successfully!");
+            localStorage.setItem('NewStatus', "Assigned status to " + fullName +"'s, message, successfully!");
             window.location = "/admin/viewmsg"
         }
            
@@ -74,7 +74,7 @@ export default function Order(){
   
           let bodyData = [];
           for(let i = 0; msg.length > i ; i++){
-              bodyData.push([msg[i].fullName, msg[i].email,"0"+msg[i].phoneNo, msg[i].status]);
+              bodyData.push([msg[i].fullName, msg[i].email,"0"+msg[i].phoneNo, msg[i].Status]);
           }//save json data to bodydata in order to print in the pdf table
   
           const doc = new jsPDF({orientation:"portrait"});
@@ -151,7 +151,7 @@ export default function Order(){
 
                     <label className="mb-1">Assign a status : </label>
                          
-                    <select value={status} onChange={getStatus} name="status" id="status">
+                    <select value={Status} onChange={getStatus} name="status" id="status">
                             <option>{post.status}</option>
                             <option value='Not Processed'>Not Processed</option>
                             <option value='Accepted'>Accepted</option>
