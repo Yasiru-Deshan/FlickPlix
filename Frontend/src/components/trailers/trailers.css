@@ -5,3 +5,5 @@
     justify-items: center;
     margin: 20px 0;
 }
+/*--------Trailer Item------*/
+@import url(../utils/trailerItem/trailerItem.css)
