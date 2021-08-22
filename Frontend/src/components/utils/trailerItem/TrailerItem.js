@@ -2,25 +2,25 @@ import React from 'react'
 import BtnRender from './BtnRender'
 
 //get product information to the user interface
-function ProductItem({product, isAdmin}) {
+function TrailerItem({trailer, isAdmin}) {
 
     return (
-        <div className="product_card">
+        <div className="trailer_card">
             {
-                isAdmin && <input type="checkbox" checked ={product.checked}/>
+                isAdmin && <input type="checkbox" checked ={trailer.checked}/>
             }
-            <img src={product.images.url} alt=""/>
+            <img src={trailer.images.url} alt=""/>
 
-        <div className ="product_box">
-            <h2 title={product.title}>{product.title}</h2>
-            <span>${product.price}</span>
-            <p>{product.description}</p>        
+        <div className ="trailer_box">
+            <h2 title={trailer.title}>{trailer.title}</h2>
+            <span>${trailer.price}</span>
+            <p>{trailer.description}</p>        
         </div>
        
-        <BtnRender product={product} />
+        <BtnRender product={trailer} />
         </div>
         
          )
 }
 
-export default ProductItem
+export default TrailerItem
