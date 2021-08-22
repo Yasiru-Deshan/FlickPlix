@@ -27,6 +27,9 @@ import CustomerPasswordReset from './components/customerPasswordReset/customerPa
 import Contact from './components/ContactPage/ContactPage';
 import ContactTable from './components/ContactTable/ContactTable';
 
+
+import Products from './components/products/Products';
+
 const App = ()=> {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -59,6 +62,8 @@ const App = ()=> {
       {/*Contact Page */}
       <Route path="/contact" component={Contact}/>
       <Route path="/admin/viewmsg" component={ContactTable}/>
+
+      <Route path='/products' component={Products}/>
     
       </Switch>
       
