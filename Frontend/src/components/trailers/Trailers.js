@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import {GlobalState} from '../../../GlobalState'
-import ProductItem from '../utils/productItem/ProductItem'
+import TrailerItem from '../utils/trailerItem/TrailerItem'
 import Loading from '../utils/loading/Loading'
 
 
