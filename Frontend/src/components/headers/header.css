@@ -30,11 +30,11 @@ header ul li:hover{
 .menu{
     display: none;
 }
-.cart-icon{
+.favourite-icon{
     position:relative;
     margin-right: 20px;
 }
-.cart-icon span{
+.favourite-icon span{
     background: crimson;
     border-radius: 20px;
     color: white;
