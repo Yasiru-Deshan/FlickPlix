@@ -1,6 +1,8 @@
 import React from 'react';
 import PlaylistItem from './playlistitem';
 import Carousel from "react-elastic-carousel";
+import './playlist.css';
+
 
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -14,14 +16,13 @@ function Playlist() {
         <div>
 
 
-
+<div className='container'>
          
 <div className="headingWrapper">
 <div>
-<h1 className="fHeading">Favorites</h1>
+<h1 className="pHeading">My Playlist</h1>
 </div>
-<div>
-<button className="newPlaylist">Create New playlist</button></div>
+
 </div>
 <div className="carousel">
 <Carousel breakPoints={breakPoints}>
@@ -37,6 +38,7 @@ function Playlist() {
 </div>
 
             
+        </div>
         </div>
     )
 }
