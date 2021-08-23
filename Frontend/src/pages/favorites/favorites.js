@@ -1,5 +1,4 @@
-import React from 'react';
-import img from '../../images/movie.jpg';
+import React,{ useState} from 'react';
 import { MDBInput, MDBCol } from "mdbreact"
 import FavoritesItem from '../../components/Favorites/favoriteItem';
 import Carousel from "react-elastic-carousel";
@@ -16,9 +15,13 @@ const breakPoints = [
 
 
 function Favorites() {
+
+
     return (
 
         <div>
+
+
         <div style={{ background: '#0F2027',  /* fallback for old browsers */
     background: '-webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)',  /* Chrome 10-25, Safari 5.1-6 */
     background: 'linear-gradient(to right, #2C5364, #203A43, #0F2027)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -45,9 +48,14 @@ function Favorites() {
             <div>
         <h1 className="fHeading">Favorites</h1>
         </div>
-        <div>
-        <button className="newPlaylist">Create New playlist</button></div>
+        
+        <button className="newPlaylist">Create New playlist</button>
+        
+        
         </div>
+
+    
+
       <div className="carousel">
         <Carousel breakPoints={breakPoints}>
           <FavoritesItem>One</FavoritesItem>
@@ -62,6 +70,7 @@ function Favorites() {
       </div>
       </div>
 
+      <Playlist/>
       <Playlist/>
     
             

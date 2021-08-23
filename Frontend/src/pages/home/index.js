@@ -11,7 +11,7 @@ import { homeObjOne,homeObjTwo,homeObjThree  } from '../../components/InfoSectio
 const Home = () => {
 
     return (
-        <>
+       <>
         
         <HeroSection />
         <Services/>
@@ -19,7 +19,7 @@ const Home = () => {
         <InfoSection {...homeObjOne}/>
         <InfoSection {...homeObjThree}/>
         
-    
+   
         
         </>
     )
