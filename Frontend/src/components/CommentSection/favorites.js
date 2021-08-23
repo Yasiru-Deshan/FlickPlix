@@ -1,10 +1,9 @@
-import React,{ useEffect, useState} from 'react';
+import React,{ useState} from 'react';
 import { MDBInput, MDBCol } from "mdbreact"
 import FavoritesItem from '../../components/Favorites/favoriteItem';
 import Carousel from "react-elastic-carousel";
 import './favorites.css';
 import Playlist from '../../components/Playlist/playlist';
-import axios from 'axios';
 
 
 const breakPoints = [
@@ -17,31 +16,6 @@ const breakPoints = [
 
 function Favorites() {
 
-
-    const [plist, setPlaylist] = useState([]);
-
-    useEffect(()=>{
-
-      const getPlayLists = () =>{
-        axios.get('http://localhost:8070/api/playlists').then((res)=>{
-          setPlaylist(res.data);
-        })
-      }
-
-      getPlayLists();
-    })
-
-    const PlayListsAll = ()=>{
-      return plist.map((pName)=>{
-
-        return(
-          <Playlist
-               key = {pName.id}
-               name = {pName.name}
-               desc = {pName.desc} />
-        )
-      })
-    }
 
     return (
 
@@ -96,7 +70,8 @@ function Favorites() {
       </div>
       </div>
 
-     <PlayListsAll/>
+      <Playlist/>
+      <Playlist/>
     
             
         </React.Fragment>

@@ -1,10 +1,15 @@
-.MenuContainer{      
+
+.container{      
     justify-content: center;
     padding: 0 30px;
-    height: 550px;
+    height: 500px;
     width: 100%;
     align-items: center;
-    background-color: transparent;
+    background-color:white;
+    margin-top: 00px;
+    margin-bottom: 50px;
+    border-radius: 20px;
+  
       
 }
 
@@ -34,66 +39,25 @@
     }
 }
 
-.fHeading{
+.pHeading{
    font-weight: bold;
    font-size: 30px;
    margin-left: calc(2vw + 80px);
+   margin-top: 50px;
    padding-top: 20px;
    margin-bottom: -50px;
-   color: white;
 }
 
 .newPlaylist{
     margin-left: calc(72vw + 26px);
-    
+    margin-top: 20px;
     font-size: calc(0.2vw + 12px);
     border-radius: 4vw;
     padding: 1.8vw;
     color: #fff;
     background-color: #01bf71;
     border: none;
-    margin-bottom: 30px;
     
-}
-
-.btn-modal {
-    padding: 10px 20px;
-    display: block;
-    margin: 100px auto 0;
-    font-size: 18px;
-}
-
-.modal, .overlay {
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: fixed;
-}
-
-.overlay {
-    background: rgba(49,49,49,0.8);
-}
-.modal-content {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    line-height: 1.4;
-    background: #f1f1f1;
-    padding: 14px 28px;
-    border-radius: 3px;
-    max-width: 600px;
-    min-width: 300px;
-}
-
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 5px 7px;
 }
 
 
@@ -116,9 +80,8 @@
 
 }
 
-.mimg{
-    margin-top: 20px;
-   
+.pimg{
+    margin-top: 70px;
     height:360px;
     border-radius: 10px;  
     transition: all 0.2s ease-in-out;
@@ -127,7 +90,7 @@
 
 
  
-.mimg:hover{
+.pimg:hover{
         transform: scale(1.02);
         transition: all 0.4s ease-in-out;
         cursor: pointer;
@@ -152,8 +115,3 @@
     justify-content: center;
     height: 100vh;
 }
-
-body.active-modal {
-    overflow-y: hidden;
-}
-
