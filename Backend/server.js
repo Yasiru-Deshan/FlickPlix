@@ -5,16 +5,25 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express(); 
 const commentRoute = require("./routes/comment");
+const playlistRoute = require("./routes/playlist");
 require("dotenv").config();
 
 //Customers
 const customerRouter = require('./routes/customer.routes');
 const authRouter = require('./routes/auth.routes');
 
-const PORT = process.env.PORT||8070;
-const port = process.env.PORT || 5000;
+//Contact Us
+const ContactUs = require('./routes/contactUs');
+const ViewMsg = require('./routes/viewMsg');
 
-app.use(cors());
+const port = process.env.PORT || 8070;
+
+app.use(cors({
+    origin: [
+    'http://localhost:3000'
+  ],
+  credentials: true
+    }));
 app.use(express.json());
 
 const urlEncodedParser = express.urlencoded({ extended: false });
@@ -25,28 +34,28 @@ app.listen(port, (error) => {
 
 const URL = process.env.MONGODB_URL;
 
-mongoose.connect(URL,{
-       useCreateIndex: true,
-       useNewUrlParser: true,
-       useUnifiedTopology: true,
-       useFindAndModify: false
-});
+mongoose.connect(URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true})
+    .then(() => {
+    console.log('MongoDB connected');})
+    .catch((error) => {
+    console.log(error);})
 
 
-const connection = mongoose.connection;
-connection.once("open", ()=>{
-    console.log("Mongodb connection success!");
-});
-
-
-
-app.listen(PORT,()=>{
-    console.log(`Server is up and running on port ${PORT}`)
-});
 
 //customers
 app.use('/customers',urlEncodedParser,customerRouter);
 app.use('/customer', authRouter);
 
-//
+
+//Contact Us
+app.use('/', ContactUs);
+app.use('/admin',ViewMsg);
+
+//Comments
 app.use("/api/comments", commentRoute);
+
+//playlists
+app.use("/api/playlists", playlistRoute);
+

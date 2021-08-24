@@ -14,6 +14,7 @@ import Favorites from './pages/favorites/favorites';
 
 //customers
 import CustomerTable from './components/customerTable/customerTable';
+import AddCustomer from './components/addCustomer/addCustomer';
 import UpdateCustomer from './components/updateCustomer/updateCustomer';
 import CustomerLogin from './components/customerLogin/customerLogin';
 import CustomerRegister from './components/customerRegister/customerRegister';
@@ -23,7 +24,11 @@ import PublicRoute from './components/publicRoute/PublicRoute';
 import CustomerPasswordReset from './components/customerPasswordReset/customerPasswordReset';
 
 //Contact Page
-import Contact from './components/ContactPage/test';
+import Contact from './components/ContactPage/ContactPage';
+import ContactTable from './components/ContactTable/ContactTable';
+
+
+import Products from './components/mainpages/products/Products';
 
 const App = ()=> {
   const [isOpen, setIsOpen] = useState(false)
@@ -46,15 +51,19 @@ const App = ()=> {
       
 
       {/*Customers */}
-		  <Route exact path="/customers" component = {CustomerTable} exact></Route>
-		  <Route path="/updateCustomer/:id" component = {UpdateCustomer} exact></Route>
-		  <PublicRoute path="/customer/login" component = {CustomerLogin} exact></PublicRoute>
-		  <PublicRoute path="/customer/register" component = {CustomerRegister} exact></PublicRoute>
-		  <PrivateRoute path="/customer/profile" component = {CustomerUserProfile} exact></PrivateRoute>
-		  <PrivateRoute path="/customer/profile/password-reset" component = {CustomerPasswordReset} exact></PrivateRoute>
+      <Route exact path="/customers" component = {CustomerTable} exact></Route>
+      <Route path="/customer/add" component = {AddCustomer} exact></Route>
+	    <Route path="/updateCustomer/:id" component = {UpdateCustomer} exact></Route>
+      <PublicRoute path="/customer/login" component = {CustomerLogin} exact></PublicRoute>
+      <PublicRoute path="/customer/register" component = {CustomerRegister} exact></PublicRoute>
+      <PrivateRoute path="/customer/profile" component = {CustomerUserProfile} exact></PrivateRoute>
+      <PrivateRoute path="/customer/profile/password-reset" component = {CustomerPasswordReset} exact></PrivateRoute>
 
       {/*Contact Page */}
       <Route path="/contact" component={Contact}/>
+      <Route path="/admin/viewmsg" component={ContactTable}/>
+
+      <Route path='/products' component={Products}/>
     
       </Switch>
       
