@@ -28,7 +28,7 @@ import Contact from './components/ContactPage/ContactPage';
 import ContactTable from './components/ContactTable/ContactTable';
 
 
-import Products from './components/products/Products';
+import Products from './components/mainpages/products/Products';
 
 const App = ()=> {
   const [isOpen, setIsOpen] = useState(false)
