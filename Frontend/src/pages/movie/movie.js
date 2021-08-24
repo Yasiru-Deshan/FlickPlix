@@ -10,7 +10,7 @@ import Comments from '../../components/CommentSection/comments';
 import ReactPlayer from 'react-player';
 import {Link} from 'react-router-dom';
 import axios from 'axios'; 
-import Loading from '../../utils/loading/Loading'
+import Loading from '../../utils/loading/Loading';
 
 
 const Movie = () =>{
