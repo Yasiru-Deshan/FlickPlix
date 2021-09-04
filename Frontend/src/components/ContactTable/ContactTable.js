@@ -105,7 +105,7 @@ export default function Order(){
 
       <body className="it19184722-myForm-adminDashboard">
             
-          <h2 className="it19184722-h2">Contact Us Dashboard</h2>
+          <h2 className="it19184722-h2">Contact Management Dashboard</h2>
 
           {/* Generate Report */}
           <div className="it19184722-headerSection">
@@ -144,7 +144,6 @@ export default function Order(){
                     <label className="mb-1">Assign a status : </label>
                          
                     <select value={Status} onChange={getStatus} name="status" id="status">
-                            <option>{post.status}</option>
                             <option value='Not Processed'>Not Processed</option>
                             <option value='Accepted'>Accepted</option>
                             <option value='Seen'>Seen</option>
