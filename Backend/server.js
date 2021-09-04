@@ -5,6 +5,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express(); 
 const commentRoute = require("./routes/comment");
+const playlistRoute = require("./routes/playlist");
 require("dotenv").config();
 
 //Customers
@@ -54,4 +55,7 @@ app.use('/admin',ViewMsg);
 
 //Comments
 app.use("/api/comments", commentRoute);
+
+//playlists
+app.use("/api/playlists", playlistRoute);
 
