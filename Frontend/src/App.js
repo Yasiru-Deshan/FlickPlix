@@ -30,6 +30,7 @@ import ContactTable from './components/ContactTable/ContactTable';
 
 
 import Products from './components/mainpages/products/Products';
+import AdminRoutes from './pages/adminpages/AdminRoutes';
 
 const App = ()=> {
   const [isOpen, setIsOpen] = useState(false)
@@ -65,7 +66,7 @@ const App = ()=> {
       <Route path="/admin/viewmsg" component={ContactTable}/>
 
       <Route path='/products' component={Products}/>
-    
+      <AdminRoutes/>
       </Switch>
       
 	  
