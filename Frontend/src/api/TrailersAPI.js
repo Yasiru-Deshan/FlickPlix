@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 
-function ProductsAPI() {
+function TrailersAPI() {
         const [products, setProducts] = useState([])
     
         const getProducts = async () =>{
@@ -18,5 +18,5 @@ function ProductsAPI() {
          }
 }
 
-export default ProductsAPI
+export default TrailersAPI
   
