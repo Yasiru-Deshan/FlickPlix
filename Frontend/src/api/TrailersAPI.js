@@ -2,19 +2,19 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 
 function TrailersAPI() {
-        const [products, setProducts] = useState([])
+        const [trailers, setTrailers] = useState([])
     
-        const getProducts = async () =>{
-            const res = await axios.get('/api/products')
+        const getTrailers = async () =>{
+            const res = await axios.get('/api/trailers')
            //console.log(res.data.products)
-             setProducts(res.data.products)
+             setTrailers(res.data.trailers)
         }
         useEffect(() =>{
-            getProducts()
+            getTrailers()
         },[])
 
          return {
-             products: [products, setProducts]
+             trailers: [trailers, setTrailers]
          }
 }
 
