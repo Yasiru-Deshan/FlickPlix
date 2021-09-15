@@ -3,7 +3,7 @@ import React, {useState, useContext} from 'react'
 import {GlobalState} from '../../GlobalState'
 import Menu from './icon/menu.svg'
 import Close from './icon/close.svg'
-import Cart from './icon/heart1.svg'
+import Favourite from './icon/heart1.svg'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 
@@ -12,21 +12,21 @@ import axios from 'axios'
 function Header() {
 const state = useContext(GlobalState)
 const [isLogged, setIsLogged] = state.userAPI.isLogged
-const [isAdmin, setIsAdmin] = state.userAPI.isAdmin
-const [cart] = state.userAPI.cart
+const [isArtist, setIsArtist] = state.userAPI.isArtist
+const [favourite] = state.userAPI.favourite
 
 
 const logoutUser = async () =>{
     await axios.get('/user/logout')
     localStorage.clear()
-    setIsAdmin(false)
+    setIsArtist(false)
     setIsLogged(false)
 }
 
-const adminRouter = () =>{
+const artistRouter = () =>{
     return(
         <>
-        <li><Link to="/create_product">Create Advertsement</Link></li>
+        <li><Link to="/create_trailer">Create Advertsement</Link></li>
         <li><Link to="/category">Genre</Link></li>
 
         </>
@@ -50,15 +50,15 @@ const loggedRouter = () =>{
         </div> 
         <div className="logo">
             <h1>
-                <Link to="/">{isAdmin ? 'Artist' : 'FLICKPLIX'}</Link>
+                <Link to="/">{isArtist ? 'Artist' : 'FLICKPLIX'}</Link>
 
             </h1>
           </div>
           <ul>
-        <li><Link to ="/">{isAdmin ? 'Advertisements' : 'Advertisements'}</Link></li>
+        <li><Link to ="/">{isArtist ? 'Advertisements' : 'Advertisements'}</Link></li>
         
         
-        {isAdmin && adminRouter()}
+        {isArtist && artistRouter()}
         { 
           isLogged ? loggedRouter() :<li><Link to ="/login">Login ✥ Register</Link></li>
          }
@@ -69,10 +69,10 @@ const loggedRouter = () =>{
         </ul>
          {
              isAdmin ? ''
-             :<div className ="cart-icon">
-            <span>{cart.length}</span>
-            <Link to ="/cart">
-            <img src={Cart} alt="" width="30"/>
+             :<div className ="favourite-icon">
+            <span>{favourite.length}</span>
+            <Link to ="/favourite">
+            <img src={Favourite} alt="" width="30"/>
             </Link>
         </div>
         }
