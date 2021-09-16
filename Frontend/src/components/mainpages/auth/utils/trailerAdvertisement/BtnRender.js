@@ -6,28 +6,28 @@ import {GlobalState} from '../../../../GlobalState'
 function BtnRender({product}) {
     const state = useContext(GlobalState)
    const [isAdmin] =state.userAPI.isAdmin
-   const addCart = state.userAPI.addCart
+   const addFavourite = state.userAPI.addFavourite
 
    
     return ( 
         <div className="row_btn">
             {
-                isAdmin ?
+                isArtist ?
                 <>
                 <Link id="btn_buy" to="#!">
                 Delete
             </Link>
-            <Link id="btn_view" to={`/edit_product/${product._id}`} >
+            <Link id="btn_view" to={`/edit_trailer/${trailer._id}`} >
              Edit
             </Link>
             </>
             
 
       : <>
-             <Link id="btn_buy" to="#!" onClick ={() => addCart(product)}>
+             <Link id="btn_buy" to="#!" onClick ={() => addFavourite(trailer)}>
              Buy
             </Link>
-            <Link id="btn_view" to={`/detail/${product._id}`} >
+            <Link id="btn_view" to={`/detail/${trailer._id}`} >
             View
             </Link>
         </>
