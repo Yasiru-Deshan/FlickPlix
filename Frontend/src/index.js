@@ -4,10 +4,16 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css'; 
 import 'mdbreact/dist/css/mdb.css';
 import App from './App';
+import { MovieContextProvider } from './context/movieContext/MovieContext';
+import { ListContextProvider } from './context/listContext/ListContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <MovieContextProvider>
+      <ListContextProvider>
+        <App />
+      </ListContextProvider>
+    </MovieContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

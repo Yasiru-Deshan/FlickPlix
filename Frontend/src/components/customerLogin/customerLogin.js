@@ -1,7 +1,7 @@
 import React, {useState}  from 'react';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
-import {setUserSession} from '../../utils/common';
+import {setUserSession} from '../mainpages/utils/common';
 import '../../css/it19184722.css';
 
 export default function CustomerLogin(props) {
