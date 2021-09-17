@@ -1,47 +1,43 @@
 import React, {useContext,useState} from 'react'
 import {GlobalState} from '../../../GlobalState'
-import ProductItem from '../utils/productItem/ProductItem'
+import ProductItem from '../utils/trailerAdvertisement/TrailerAdvertisement'
 import Loading from '../utils/loading/Loading'
 import axios from 'axios'
 import Filters from './Filters'
 import LoadMore from './LoadMore'
 
 
-//import NotFound from '../utils/not_found/NotFound'
-
-
-
-function Products() {
+function Trailers() {
 
     const state = useContext(GlobalState)
-    const [products, setProducts] = state.productsAPI.products
-   const [isAdmin] =state.userAPI.isAdmin
+    const [trailers, setTrailers] = state.trailersAPI.trailers
+   const [isArtist] =state.userAPI.isArtist
     const [token] =state.token
-    const [callback, setCallback] =state.productsAPI.callback
+    const [callback, setCallback] =state.trailersAPI.callback
     const [loading, setLoading] = useState(false)
     const [isCheck, setIsCheck] = useState(false)
 
 
     const handleCheck = (id) =>{
-      products.forEach(product => {
-          if(product._id === id) product.checked = !product.checked
+      trailers.forEach(trailer => {
+          if(trailer._id === id) trailer.checked = !trailer.checked
             })
 
-      setProducts([...products])
+      setTrailers([...trailers])
     }
-    const deleteProduct = async(id, public_id) =>{
+    const deleteTrailer = async(id, public_id) =>{
         console.log({id, public_id})
        try {
             setLoading(true)
             const destroyImg = axios.post('/api/destroy', {public_id},{
                 headers: {Authorization: token}
             })
-            const deleteProduct = axios.delete(`/api/products/${id}`, {
+            const deleteTrailer = axios.delete(`/api/trailers/${id}`, {
                  headers: {Authorization: token}
          })
  
          await destroyImg
-         await deleteProduct
+         await deleteTrailer
          
          setCallback(!callback)
          setLoading(false)
@@ -51,16 +47,16 @@ function Products() {
 
      }
  const checkAll =() =>{
-     products.forEach(product =>{
-         product.checked = !isCheck
+     trailers.forEach(trailer =>{
+        trailer.checked = !isCheck
 
      })
-     setProducts([...products])
+     setTrailers([...trailers])
      setIsCheck(!isCheck)
  }
  const deleteAll =() =>{
-     products.forEach(product =>{
-         if(product.checked) deleteProduct(product._id, product.images.public_id)
+    trailers.forEach(trailer =>{
+         if(trailer.checked) deleteTrailer(trailer._id, trailer.images.public_id)
      })
  }
     if(loading) return <div><Loading /></div>
@@ -68,23 +64,23 @@ function Products() {
         <> 
          <Filters />
         {
-            isAdmin &&
+            isArtist &&
             <div className="delete-all">
                 <span>Select all</span>
                 <input type="checkbox" checked ={isCheck} onChange={checkAll} />
                 <button onClick ={deleteAll}>Delete All</button>
              </div>
         }
-        <div className="products">
+        <div className="trailers">
             {
-                products.map(product =>{
-                    return <ProductItem key={product._id} product={product} 
-                    isAdmin = {isAdmin} deleteProduct={deleteProduct} handleCheck={handleCheck}/>
+                trailers.map(trailer =>{
+                    return <TrailerAdvertisement key={trailer._id} trailer={trailer} 
+                    isArtist = {isArtist} deleteTrailer = {deleteTrailer} handleCheck={handleCheck}/>
                 })
             }
         </div>  
         <LoadMore />
-        {products.length === 0 && <Loading />}
+        {trailers.length === 0 && <Loading />}
     {/*  { <NotFound />*/}
         
         </> 
@@ -92,4 +88,4 @@ function Products() {
 }
 
 
-export default Products
+export default Trailers

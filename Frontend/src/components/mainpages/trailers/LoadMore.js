@@ -3,8 +3,8 @@ import {GlobalState} from '../../../GlobalState'
 
 function LoadMore() {
     const state = useContext(GlobalState)
-    const [page, setPage] = state.productsAPI.page
-    const [result] = state.productsAPI.result
+    const [page, setPage] = state.trailersAPI.page
+    const [result] = state.trailersAPI.result
 
     return (
         <div className="load_more">
