@@ -1,12 +1,20 @@
 import React,{ useEffect, useState, useRef} from 'react';
 import { MDBInput, MDBCol } from "mdbreact"
 import FavoritesItem from '../../components/Favorites/favoriteItem';
+import FavoritesItem1 from '../../components/Favorites/favoriteItem copy';
+import FavoritesItem2 from '../../components/Favorites/favoriteItem copy 2';
+import FavoritesItem3 from '../../components/Favorites/favoriteItem copy 3';
+import FavoritesItem4 from '../../components/Favorites/favoriteItem copy 4';
+import FavoritesItem5 from '../../components/Favorites/favoriteItem copy 5';
+import FavoritesItem6 from '../../components/Favorites/favoriteItem copy 6';
+import FavoritesItem7 from '../../components/Favorites/favoriteItem copy 7';
 import Carousel from "react-elastic-carousel";
 import './favorites.css';
 import Playlist from '../../components/Playlist/playlist';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { Button,Form } from 'react-bootstrap';
+
 
 
 
@@ -22,8 +30,9 @@ function Favorites() {
 
     const name = useRef();
     const desc = useRef();
-    const [plist, setPlaylist] = useState([]);
+    let [plist, setPlaylist] = useState([]);
     const [mdal,setModal] = useState(false);
+    let [search, setSearch] = useState("");
 
     const submitHandler  = async(e)=>{
       e.preventDefault()
@@ -63,6 +72,13 @@ function Favorites() {
                desc = {pName.desc} />
         )
       })
+    }
+
+    //search filter
+    if(search.length > 0){
+      plist = plist.filter((i) => {
+          return i.name.toLowerCase().match(search.toLowerCase());
+      });
     }
 
     return (
@@ -127,6 +143,7 @@ function Favorites() {
                       type="text"
                       placeholder="Search playlists"
                       aria-label="Search"
+                      onChange={(e) => {setSearch(e.target.value)}} value={search}
                        />
            </MDBCol>
 
@@ -140,6 +157,8 @@ function Favorites() {
             <div>
         <h1 className="fHeading">Favorites</h1>
         </div>
+
+        
         
         <button className="newPlaylist" onClick =
         {()=> setModal(true)}>
@@ -153,14 +172,14 @@ function Favorites() {
 
       <div className="carousel">
         <Carousel breakPoints={breakPoints}>
-          <FavoritesItem>One</FavoritesItem>
-          <FavoritesItem>Two</FavoritesItem>
-          <FavoritesItem>Three</FavoritesItem>
-          <FavoritesItem>Four</FavoritesItem>
-          <FavoritesItem>Five</FavoritesItem>
-          <FavoritesItem>Six</FavoritesItem>
-          <FavoritesItem>Seven</FavoritesItem>
-          <FavoritesItem>Eight</FavoritesItem>
+          <FavoritesItem/>
+          <FavoritesItem1/>
+          <FavoritesItem2/>
+          <FavoritesItem3/>
+          <FavoritesItem4/>
+          <FavoritesItem5/>
+          <FavoritesItem6/>
+          <FavoritesItem7/>
         </Carousel>
       </div>
       </div>

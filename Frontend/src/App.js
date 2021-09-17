@@ -30,7 +30,8 @@ import ContactTable from './components/ContactTable/ContactTable';
 
 
 import Products from './components/mainpages/products/Products';
-import AdminRoutes from './pages/adminpages/AdminRoutes';
+import Browse from './pages/Browse/Browse';
+
 
 const App = ()=> {
   const [isOpen, setIsOpen] = useState(false)
@@ -50,7 +51,7 @@ const App = ()=> {
         <Route path='/movie' component={Movie} exact/>
         <Route path='/watch' component={Watch} exact/>
         <Route path='/favorites' component={Favorites} exact/>
-      
+        <Route path='/browse' component={Browse} exact/>
 
       {/*Customers */}
       <Route exact path="/customers" component = {CustomerTable} exact></Route>

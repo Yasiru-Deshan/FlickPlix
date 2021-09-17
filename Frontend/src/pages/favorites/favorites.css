@@ -118,10 +118,10 @@
 
 .mimg{
     margin-top: 20px;
-   
-    height:360px;
-    border-radius: 10px;  
+    height:100px;
+    border-radius: 5px;  
     transition: all 0.2s ease-in-out;
+    border: 5px solid white;
   
 }
 
