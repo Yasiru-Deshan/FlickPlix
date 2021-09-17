@@ -143,7 +143,8 @@ export default function Order(){
 
                     <label className="mb-1">Assign a status : </label>
                          
-                    <select value={Status} onChange={getStatus} name="status" id="status">
+                    <select value={Status} onChange={getStatus} name="approval" id="status">
+                            <option>{post.status}</option>
                             <option value='Not Processed'>Not Processed</option>
                             <option value='Accepted'>Accepted</option>
                             <option value='Seen'>Seen</option>
