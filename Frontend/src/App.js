@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css'; 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -30,6 +31,7 @@ import ContactTable from './components/ContactTable/ContactTable';
 
 import Products from './components/mainpages/products/Products';
 import Browse from './pages/Browse/Browse';
+
 
 const App = ()=> {
   const [isOpen, setIsOpen] = useState(false)
@@ -65,7 +67,7 @@ const App = ()=> {
       <Route path="/admin/viewmsg" component={ContactTable}/>
 
       <Route path='/products' component={Products}/>
-    
+      <AdminRoutes/>
       </Switch>
       
 	  

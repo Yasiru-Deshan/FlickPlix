@@ -3,8 +3,8 @@ import axios from 'axios'
 
 function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false)
-    const [isAdmin, setIsAdmin] = useState(false)
-    const [cart, setCart] = useState([])
+    const [isArtist, setIsArtist] = useState(false)
+    const [favourite, setFavourite] = useState([])
     //const [history, setHistory] = useState([])
 
     useEffect(() =>{
@@ -17,7 +17,7 @@ function UserAPI(token) {
   })
 
      setIsLogged(true)
-    res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
+    res.data.role === 1 ? setIsArtist(true) : setIsArtist(false)
     console.log(res)
   // setCart(res.data.cart)
 
@@ -31,30 +31,30 @@ function UserAPI(token) {
  }
 },[token])
 
-const addCart = async (product) => {
+const addFavourite = async (trailer) => {
     if(!isLogged) return alert("Please login to continue buying")
 
-    const check = cart.every(item =>{
-        return item._id !== product._id
+    const check = favourite.every(item =>{
+        return item._id !== trailer._id
     })
 
     if(check){
-        setCart([...cart, {...product, quantity: 1}])
+        setFavourite([...favourite, {...trailer, quantity: 1}])
 
-       await axios.patch('/user/addcart', {cart: [...cart, {...product, quantity: 1}]}, {
+       await axios.patch('/user/addfavourite', {favourite: [...favourite, {...trailer, quantity: 1}]}, {
           headers: {Authorization: token}
   })
     }else{
-        alert("This product has been added to cart.")
+        alert("This product has been added to favourite.")
     }
 }
 
 
 return {
     isLogged: [isLogged, setIsLogged],
-    isAdmin: [isAdmin, setIsAdmin],
-    cart: [cart, setCart],
-    addCart: addCart
+    isArtist: [isArtist, setIsArtist],
+    favourite: [favourite, setFavourite],
+    addFavourite: addFavourite
    // history: [history, setHistory]
 }
  

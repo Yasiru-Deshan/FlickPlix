@@ -10,7 +10,9 @@ import Comments from '../../components/CommentSection/comments';
 import ReactPlayer from 'react-player';
 import {Link} from 'react-router-dom';
 import axios from 'axios'; 
+
 import Loading from '../../components/mainpages/utils/loading/Loading'
+
 
 
 const Movie = () =>{
@@ -156,7 +158,7 @@ const Movie = () =>{
                      <div className="commentSection">
                      <h1 className="commenttitle">Comments</h1>
 
-                     {allComments.length === 0 && <Loading />} 
+                     {allComments.length === 0 && <Loading />}
              <CommentList/>
 
              

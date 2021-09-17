@@ -54,7 +54,7 @@ export default function Contact(){
               <div className="it19184722-contact-section">
                 <div className="container">
                   <form onSubmit={contact}>
-                    <div className="it19184722-col-md-6 it19184722-form-line">
+                    <div className="it19184722-col-md-6">
                       <div className="it19184722-form-group">
                         <label htmlFor="exampleInputUsername" className="it19184722-lbl">Tell Us Your Name</label>
                         <input
@@ -109,7 +109,7 @@ export default function Contact(){
                         />
                       </div>
                     </div>
-                    <div className="it19184722-col-md-6 ">
+                    <div className="it19184722-col-md-6">
                         <button type="Submit" className="btn btn-danger float-right">
                           <i className="fa fa-paper-plane" aria-hidden="true" /> Send
                           Message
