@@ -1,12 +1,15 @@
 import React from 'react'
 
 function NotFound() {
-    return (
-        <div>
-        404 | Not Found
-        </div>
-    )
+    return {
+        __html: '<NotFound src="./public/NotFound.html" ></NotFound>'
+    }
+    
 }
 
-export default NotFound
-
+export default function Exercise() {
+    return (
+        <div>
+            <div dangerouslySetInnerHTML={NotFound()} />
+        </div>)
+}
