@@ -38,23 +38,23 @@ a{
   /*------------Header----------*/
   @import url("./components/headers/header.css");
   
-  /*------------Products----------*/
-  @import url("./components/mainpages/products/products.css");
+  /*------------Trailers----------*/
+  @import url("./components/mainpages/trailers/trailers.css");
 
-  /*------Detail Product-----------*/
-  @import url("./components/mainpages/detailProduct/detailProduct.css");
+  /*------Detail Trailer-----------*/
+  @import url("./components/mainpages/detailTrailer/detailTrailer.css");
 
   /*------Login/Register------*/
   @import url("./components/mainpages/auth/login.css");
 
-  /*-----Cart------*/
-  @import url("./components/mainpages/cart/cart.css");
+  /*-----Favourite------*/
+  @import url("./components/mainpages/favourite/favourite.css");
  
   /*--------Categories-----*/
   @import url("./components/mainpages/categories/categories.css");
   
-/* ------------------- Create Product -------------- */
-@import url("./components/mainpages/createProduct/createProduct.css");
+/* ------------------- Create Trailers -------------- */
+@import url("./components/mainpages/createFavourite/createFavourite.css");
 
 /* ----------------- Responsive ------------------ */
 @media (max-width: 820px){
@@ -127,7 +127,7 @@ a{
   .delete-all{
     margin: 20px 0;
   }
-  .create_product .upload{
+  .create_trailer .upload{
     margin: 20px 0;
   }
 }
