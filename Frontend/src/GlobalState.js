@@ -1,5 +1,5 @@
 import React, {createContext, useState,useEffect } from 'react'
-import ProductsAPI from './api/ProductsAPI'
+import ProductsAPI from './api/TrailersAPI'
 import UserAPI from './api/UserAPI'
 import axios from 'axios'
 
