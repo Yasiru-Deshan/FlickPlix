@@ -2,32 +2,32 @@ import React, {useContext} from 'react'
 import {Link} from 'react-router-dom'
 import {GlobalState} from '../../../../GlobalState'
 
-function BtnRender({product, deleteProduct}) {
+function BtnRender({trailer, deleteTrailer}) {
     const state = useContext(GlobalState)
-   const [isAdmin] =state.userAPI.isAdmin
-   const addCart = state.userAPI.addCart
+   const [isArtist] =state.userAPI.isArtist
+   const addFavourite = state.userAPI.addFavourite
 
    
     return ( 
         <div className="row_btn">
             {
-                isAdmin ?
+                isArtist ?
                 <>
                 <Link id="btn_buy" to="#!"
-                 onClick={() => deleteProduct(product._id, product.images.public_id)}>
+                 onClick={() => deleteTrailer(trailer._id, trailer.images.public_id)}>
                 Delete
             </Link>
-            <Link id="btn_view" to={`/edit_product/${product._id}`} >
+            <Link id="btn_view" to={`/edit_trailer/${trailer._id}`} >
              Edit
             </Link>
             </>
             
 
       : <>
-             <Link id="btn_buy" to="#!" onClick ={() => addCart(product)}>
+             <Link id="btn_buy" to="#!" onClick ={() => addFavourite(trailer)}>
              Favourite
             </Link>
-            <Link id="btn_view" to={`/detail/${product._id}`} >
+            <Link id="btn_view" to={`/detail/${trailer._id}`} >
             Info
             </Link>
         </>
