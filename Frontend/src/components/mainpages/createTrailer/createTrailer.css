@@ -1,4 +1,4 @@
-.create_product{
+.create_trailer{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -61,22 +61,22 @@
     color: crimson;
 }
 
-.create_product form{
+.create_trailer form{
     max-width: 500px;
     min-width: 290px;
     width: 100%;
     margin: 15px 30px;
 }
-.create_product form .row{
+.create_trailer form .row{
     width: 100%;
     margin: 15px 0;
 }
-.create_product form input, textarea{
+.create_trailer form input, textarea{
     width: 100%;
     min-height: 40px;
     padding: 0 5px;
 }
-.create_product form button{
+.create_trailer form button{
     width: 200px;
     height: 40px;
     background: #555;
