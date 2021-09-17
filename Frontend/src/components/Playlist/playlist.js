@@ -11,7 +11,7 @@ const breakPoints = [
     { width: 1200, itemsToShow: 5 },
   ];
 
-function Playlist() {
+function Playlist(props) {
     return (
         <div>
 
@@ -20,7 +20,7 @@ function Playlist() {
          
 <div className="headingWrapper">
 <div>
-<h1 className="pHeading">My Playlist</h1>
+<h1 className="pHeading">{props.name}</h1>
 </div>
 
 </div>

@@ -14,4 +14,14 @@ router.post('/new', async(req,res)=>{
     };
 });
 
+//get playlists
+router.get('/', async(req,res)=>{
+
+    PlayList.find().then((list)=>{
+        res.json(list)
+    }).catch((err)=>{
+        console.log(err)
+    })
+})
+
 module.exports = router;

@@ -1,32 +1,72 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
-* {
-  margin: 0;
-  padding: 0;
- 
+
+#it19184722-Profile {
+  padding-top: 70px;
+  width: 100%;
+  height: 1100px;
+  background: #3a6186; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #3a6186,
+    #89253e
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #3a6186,
+    #89253e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#it19184722-RegForm {
+  padding-top: 110px;
+  width: 100%;
+  height: 1700px;
+  background: #17202a;
+}
+
+#it19184722-Form {
+  padding-top: 110px;
+  width: 100%;
+  height: 800px;
+  background: #17202a; /* fallback for old browsers */
+}
+
+#it19184722-PWResetForm {
+  padding-top: 110px;
+  width: 100%;
+  height: 800px;
+  background: #3a6186; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #3a6186,
+    #89253e
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #3a6186,
+    #89253e
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .it19184722-myForm-adminDashboard {
   height: fit-content;
-  margin: 5% auto;
   border: 4px solid transparent;
   box-shadow: 5px 8px 20px #888888;
-  padding: 25px;
+  padding: 100px;
   top: 20%;
   background: linear-gradient(150deg, #bbdefb 60%, #506a7c 60%);
 }
 
 .it19184722-myForm {
   width: 50%;
-  margin: 10% auto;
+  margin: 5% auto;
   border: 4px solid transparent;
-  box-shadow: 5px 8px 20px #888888;
+  /* box-shadow: 5px 8px 20px #888888; */
   padding: 25px;
   top: 20%;
-  background: linear-gradient(150deg, #bbdefb 60%, #506a7c 60%);
+  background: linear-gradient(150deg, #f5f5f5 63%, #194775 60%);
 }
-.it19184722-myTable {
-  /* overflow-x: auto; */
-}
+
 .it19184722-myTable h2 {
   text-align: center;
   font-weight: bolder;
@@ -74,6 +114,15 @@
   box-shadow: 5px 8px 20px #888888;
 }
 
+.it19184722-contacttbl {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  border-radius: 10px;
+  border: 1px solid black;
+  overflow: hidden;
+  box-shadow: 5px 8px 20px #888888;
+}
 .it19184722-td,
 .it19184722-th {
   /* border: 1px solid black; */

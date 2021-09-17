@@ -36,7 +36,7 @@ const formHandler = async(e) => {
     }                
 } 
     return (
-        <div>
+        <div id="it19184722-Form">
             <form onSubmit={formHandler} className="it19184722-myForm form-group">
             <h2>Sign In</h2>
                 {errors ? errors.map((error) => {
@@ -58,11 +58,11 @@ const formHandler = async(e) => {
                 <div className="alert alert-success" role="alert">
                 {regMsg}
                 </div> : null}
-                <label>Email Address</label>
-                <input placeholder="Enter your email address" className="form-control" type="email" onChange={(e) => setemail(e.target.value)} value={email}/><br/>
+                <label>Email</label>
+                <input placeholder="Enter Your Email Address" className="form-control" type="email" onChange={(e) => setemail(e.target.value)} value={email}/><br/>
                 <label>Password</label>
-                <input placeholder="Enter your password" className="form-control" type="password" onChange={(e) => setpassword(e.target.value)} value={password}/><br/> 
-                <p className="it19184722-centerDiv">Don't have an account?... <Link className="it19184722-link" to="/customer/register"> Register here</Link></p>               
+                <input placeholder="Enter Your Password" className="form-control" type="password" onChange={(e) => setpassword(e.target.value)} value={password}/><br/> 
+                <p className="it19184722-centerDiv"><b>Don't have an account? ... </b><Link className="it19184722-link" to="/customer/register"><b> Sign Up here</b></Link></p>               
                 <div className='it19184722-centerDiv'><input type="submit" value="Sign In" className="btn it19184722-green-btn it19184722-mybtn"/></div>
             </form>
         </div>

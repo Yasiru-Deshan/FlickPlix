@@ -1,9 +1,13 @@
-import React,{ useState} from 'react';
+import React,{ useEffect, useState, useRef} from 'react';
 import { MDBInput, MDBCol } from "mdbreact"
 import FavoritesItem from '../../components/Favorites/favoriteItem';
 import Carousel from "react-elastic-carousel";
 import './favorites.css';
 import Playlist from '../../components/Playlist/playlist';
+import axios from 'axios';
+import Modal from 'react-modal';
+import { Button,Form } from 'react-bootstrap';
+
 
 
 const breakPoints = [
@@ -16,10 +20,98 @@ const breakPoints = [
 
 function Favorites() {
 
+    const name = useRef();
+    const desc = useRef();
+    const [plist, setPlaylist] = useState([]);
+    const [mdal,setModal] = useState(false);
+
+    const submitHandler  = async(e)=>{
+      e.preventDefault()
+      const newPlaylist = {
+        userId: '611b74dd16f8353848675308',
+        name: name.current.value,
+        desc: desc.current.value,
+      }
+
+      try{
+        await axios.post("http://localhost:8070/api/playlists/new", newPlaylist)
+      }catch(err){
+        console.log(err)
+      }
+    }
+
+
+
+    useEffect(()=>{
+
+      const getPlayLists = () =>{
+        axios.get('http://localhost:8070/api/playlists').then((res)=>{
+          setPlaylist(res.data);
+        })
+      }
+
+      getPlayLists();
+    },[])
+
+    const PlaylistAll = ()=>{
+      return plist.map((pName)=>{
+
+        return(
+          <Playlist
+               key = {pName.id}
+               name = {pName.name}
+               desc = {pName.desc} />
+        )
+      })
+    }
 
     return (
 
         <div>
+
+        <Modal
+         isOpen={mdal} 
+         onRequestClose={()=> setModal(false)}
+         style={{
+           overlay: {
+             backgroundColor: 'transparent',
+             marginTop: '100px',
+             width: '30%',
+             height: '445px',
+             marginLeft: '50%', 
+           },
+
+           content: {
+             borderRadius: '20px',
+             color: 'white',
+             background: '#373B44'
+
+
+             
+           }
+         }}>
+          <h1>Create a New Playlist</h1>
+          <Form onSubmit={submitHandler}>
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text"
+                          placeholder="Enter playlist name"
+                          ref ={name} 
+                          />
+
+            <Form.Label>Description</Form.Label>
+            <Form.Control type="text" 
+                          placeholder="Enter playlist description"
+                          ref={desc}  
+                          />
+           <Button variant="primary" onClick={()=>setModal(false)}>
+             Close
+            </Button>
+            <Button variant="primary" type="submit">
+             Create
+            </Button>
+           
+          </Form>
+        </Modal>
 
 
         <div style={{ background: '#0F2027',  /* fallback for old browsers */
@@ -49,11 +141,14 @@ function Favorites() {
         <h1 className="fHeading">Favorites</h1>
         </div>
         
-        <button className="newPlaylist">Create New playlist</button>
+        <button className="newPlaylist" onClick =
+        {()=> setModal(true)}>
+        Create New playlist</button>
         
         
         </div>
 
+  
     
 
       <div className="carousel">
@@ -70,8 +165,7 @@ function Favorites() {
       </div>
       </div>
 
-      <Playlist/>
-      <Playlist/>
+     <PlaylistAll/>
     
             
         </React.Fragment>
