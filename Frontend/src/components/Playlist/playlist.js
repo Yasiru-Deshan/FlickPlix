@@ -12,6 +12,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import BookmarkIcon from '@material-ui/icons/Bookmark';
 import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 import axios from 'axios';
@@ -19,6 +21,7 @@ import Modal from 'react-modal';
 import { Form } from 'react-bootstrap';
 import '../../pages/favorites/favorites.css';
 import { useParams} from "react-router";
+
 
 
 
@@ -42,9 +45,20 @@ function Playlist(props) {
     const classes = useStyles();
     //const id = props.id;
     const [mdal,setModal] = useState(false);
-    const name = useRef();
-    const desc = useRef();
     const playlistid = useParams().playlistid;
+    const [tname, settname] = useState("");
+    const [pdesc, setpdesc] = useState("");
+    const id = useParams().id;
+
+     useEffect (() => {
+        async function fetchData(){
+            const response = (await axios.get(`http://localhost:8070/api/playlists/find/612382815f82f73b48d75104`)).data;
+            settname(response.tname);
+            setpdesc(response.pdesc);
+           
+        }
+        fetchData();
+    },[])
 
   const submitHandler  = async(e)=>{
       let update;
@@ -52,8 +66,8 @@ function Playlist(props) {
       e.preventDefault()
       const updatedPlaylist = {
         userId: '611b74dd16f8353848675308',
-        name: name.current.value,
-        desc: desc.current.value,
+        name: tname,
+        desc: pdesc,
       }
 
       try{
@@ -67,9 +81,6 @@ function Playlist(props) {
       }
     }
 
- 
-
-     const idx = props.id;
   
     {/*const MyOptions = [
       "",
@@ -137,14 +148,19 @@ function Playlist(props) {
           <Form onSubmit={submitHandler}>
             <Form.Label>Name</Form.Label>
             <Form.Control type="text"
-                          placeholder="Enter playlist name"
-                          ref ={name} 
+                         
+                        
+                          onChange={(e) => {settname(e.target.value);}} 
+                          value={tname}
                           />
 
             <Form.Label>Description</Form.Label>
             <Form.Control type="text" 
-                          placeholder="Enter playlist description"
-                          ref={desc}  
+                  
+                          value={pdesc}
+                        
+                          onChange={(e) => {setpdesc(e.target.value);}}
+                        
                           />
            <Button variant="primary" onClick={()=>setModal(false)}>
              Close
@@ -206,7 +222,7 @@ function Playlist(props) {
 <Button
               variant="contained"
               color="secondary"
-              onClick={() => deletePlaylist(idx)}
+              onClick={() => deletePlaylist()}
               className={classes.button}
               startIcon={<DeleteIcon />
               }>Delete</Button>
@@ -215,13 +231,13 @@ function Playlist(props) {
               color="primary"
               className={classes.button}
               onClick = {()=> setModal(true)}
-              startIcon={<Icon/>}>Edit</Button>
+              startIcon={<EditIcon/>}>Edit</Button>
 
 <Button
               variant="contained"
               color="primary"
               className={classes.button}
-              endIcon={<Icon></Icon>}
+              endIcon={<BookmarkIcon></BookmarkIcon>}
             >
               Save
             </Button>
