@@ -27,10 +27,12 @@ export const getMovies = async (dispatch) => {
 	} catch (err) {
 		dispatch(getMoviesFailure());
 	}
+
 };
 
 //create
 export const createMovie = async (movie, dispatch) => {
+
 	dispatch(createMovieStart());
 	try {
 		const res = await axios.post(
@@ -65,10 +67,12 @@ export const updateMovie = async (movie, dispatch) => {
 	} catch (err) {
 		dispatch(updateMovieFailure());
 	}
+
 };
 
 //delete
 export const deleteMovie = async (id, dispatch) => {
+
 	dispatch(deleteMovieStart());
 	try {
 		await axios.delete('http://localhost:8070/api/movies/' + id, {
@@ -80,4 +84,5 @@ export const deleteMovie = async (id, dispatch) => {
 	} catch (err) {
 		dispatch(deleteMovieFailure());
 	}
+
 };

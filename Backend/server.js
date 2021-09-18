@@ -5,6 +5,7 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express(); 
 const commentRoute = require("./routes/comment");
+const playlistRoute = require("./routes/playlist");
 require("dotenv").config();
 
 //Customers
@@ -14,6 +15,10 @@ const authRouter = require('./routes/auth.routes');
 //Contact Us
 const ContactUs = require('./routes/contactUs');
 const ViewMsg = require('./routes/viewMsg');
+
+//movie
+const movieRoutes = require('./routes/movies');
+const listRouts = require('./routes/lists');
 
 const port = process.env.PORT || 8070;
 
@@ -35,7 +40,8 @@ const URL = process.env.MONGODB_URL;
 
 mongoose.connect(URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true})
+    useUnifiedTopology: true,
+    useCreateIndex: true})
     .then(() => {
     console.log('MongoDB connected');})
     .catch((error) => {
@@ -55,3 +61,9 @@ app.use('/admin',ViewMsg);
 //Comments
 app.use("/api/comments", commentRoute);
 
+//playlists
+app.use("/api/playlists", playlistRoute);
+
+// movie
+app.use("/api/movies", movieRoutes);
+app.use("/api/lists", listRouts);

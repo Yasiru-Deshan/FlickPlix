@@ -17,7 +17,7 @@ router.route('/viewmsg/status').post(async(req, res)=>{
 
     let msgId = req.body.id;
 
-    const addingStatus = req.body.status;
+    const addingStatus = req.body.Status;
     try {
         const updateStatus = await viewMsg.findOne({_id:msgId});
         updateStatus.status = addingStatus;

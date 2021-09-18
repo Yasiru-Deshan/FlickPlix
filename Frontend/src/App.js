@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css'; 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -27,6 +28,11 @@ import CustomerPasswordReset from './components/customerPasswordReset/customerPa
 import Contact from './components/ContactPage/ContactPage';
 import ContactTable from './components/ContactTable/ContactTable';
 
+
+import Products from './components/mainpages/products/Products';
+import Browse from './pages/Browse/Browse';
+
+
 const App = ()=> {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -45,7 +51,7 @@ const App = ()=> {
         <Route path='/movie' component={Movie} exact/>
         <Route path='/watch' component={Watch} exact/>
         <Route path='/favorites' component={Favorites} exact/>
-      
+        <Route path='/browse' component={Browse} exact/>
 
       {/*Customers */}
       <Route exact path="/customers" component = {CustomerTable} exact></Route>
@@ -59,7 +65,9 @@ const App = ()=> {
       {/*Contact Page */}
       <Route path="/contact" component={Contact}/>
       <Route path="/admin/viewmsg" component={ContactTable}/>
-    
+
+      <Route path='/products' component={Products}/>
+      <AdminRoutes/>
       </Switch>
       
 	  

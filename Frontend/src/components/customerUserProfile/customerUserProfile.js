@@ -1,6 +1,7 @@
 import React, {useState,useEffect}  from 'react';
 import axios from 'axios';
-import {getUser, removeUser} from '../../utils/common';
+import {getUser, removeUser} from '../../components/mainpages/utils/common';
+
 import '../../css/it19184722.css';
 
 
