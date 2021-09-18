@@ -14,6 +14,7 @@ import Playlist from '../../components/Playlist/playlist';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { Button,Form } from 'react-bootstrap';
+import { Link, useLocation } from 'react-router-dom';
 
 
 
@@ -27,7 +28,9 @@ const breakPoints = [
 
 
 function Favorites() {
-
+    
+    const location = useLocation();
+    const movie = location.movie;
     const name = useRef();
     const desc = useRef();
     let [plist, setPlaylist] = useState([]);
@@ -68,6 +71,7 @@ function Favorites() {
         return(
           <Playlist
                key = {pName.id}
+               id  =   {pName.id}
                name = {pName.name}
                desc = {pName.desc} />
         )

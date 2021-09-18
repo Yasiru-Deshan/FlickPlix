@@ -16,7 +16,7 @@ import Loading from '../../components/mainpages/utils/loading/Loading'
 
 
 const Movie = () =>{
-
+  
    const desc = useRef();
    const uname = useRef();
  
