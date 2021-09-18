@@ -2,6 +2,8 @@ import React,{ useEffect} from 'react';
 import img from '../../images/medium-cover.jpg';
 import Aos from 'aos';
 import "aos/dist/aos.css";
+import {Link} from 'react-router-dom';
+
    
 function FavoritesItem(){
 
@@ -19,7 +21,7 @@ function FavoritesItem(){
         
          
       
-           <img  data-aos="fade-right" className="mimg" src={img} alt=''/>
+           <Link to='movie'><img data-aos="fade-up" className="mimg" src={img} alt=''/></Link>
   
         
 
