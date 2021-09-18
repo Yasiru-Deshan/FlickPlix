@@ -15,10 +15,11 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 import axios from 'axios';
-import { useParams } from 'react-router';
 import Modal from 'react-modal';
 import { Form } from 'react-bootstrap';
-import '../../pages/favorites/favorites.css'
+import '../../pages/favorites/favorites.css';
+import { useParams} from "react-router";
+
 
 
 
@@ -43,8 +44,11 @@ function Playlist(props) {
     const [mdal,setModal] = useState(false);
     const name = useRef();
     const desc = useRef();
+    const playlistid = useParams().playlistid;
 
   const submitHandler  = async(e)=>{
+      let update;
+
       e.preventDefault()
       const updatedPlaylist = {
         userId: '611b74dd16f8353848675308',
@@ -53,11 +57,17 @@ function Playlist(props) {
       }
 
       try{
-        await axios.put(`http://localhost:8070/api/playlists/edit/${props.id}`,updatedPlaylist)
+        update = await axios.put(`http://localhost:8070/api/playlists/edit/612382815f82f73b48d75104`,updatedPlaylist)
+
+         if (update){
+       window.alert("Play list has been updated")
+  }
       }catch(err){
         console.log(err)
       }
     }
+
+ 
 
      const idx = props.id;
   
@@ -140,7 +150,7 @@ function Playlist(props) {
              Close
             </Button>
             <Button variant="primary" type="submit">
-             Edit
+             Update
             </Button>
            
           </Form>
