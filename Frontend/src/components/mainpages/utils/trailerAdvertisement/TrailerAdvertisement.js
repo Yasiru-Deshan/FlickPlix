@@ -2,9 +2,6 @@ import React from 'react'
 import BtnRender from './BtnRender'
 
 
-
-
-
 //get product information to the user interface
 
 function TrailerAdvertisement({trailer,  isArtist, deleteTrailer,handleCheck}) {
@@ -32,3 +29,11 @@ function TrailerAdvertisement({trailer,  isArtist, deleteTrailer,handleCheck}) {
 }
 
 export default TrailerAdvertisement
+
+
+
+
+
+
+
+
