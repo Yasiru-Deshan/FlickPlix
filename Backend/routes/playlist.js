@@ -51,9 +51,9 @@ router.get('/find/:id', async (req, res) => {
 router.put("/edit/:id", async(req,res)=>{
 
     try{
-        const post = await PlayList.findById(req.params.id);
+        const playlist = await PlayList.findById(req.params.id);
 
-        await post.updateOne({ $set:req.body});
+        await playlist.updateOne({ $set:req.body});
         res.status(200).json("Playlist has been updated");
 
    }catch(err){

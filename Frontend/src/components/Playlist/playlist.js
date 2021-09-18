@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useEffect, useState, useRef} from 'react';
 import PlaylistItem from './playlistitem';
 import PlaylistItem1 from './playlistitem copy';
 import PlaylistItem2 from './playlistitem copy 2';
@@ -14,10 +14,12 @@ import Button from "@material-ui/core/Button";
 import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
-import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
 import axios from 'axios';
 import { useParams } from 'react-router';
-import { useState, useEffect } from 'react';
+import Modal from 'react-modal';
+import { Form } from 'react-bootstrap';
+import '../../pages/favorites/favorites.css'
+
 
 
 
@@ -35,38 +37,48 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-
 function Playlist(props) {
     const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const [heading,setHeading] = useState("");
-    const [desc,setDesc] = useState("");
-    const id = props.match.params.id;
+    //const id = props.id;
+    const [mdal,setModal] = useState(false);
+    const name = useRef();
+    const desc = useRef();
+
+  const submitHandler  = async(e)=>{
+      e.preventDefault()
+      const updatedPlaylist = {
+        userId: '611b74dd16f8353848675308',
+        name: name.current.value,
+        desc: desc.current.value,
+      }
+
+      try{
+        await axios.put(`http://localhost:8070/api/playlists/edit/${props.id}`,updatedPlaylist)
+      }catch(err){
+        console.log(err)
+      }
+    }
 
      const idx = props.id;
   
-    const MyOptions = [
+    {/*const MyOptions = [
       "",
       "Edit Playlist",
       "Delete playlist",
       "Save as PDF",
     ];
 
-
-   useEffect (() => {
-        async function fetchData(){
-            const response = (await axios.get(`http://localhost:8070/customers/edit/${id}`)).data;
-            setHeading(response.heading);
-            setDesc(response.desc);  
-        }
-        fetchData();
-    },[id])
-
-
-
-
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
     
+    const open = Boolean(anchorEl);
+    
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+  
+  */}
 
   const deletePlaylist = async (id) => {
     let deletion;
@@ -84,18 +96,55 @@ function Playlist(props) {
 
 
     
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-    
-    const open = Boolean(anchorEl);
-    
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
+  
 
     return (
         <div>
+
+
+           <Modal
+         isOpen={mdal} 
+         onRequestClose={()=> setModal(false)}
+         style={{
+           overlay: {
+             backgroundColor: 'transparent',
+             marginTop: '100px',
+             width: '30%',
+             height: '445px',
+             marginLeft: '50%', 
+           },
+
+           content: {
+             borderRadius: '20px',
+             color: 'white',
+             background: '#373B44'
+
+
+             
+           }
+         }}>
+          <h1>Edit Playlist</h1>
+          <Form onSubmit={submitHandler}>
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="text"
+                          placeholder="Enter playlist name"
+                          ref ={name} 
+                          />
+
+            <Form.Label>Description</Form.Label>
+            <Form.Control type="text" 
+                          placeholder="Enter playlist description"
+                          ref={desc}  
+                          />
+           <Button variant="primary" onClick={()=>setModal(false)}>
+             Close
+            </Button>
+            <Button variant="primary" type="submit">
+             Edit
+            </Button>
+           
+          </Form>
+        </Modal>
 
 
 <div className='container'>
@@ -155,6 +204,7 @@ function Playlist(props) {
               variant="contained"
               color="primary"
               className={classes.button}
+              onClick = {()=> setModal(true)}
               startIcon={<Icon/>}>Edit</Button>
 
 <Button
