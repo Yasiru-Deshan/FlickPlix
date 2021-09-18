@@ -10,17 +10,21 @@ import Comments from '../../components/CommentSection/comments';
 import ReactPlayer from 'react-player';
 import {Link} from 'react-router-dom';
 import axios from 'axios'; 
-import Loading from '../../components/mainpages/utils/loading/Loading';
+
+import Loading from '../../components/mainpages/utils/loading/Loading'
+
 
 
 const Movie = () =>{
 
    const desc = useRef();
+   const uname = useRef();
  
    const submitHandler = async (e)=>{
        e.preventDefault()
        const newComment = {
            userId: '611b74dd16f8353848675308',
+           uname:'Liam Livingstone',
            desc: desc.current.value,
        }
 
@@ -58,7 +62,8 @@ const Movie = () =>{
             return(
                 <Comments
                    key={comment.id}
-                   author={comment.userId}
+                   userid = {comment.userId}
+                   author={comment.uname}
                    desc={comment.desc}/>
 
               
