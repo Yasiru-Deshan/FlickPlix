@@ -244,3 +244,10 @@ export default function Contact(){
           
         );
 }
+
+export default function Contact(){
+
+  const [fullName,setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
+  const [message,setMessage] = useState("");
