@@ -71,3 +71,38 @@ const formHandler = async(e) => {
         
     )
 }
+
+return (
+    <div id="it19184722-Form">
+        <form onSubmit={formHandler} className="it19184722-myForm form-group">
+        <h2>Sign In</h2>
+            {errors ? errors.map((error) => {
+                return (
+                    <div className="alert alert-danger" role="alert">
+                        {error.msg}
+                  </div>
+                )
+            }):null}
+            {emailerror ? 
+            <div className="alert alert-danger" role="alert">
+                {emailerror}
+                </div>: null}
+            {logoutMsg ? 
+            <div className="alert alert-success" role="alert">
+            {logoutMsg}
+            </div> : null}
+            {regMsg ? 
+            <div className="alert alert-success" role="alert">
+            {regMsg}
+            </div> : null}
+            <label>Email</label>
+            <input placeholder="Enter Your Email Address" className="form-control" type="email" onChange={(e) => setemail(e.target.value)} value={email}/><br/>
+            <label>Password</label>
+            <input placeholder="Enter Your Password" className="form-control" type="password" onChange={(e) => setpassword(e.target.value)} value={password}/><br/> 
+            <p className="it19184722-centerDiv"><b>Don't have an account? ... </b><Link className="it19184722-link" to="/customer/register"><b> Sign Up here</b></Link></p>               
+            <div className='it19184722-centerDiv'><input type="submit" value="Sign In" className="btn it19184722-green-btn it19184722-mybtn"/></div>
+        </form>
+    </div>
+    
+)
+}
