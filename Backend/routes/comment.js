@@ -4,6 +4,8 @@ const Comment = require("../models/Comment");
 
 //post a comment 
 router.post('/', async(req,res)=>{
+
+    
     const newComment = new Comment(req.body);
 
     try{
@@ -12,6 +14,17 @@ router.post('/', async(req,res)=>{
     }catch(err){
         res.status(500).json(err);
     };
+});
+
+//get comments of a movie
+router.get('/:id/comments', async(req,res)=>{
+
+    try{
+    const comments = await Comment.findById(req.params.id);
+         res.status(200).json(comments);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 //get comments
@@ -25,5 +38,18 @@ router.get('/all', async(req,res)=>{
      })
 
 })
+
+
+//get comments of a movie
+router.get("/movie/:movieid", async(req,res)=>{
+ 
+    try{
+        //const movie = await Movie.findOne({movieId:req.params.movieid})
+        const comments = await Comment.find({ movieId: req.params.movieid})
+        res.status(200).json(comments);
+    }catch(err){
+        res.status(500).json(err);
+    }
+});
 
 module.exports = router;

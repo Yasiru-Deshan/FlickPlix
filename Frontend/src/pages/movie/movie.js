@@ -49,7 +49,7 @@ const Movie = () =>{
     useEffect(()=>{
 
         const getComments = () =>{
-        axios.get('http://localhost:8070/api/comments/all').then((res)=>{
+        axios.get('http://localhost:8070/api/comments/movie/6145eb2e19467e39980d27e7').then((res)=>{
             setAllComments(res.data);
         })
     }

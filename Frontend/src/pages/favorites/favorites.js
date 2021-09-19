@@ -189,7 +189,9 @@ function Favorites() {
       </div>
 
      <PlaylistAll/>
-    
+         
+        <button className="newPlaylist">
+        Download playlists</button>
             
         </React.Fragment>
         </div>
