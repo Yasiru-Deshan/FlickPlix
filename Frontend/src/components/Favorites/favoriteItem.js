@@ -5,7 +5,9 @@ import "aos/dist/aos.css";
 import {Link} from 'react-router-dom';
 
    
-function FavoritesItem(){
+function FavoritesItem(props){
+
+  const id = props.id;
 
   useEffect(()=>{
     Aos.init({duration: 2000 });
@@ -21,7 +23,7 @@ function FavoritesItem(){
         
          
       
-           <Link to='movie'><img data-aos="fade-up" className="mimg" src={img} alt=''/></Link>
+        <Link to='movie/6147b3a961b60e37a8a50f27'><img data-aos="fade-up" className="mimg" src={props.img} alt=''/></Link>
   
         
 

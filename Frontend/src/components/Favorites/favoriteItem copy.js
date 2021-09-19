@@ -21,7 +21,7 @@ function FavoritesItem1(){
         
          
       
-           <Link to='/movie/6145eb2e19467e39980d27e7'><img  data-aos="fade-up" className="mimg" src={img} alt=''/></Link>
+        <Link to='/movie/6147a16461b60e37a8a50e74'><img  data-aos="fade-up" className="mimg" src={img} alt=''/></Link>
   
         
 

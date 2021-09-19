@@ -16,6 +16,7 @@ import FavoritesItem12 from '../../components/Favorites/favoriteItem';
 import Carousel from "react-elastic-carousel";
 import './Browse.css';
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 
 
 
@@ -27,6 +28,34 @@ const breakPoints = [
   ];
 
 function Browse() {
+
+  let [movieList, setMovieList] = useState([]);
+
+  useEffect(() => {
+
+    const getMovies = () => {
+      axios.get('http://localhost:8070/api/movies').then((res) => {
+        setMovieList(res.data);
+      })
+    }
+
+    getMovies();
+  }, [])
+
+  const AllMovies = () => {
+    return movieList.map((pName) => {
+
+      return (
+        <FavoritesItem
+          key={pName.id}
+          id={pName._id}
+          img = {pName.img}
+          name={pName.name}
+          desc={pName.desc} />
+      )
+    })
+  }
+
     return (
         <div>
             
@@ -64,14 +93,16 @@ function Browse() {
 
       <div className="carousel">
         <Carousel breakPoints={breakPoints}>
-             <FavoritesItem/>
-             <FavoritesItem1></FavoritesItem1>
+
+         <AllMovies/>
+           {/*  <FavoritesItem/>
+            <FavoritesItem1/>
              <FavoritesItem2/>
              <FavoritesItem3/>
              <FavoritesItem4/>
              <FavoritesItem5/>
              <FavoritesItem6/>
-             <FavoritesItem7/>
+             <FavoritesItem7/>*/}
         </Carousel>
       </div>
       </div>
