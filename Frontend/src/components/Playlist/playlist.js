@@ -23,10 +23,6 @@ import '../../pages/favorites/favorites.css';
 import { useParams} from "react-router";
 
 
-
-
-
-
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2 },
@@ -43,22 +39,21 @@ const useStyles = makeStyles((theme) => ({
 
 function Playlist(props) {
     const classes = useStyles();
-    //const id = props.id;
+    const pid = props.id;
     const [mdal,setModal] = useState(false);
-    const playlistid = useParams().playlistid;
     const [tname, settname] = useState("");
     const [pdesc, setpdesc] = useState("");
-    const id = useParams().id;
+    
 
-     useEffect (() => {
+  {/*useEffect (() => {
         async function fetchData(){
-            const response = (await axios.get(`http://localhost:8070/api/playlists/find/612382815f82f73b48d75104`)).data;
+            const response = (await axios.get(`http://localhost:8070/api/playlists/find/6145943d4126af16b430b3ef`)).data;
             settname(response.tname);
             setpdesc(response.pdesc);
            
         }
         fetchData();
-    },[])
+    },[])*/}
 
   const submitHandler  = async(e)=>{
       let update;
@@ -68,10 +63,11 @@ function Playlist(props) {
         userId: '611b74dd16f8353848675308',
         name: tname,
         desc: pdesc,
+        
       }
 
       try{
-        update = await axios.put(`http://localhost:8070/api/playlists/edit/612382815f82f73b48d75104`,updatedPlaylist)
+        update = await axios.put(`http://localhost:8070/api/playlists/edit/${pid}`,updatedPlaylist)
 
          if (update){
        window.alert("Play list has been updated")
@@ -81,7 +77,7 @@ function Playlist(props) {
       }
     }
 
-  
+  //morevert
     {/*const MyOptions = [
       "",
       "Edit Playlist",
@@ -115,10 +111,6 @@ function Playlist(props) {
   }
 
 
-
-    
-  
-
     return (
         <div>
 
@@ -151,13 +143,13 @@ function Playlist(props) {
                          
                         
                           onChange={(e) => {settname(e.target.value);}} 
-                          value={tname}
+                         
                           />
 
             <Form.Label>Description</Form.Label>
             <Form.Control type="text" 
                   
-                          value={pdesc}
+                          
                         
                           onChange={(e) => {setpdesc(e.target.value);}}
                         
@@ -179,7 +171,6 @@ function Playlist(props) {
 <div>
 <h1 className="pHeading">{props.name}</h1>
 </div>
-
 
      {/* <IconButton
         aria-label="more"
@@ -222,7 +213,7 @@ function Playlist(props) {
 <Button
               variant="contained"
               color="secondary"
-              onClick={() => deletePlaylist()}
+              onClick={() => deletePlaylist(props.id)}
               className={classes.button}
               startIcon={<DeleteIcon />
               }>Delete</Button>

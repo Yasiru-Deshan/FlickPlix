@@ -39,14 +39,21 @@ function Favorites() {
 
     const submitHandler  = async(e)=>{
       e.preventDefault()
+      let newPlay;
+
       const newPlaylist = {
         userId: '611b74dd16f8353848675308',
         name: name.current.value,
         desc: desc.current.value,
       }
 
+      
       try{
-        await axios.post("http://localhost:8070/api/playlists/new", newPlaylist)
+        newPlay = await axios.post("http://localhost:8070/api/playlists/new", newPlaylist)
+
+        if(newPlay){
+            window.alert("New Play list has been added")
+        }
       }catch(err){
         console.log(err)
       }
@@ -71,7 +78,7 @@ function Favorites() {
         return(
           <Playlist
                key = {pName.id}
-               id  =   {pName.id}
+               id  =   {pName._id}
                name = {pName.name}
                desc = {pName.desc} />
         )

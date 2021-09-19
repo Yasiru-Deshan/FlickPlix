@@ -50,9 +50,9 @@ const App = ()=> {
       <Switch>
      
         <Route path='/' component={Home} exact/>
-        <Route path='/movie' component={Movie} exact/>
+        <Route path='/movie/:id' component={Movie} exact/>
         <Route path='/watch' component={Watch} exact/>
-        <Route path='/favorites' component={Favorites} exact/>
+        <Route exact path='/favorites' component={Favorites}/>
         <Route path='/browse' component={Browse} exact/>
 
       {/*Customers */}
