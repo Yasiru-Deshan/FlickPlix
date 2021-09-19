@@ -31,7 +31,7 @@ import ContactTable from './components/ContactTable/ContactTable';
 
 import Products from './components/mainpages/products/Products';
 import Browse from './pages/Browse/Browse';
-
+import AdminRoutes from './pages/adminpages/AdminRoutes'
 
 const App = ()=> {
   const [isOpen, setIsOpen] = useState(false)
