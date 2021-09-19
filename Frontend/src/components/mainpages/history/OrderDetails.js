@@ -45,14 +45,14 @@ function OrderDetails() {
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Products</th>
+                        <th>Trailers</th>
                         <th>Quantity</th>
                         <th>Price</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        orderDetails.cart.map(item =>(
+                        orderDetails.favourite.map(item =>(
                         <tr key={item._id}>
                             <td><img src={item.images.url} alt="" /></td>
                             <td>{item.title}</td>
