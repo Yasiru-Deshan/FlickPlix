@@ -52,4 +52,32 @@ router.get("/movie/:movieid", async(req,res)=>{
     }
 });
 
+//delete comment
+router.delete("/delete/:id", async(req,res)=>{
+    try{
+        const comment = await Comment.findById(req.params.id);
+        
+            await comment.deleteOne();
+            res.status(200).json("The comment has been deleted")
+        
+    }catch(err){
+        res.status(500).json(err);
+    }
+})
+
+//update comment
+router.put("/edit/:id", async(req,res)=>{
+
+    try{
+        const comment = await Comment.findById(req.params.id);
+
+        await comment.updateOne({ $set:req.body});
+        res.status(200).json("comment has been updated");
+
+   }catch(err){
+       res.status(500).json(err);
+   }
+})
+
+
 module.exports = router;

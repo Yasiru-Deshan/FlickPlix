@@ -23,6 +23,7 @@ import '../../pages/favorites/favorites.css';
 import { useParams} from "react-router";
 
 
+
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2 },
@@ -109,6 +110,7 @@ function Playlist(props) {
        window.alert("Play list has been deleted")
   }
   }
+  
 
 
     return (
