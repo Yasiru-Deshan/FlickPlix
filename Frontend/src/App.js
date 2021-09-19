@@ -32,7 +32,9 @@ import ContactTable from './components/ContactTable/ContactTable';
 import Products from './components/mainpages/products/Products';
 import Browse from './pages/Browse/Browse';
 
+
 import AdminRoutes from './../src/pages/adminpages/AdminRoutes'
+
 
 
 const App = ()=> {

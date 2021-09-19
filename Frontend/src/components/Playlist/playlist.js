@@ -117,6 +117,7 @@ function Playlist(props) {
         <div>
 
 
+
            <Modal
          isOpen={mdal} 
          onRequestClose={()=> setModal(false)}
@@ -168,6 +169,7 @@ function Playlist(props) {
 
 
 <div className='container'>
+
          
 <div className="headingWrapper">
 <div>
