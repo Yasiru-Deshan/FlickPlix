@@ -67,10 +67,3 @@ export default function CustomerPasswordReset(props) {
         </div>
     )
 }
-
-export default function CustomerPasswordReset(props) {
-    const [password, setpassword] = useState("");
-    const [repassword, setrepassword] = useState("");
-    const id = getUser();
-    const [errors, seterrors] = useState([]);
-    const [emailerror, setemailerror] = useState("");

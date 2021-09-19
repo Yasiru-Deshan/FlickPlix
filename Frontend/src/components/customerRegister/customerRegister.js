@@ -69,3 +69,14 @@ export default function CustomerRegister(props) {
         </div>
     )
 }
+
+export default function CustomerRegister(props) {
+
+    const [fname, setfname] = useState("");
+    const [lname, setlname] = useState("");
+    const [email, setemail] = useState("");
+    const [address, setaddress] = useState("");
+    const [pNo, setpNo] = useState("");
+    const [password, setpassword] = useState("");
+    const [errors, seterrors] = useState([]);
+    const [emailerror, setemailerror] = useState("");
