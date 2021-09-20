@@ -155,7 +155,7 @@ const Movie = () =>{
                                     <p className="likesCount">50</p>
                                     <AddBoxIcon className="bi"/>
                                  </div>
-                                 <Link to='/watch'>
+                                 <Link to={`/watch/${id}`}>
                                  <button className="tbutton">Watch Now</button></Link>
                                  <div>
                           {/*     <img className="profileuserimg"
@@ -174,11 +174,7 @@ const Movie = () =>{
                                      Synopsis
                                  </p>
                           <p className="Description">
-                                {/*A bouncer with a slightly murderous anger-management problem that 
-                                she controls with the help of an electrode-lined vest she uses to shock
-                                 herself back to normalcy whenever she gets homicidal. After the first guy 
-                                 she's ever fallen for is murdered, she goes on a revenge-fueled rampage to
-                                  find the killer while the cops pursue her as their chief suspect.*/}
+                            
                                   {description}
                           </p>
                         
