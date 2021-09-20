@@ -19,6 +19,7 @@ function Comments(props) {
       const updatedComment = {
         userId: '611b74dd16f8353848675308',
         desc: pdesc,
+        uname: 'Liam Livingstone'
         
       }
 

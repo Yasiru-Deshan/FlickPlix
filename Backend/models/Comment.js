@@ -9,6 +9,9 @@ const commentSchema = new mongoose.Schema(
             required: true
 
         },
+        uname:{
+            type: String,
+        },
 
         movieId:{
             type: String,
