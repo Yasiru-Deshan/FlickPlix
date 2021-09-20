@@ -7,7 +7,6 @@ import {Link} from 'react-router-dom';
    
 function FavoritesItem(props){
 
-  const id = props.id;
 
   useEffect(()=>{
     Aos.init({duration: 2000 });
@@ -23,7 +22,7 @@ function FavoritesItem(props){
         
          
       
-        <Link to='movie/6147b3a961b60e37a8a50f27'><img data-aos="fade-up" className="mimg" src={props.img} alt=''/></Link>
+        <Link to={`/movie/${props.id}`}><img data-aos="fade-up" className="mimg" src={props.img} alt=''/></Link>
   
         
 

@@ -30,6 +30,7 @@ const breakPoints = [
 function Browse() {
 
   let [movieList, setMovieList] = useState([]);
+  let [search, setSearch] = useState("");
 
   useEffect(() => {
 
@@ -50,11 +51,18 @@ function Browse() {
           key={pName.id}
           id={pName._id}
           img = {pName.img}
-          name={pName.name}
+          name={pName.title}
           desc={pName.desc} />
       )
     })
   }
+
+  //search filter
+    if(search.length > 0){
+      movieList = movieList.filter((i) => {
+          return i.title.toLowerCase().match(search.toLowerCase());
+      });
+    }
 
     return (
         <div>
@@ -72,6 +80,7 @@ function Browse() {
                       type="text"
                       placeholder="Search Movies"
                       aria-label="Search"
+                      onChange={(e) => {setSearch(e.target.value)}} value={search}
                        />
            </MDBCol>
 

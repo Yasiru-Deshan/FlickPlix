@@ -221,7 +221,7 @@ function Favorites() {
 
       <div className="carousel">
         <Carousel breakPoints={breakPoints}>
-          <FavoritesItem/>
+          
           <FavoritesItem1/>
           <FavoritesItem2/>
           <FavoritesItem3/>
