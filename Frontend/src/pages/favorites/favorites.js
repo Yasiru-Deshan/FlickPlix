@@ -42,6 +42,8 @@ function Favorites() {
       e.preventDefault()
       let newPlay;
 
+   
+
       const newPlaylist = {
         userId: '611b74dd16f8353848675308',
         name: name.current.value,
@@ -141,15 +143,17 @@ function Favorites() {
            overlay: {
              backgroundColor: 'transparent',
              marginTop: '100px',
-             width: '30%',
+             width: '40%',
              height: '445px',
              marginLeft: '50%', 
+           
            },
 
            content: {
              borderRadius: '20px',
              color: 'white',
-             background: '#373B44'
+             background: 'black',
+             
 
 
              
@@ -169,9 +173,11 @@ function Favorites() {
                           ref={desc}  
                           />
            <Button variant="primary" onClick={()=>setModal(false)}>
+           
              Close
             </Button>
             <Button variant="primary" type="submit">
+          
              Create
             </Button>
            

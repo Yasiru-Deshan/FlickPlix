@@ -67,10 +67,10 @@ function Comments(props) {
          style={{
            overlay: {
              backgroundColor: 'transparent',
-             marginTop: '100px',
+             marginTop: '120px',
              width: '30%',
-             height: '445px',
-             marginLeft: '50%', 
+             height: '245px',
+             marginLeft: '30%', 
            },
 
            content: {
@@ -82,7 +82,7 @@ function Comments(props) {
              
            }
          }}>
-          <h1>Edit Comment</h1>
+          <p1>Edit Comment</p1>
           <Form onSubmit={submitHandler}>
 
             <Form.Control type="text" 
@@ -91,7 +91,8 @@ function Comments(props) {
                           onChange={(e) => {setpdesc(e.target.value);}}
                         
                           />
-           <Button variant="primary" onClick={()=>setModal(false)}>
+           <Button variant="primary" onClick={()=>setModal(false)} 
+           styles={{ color:"white"}}>
              Close
             </Button>
             <Button variant="primary" type="submit">
