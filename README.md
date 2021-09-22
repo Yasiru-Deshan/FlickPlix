@@ -1,7 +1,8 @@
 # FlickPlix  #
 
 ![FlickPlixHome](https://user-images.githubusercontent.com/79443522/133197647-879346d0-9e66-47dd-99c1-c85e3fcdf3fb.jpg)
-![Screenshot (229)](https://user-images.githubusercontent.com/76535213/134420509-76c1d191-fc7f-4c13-9c7d-16c5914681d6.png)
+![Screenshot (229)](https://user-images.githubusercontent.com/76535213/134420509-76c1d191-fc7f-4c13-9c7d-16c5914681d6.png)![Screenshot (230)](https://user-images.githubusercontent.com/76535213/134421096-6867c280-499f-4855-82dc-b692d71a619e.png)
+
 
 ###  This is a web application for launching creative videos and publishing the events for those who registered as apprentice artists on the website. ###
 
