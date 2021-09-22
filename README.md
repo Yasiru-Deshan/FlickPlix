@@ -18,7 +18,7 @@ IT Number | Name  |  Respective  Function
 | :--- | ---: | ---: 
 IT19187938  | Ariyarathna D.D.C.M   | Content Management
 IT19986654  | Mendis G.L.M.M        | Event Management
-IT19251110  | Deshan W.M.Y          | Playlist and User Activity Management![2020-10-02 23 54 55-1](https://user-images.githubusercontent.com/76535213/134419835-438cf09f-8175-426f-bbb7-2d4914bfa2c0.jpg)
+IT19251110  | Deshan W.M.Y          | Playlist and User Activity Management
 
 IT19184722  | Nirmal H.I.D          | User Management and Contact Management
 
