@@ -28,6 +28,10 @@ const Movie = () =>{
     const [trailer, setTrailer] = useState("");
     const [video, setVideo] = useState("");
     const [image,setImage] = useState("");
+
+       useEffect(()=>{
+        Aos.init({duration: 2000 });
+    },[])
    
     useEffect(() => {
         async function fetchData() {
@@ -43,8 +47,29 @@ const Movie = () =>{
         fetchData();
     }, [id])
 
+    
+   const submitFavsHandler = async (e)=>{
+       e.preventDefault()
+       let newF;
 
+       const newFavorite = {
+           
+           movieId: id,
+           title: title,
+           img: img,
+           //movieId:'6145eb2e19467e39980d27e7',
+        
+       }
 
+       try{
+           newF = await axios.post("http://localhost:8070/api/favorites/addto",newFavorite)
+           if(newF){
+               window.alert("Movie has been added to favorites")
+           }
+       }catch(err){
+           console.log(err)
+       }
+   }
 
 
 
@@ -69,13 +94,6 @@ const Movie = () =>{
            console.log(err)
        }
    }
-    
-    useEffect(()=>{
-        Aos.init({duration: 2000 });
-    },[])
-
-
-
 
 
 
@@ -153,7 +171,7 @@ const Movie = () =>{
                                  <div className="icons">
                                     <FavoriteIcon className="fi"/>
                                     <p className="likesCount">50</p>
-                                    <AddBoxIcon className="bi"/>
+                                    <AddBoxIcon className="bi" onClick={submitFavsHandler}/>
                                  </div>
                                  <Link to={`/watch/${id}`}>
                                  <button className="tbutton">Watch Now</button></Link>

@@ -1,5 +1,4 @@
 import React,{ useEffect} from 'react';
-import img from '../../images/medium-cover.jpg';
 import Aos from 'aos';
 import "aos/dist/aos.css";
 import {Link} from 'react-router-dom';
@@ -23,7 +22,7 @@ function FavoritesItem(props){
          
       
         <Link to={`/movie/${props.id}`}><img  className="mimg" src={props.img} alt=''/></Link>
-                                        <p className="movieTitle">{props.name}  - {props.year}</p>
+                                        <p className="movieTitle">{props.name}</p>
   
         
 

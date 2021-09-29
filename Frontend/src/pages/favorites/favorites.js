@@ -35,6 +35,7 @@ function Favorites() {
     const name = useRef();
     const desc = useRef();
     let [plist, setPlaylist] = useState([]);
+    let [favs, setFavs] = useState([]);
     const [mdal,setModal] = useState(false);
     let [search, setSearch] = useState("");
 
@@ -62,6 +63,29 @@ function Favorites() {
       }
     }
 
+    useEffect(()=>{
+
+      const getFavs = () =>{
+        axios.get('http://localhost:8070/api/favorites/allfavs').then((res)=>{
+          setFavs(res.data);
+        })
+      }
+
+      getFavs();
+    },[])
+
+    const FavoritesAll = ()=>{
+      return favs.map((favMovie)=>{
+
+        return(
+          <FavoritesItem
+               key = {favMovie.id}
+               id  =   {favMovie.movieId}
+               name = {favMovie.title}
+               img = {favMovie.img} />
+        )
+      })
+    }
 
 
     useEffect(()=>{
@@ -228,13 +252,7 @@ function Favorites() {
       <div className="carousel">
         <Carousel breakPoints={breakPoints}>
           
-          <FavoritesItem1/>
-          <FavoritesItem2/>
-          <FavoritesItem3/>
-          <FavoritesItem4/>
-          <FavoritesItem5/>
-          <FavoritesItem6/>
-          <FavoritesItem7/>
+         <FavoritesAll/>
         </Carousel>
       </div>
       </div>
