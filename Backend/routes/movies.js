@@ -86,4 +86,18 @@ router.get('/', async (req, res) => {
 	}
 });
 
+//get movie by genre
+router.get("/movie/:genre", async(req,res)=>{
+	try{
+		const movies = await Movie.find({ genre: req.params.genre})
+		res.status(200).json(movies);
+	}catch(err){
+		res.status(500).json(err);
+	}
+})
+
+
+
+
+
 module.exports = router;

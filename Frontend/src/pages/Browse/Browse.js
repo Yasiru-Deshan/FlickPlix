@@ -17,6 +17,7 @@ const breakPoints = [
 function Browse() {
 
   let [movieList, setMovieList] = useState([]);
+  let [actionMovieList, setActionMovieList] = useState([]);
   let [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -41,6 +42,32 @@ function Browse() {
           title={pName.title}
           desc={pName.desc} 
           year={pName.year}
+          />
+      )
+    })
+  }
+
+  useEffect(() => {
+   const getActionMovies = () => {
+      axios.get('http://localhost:8070/api/movies/movie/Action').then((res) => {
+        setActionMovieList(res.data);
+      })
+    }
+
+    getActionMovies();
+  }, [])
+
+  const AllActionMovies = () => {
+    return actionMovieList.map((aName) => {
+
+      return (
+        <FavoritesItem
+          key={aName.id}
+          id={aName._id}
+          img = {aName.img}
+          title={aName.title}
+          desc={aName.desc} 
+          year={aName.year}
           />
       )
     })
@@ -114,7 +141,7 @@ function Browse() {
 
 <div className="carousel">
 <Carousel breakPoints={breakPoints}>
- <AllMovies/>
+ <AllActionMovies/>
 </Carousel>
 </div>
 </div>
