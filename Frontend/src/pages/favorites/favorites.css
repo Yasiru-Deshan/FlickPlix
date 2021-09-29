@@ -50,6 +50,7 @@
 .newPlaylist{
     margin-left: calc(72vw + 26px);
     
+    
     font-size: calc(0.2vw + 12px);
     border-radius: 4vw;
     padding: 1.8vw;
@@ -156,6 +157,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+  
 }
 
 body.active-modal {
@@ -170,5 +172,17 @@ body.active-modal {
     
 }
 
+.downloadPlaylist{
+    margin-top: 200px;
+    margin-left: calc(72vw + 26px);
+    font-size: calc(0.2vw + 12px);
+    border-radius: 4vw;
+    padding: 1.8vw;
+    color: #fff;
+    background-color: #01bf71;
+    border: none;
+    margin-bottom: 30px;
+    
+}
 
 

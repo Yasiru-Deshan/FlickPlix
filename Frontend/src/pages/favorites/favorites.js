@@ -75,14 +75,17 @@ function Favorites() {
     },[])
 
     const FavoritesAll = ()=>{
-      return favs.map((favMovie)=>{
+      return favs.map((mName)=>{
 
         return(
           <FavoritesItem
-               key = {favMovie.id}
-               id  =   {favMovie.movieId}
-               name = {favMovie.title}
-               img = {favMovie.img} />
+               key = {mName.id}
+               id  =   {mName.movieId}
+               name = {mName.title}
+                img = {mName.img}
+                year={mName.year}
+                genre={mName.genre}  
+                />
         )
       })
     }
@@ -119,8 +122,8 @@ function Favorites() {
       });
     }
 
-    //Generate Order report
-        const pdf = () => {
+    //Generate Playlist Report
+        const pdf1 = () => {
           const loading = document.getElementById('loading');
           loading.style.display = "";//display loading icon
           const dwnIcon = document.getElementById('dwn-icon');
@@ -139,11 +142,11 @@ function Favorites() {
           const doc = new jsPDF({orientation:"portrait"});
           var time = new Date().toLocaleString();
           doc.setFontSize(20);
-          doc.text(`Received Messages Report`, 105, 13, null, null, "center");
+          doc.text(`My Playlists Report`, 105, 13, null, null, "center");
           doc.setFontSize(10);
           doc.text(`(Generated on ${time})`, 105, 17, null, null, "center");
           doc.setFontSize(12);
-          doc.text("FlickPilx Online Platform", 105, 22, null, null, "center");
+          doc.text("FlickPlix © 2021 All rights reserved.", 105, 22, null, null, "center");
           
           doc.autoTable({
               theme : 'grid',
@@ -153,7 +156,44 @@ function Favorites() {
               head: [['PlayList Name','Title']],
               body: bodyData
           })
-          doc.save('ReceivedMessagesReport.pdf');
+          doc.save('MyPlayLists.pdf');
+      }
+
+       //Generate Favorites Movie Report
+        const pdf2 = () => {
+          const loading = document.getElementById('loading');
+          loading.style.display = "";//display loading icon
+          const dwnIcon = document.getElementById('dwn-icon');
+          dwnIcon.style.display = "none";//hide download icn
+  
+          setTimeout(() => {  
+              loading.style.display = "none";
+              dwnIcon.style.display = "";
+          }, 1300);//display loading icon for 2 seconds  
+  
+          let bodyData = [];
+          for(let j = 0;favs.length > j ; j++){
+              bodyData.push([ favs[j].name,favs[j].year,favs[j].genre]);
+          }//save json data to bodydata in order to print in the pdf table
+  
+          const doc = new jsPDF({orientation:"portrait"});
+          var time = new Date().toLocaleString();
+          doc.setFontSize(20);
+          doc.text(`Favorite Movies Collection`, 105, 13, null, null, "center");
+          doc.setFontSize(10);
+          doc.text(`(Generated on ${time})`, 105, 17, null, null, "center");
+          doc.setFontSize(12);
+          doc.text("FlickPlix © 2021 All rights reserved.", 105, 22, null, null, "center");
+          
+          doc.autoTable({
+              theme : 'grid',
+              styles: {halign:'center'},
+              headStyles:{fillColor:[71, 201, 76]},
+              startY:27,
+              head: [['Movie Title','Year','Genre']],
+              body: bodyData
+          })
+          doc.save('Favorites-Collection.pdf');
       }
 
     return (
@@ -254,12 +294,18 @@ function Favorites() {
           
          <FavoritesAll/>
         </Carousel>
+                 <button onClick={pdf2} className="newPlaylist"><svg id="dwn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cloud-arrow-down-fill" viewBox="0 0 16 16">
+          <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z"/>
+          </svg><span className="spinner-border spinner-border-sm" id="loading" role="status" aria-hidden="true" style={{display:'none'}}></span> Download Favorites Collection</button>
+       
       </div>
+
+      
       </div>
 
      <PlaylistAll/>
              
-             <button onClick={pdf} className="newPlaylist"><svg id="dwn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cloud-arrow-down-fill" viewBox="0 0 16 16">
+             <button onClick={pdf1} className="downloadPlaylist"><svg id="dwn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cloud-arrow-down-fill" viewBox="0 0 16 16">
           <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z"/>
           </svg><span className="spinner-border spinner-border-sm" id="loading" role="status" aria-hidden="true" style={{display:'none'}}></span> Download playlists</button>
         </React.Fragment>

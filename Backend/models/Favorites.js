@@ -9,6 +9,12 @@ const FavoritesSchema = mongoose.Schema({
     },
     img:{
         type: String
+    },
+    year:{
+        type: String
+    },
+    genre:{
+        type: String
     }
 });
 

@@ -42,7 +42,9 @@ router.get('/:id', async(req,res)=>{
     const newFav = new Favorites({
         movieId: req.body.movieId,
         title: req.body.title,
-        img: req.body.img
+        img: req.body.img,
+        year: req.body.year,
+        genre: req.body.genre
 
     })
     try{

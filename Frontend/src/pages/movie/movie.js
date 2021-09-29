@@ -56,7 +56,8 @@ const Movie = () =>{
            
            movieId: id,
            title: title,
-           img: img,
+           img: image,
+           year: year,
            //movieId:'6145eb2e19467e39980d27e7',
         
        }
