@@ -72,7 +72,7 @@ const App = ()=> {
 
       <Route path='/products' component={Products}/>
       <AdminRoutes/>
-      </Switch>
+</Switch>
       
 	  
 	  
