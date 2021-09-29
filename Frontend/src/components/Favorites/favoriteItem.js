@@ -22,7 +22,7 @@ function FavoritesItem(props){
          
       
         <Link to={`/movie/${props.id}`}><img  className="mimg" src={props.img} alt=''/></Link>
-                                        <p className="movieTitle">{props.name}  - {props.year}</p>
+                                        <p className="movieTitle">{props.title}  - {props.year}</p>
   
         
 

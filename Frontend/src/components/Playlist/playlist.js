@@ -1,27 +1,22 @@
-import React,{ useEffect, useState, useRef} from 'react';
-import PlaylistItem from './playlistitem';
-import PlaylistItem1 from './playlistitem copy';
-import PlaylistItem2 from './playlistitem copy 2';
-import PlaylistItem3 from './playlistitem copy 3';
+import React,{ useEffect, useState} from 'react';
 import Carousel from "react-elastic-carousel";
 import './playlist.css';
-import ListIcon from '@material-ui/icons/List';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import IconButton from "@material-ui/core/IconButton";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
 import Button from "@material-ui/core/Button";
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import BookmarkIcon from '@material-ui/icons/Bookmark';
 import { makeStyles } from '@material-ui/core/styles';
-import Icon from '@material-ui/core/Icon';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { Form } from 'react-bootstrap';
 import '../../pages/favorites/favorites.css';
-import { useParams} from "react-router";
 import PlayListItem from './playlistitem';
+import {jsPDF} from 'jspdf';
+//import ListIcon from '@material-ui/icons/List';
+//import MoreVertIcon from '@material-ui/icons/MoreVert';
+//import IconButton from "@material-ui/core/IconButton";
+//import MenuItem from "@material-ui/core/MenuItem";
+//import Menu from "@material-ui/core/Menu";
 
 
 
@@ -66,10 +61,10 @@ function Playlist(props) {
           <PlayListItem
                key = {mName.id}
                id  =   {mName.movieId}
-               name = {mName.title}
+              title = {mName.title}
                 img = {mName.img}
                 year={mName.year}
-                genre={mName.genre}  
+                type={mName.genre}  
                 />
         )
       })
@@ -101,7 +96,7 @@ function Playlist(props) {
         update = await axios.put(`http://localhost:8070/api/playlists/edit/${pid}`,updatedPlaylist)
 
          if (update){
-       window.alert("Play list has been updated")
+       window.alert(`${props.name} Play list has been updated`)
   }
       }catch(err){
         console.log(err)
@@ -132,15 +127,43 @@ function Playlist(props) {
     let deletion;
     
 
-    if (window.confirm("Are you sure about deleting this playlist?")) {
+    if (window.confirm(`Are you sure about deleting playlist ${props.name}?`)) {
       deletion = await axios.delete(`http://localhost:8070/api/playlists/delete/${id}`);
     }
-    //const deletion = await axios.delete(`http://localhost:8070/customers/delete/${id}`);
+  
   if (deletion){
-       window.alert("Play list has been deleted")
+       window.alert(`${props.name} Play list has been deleted`)
   }
   }
   
+   //generate report of movies in the playlist 
+    const pdf = () => {
+        
+  
+          let bodyData = [];
+          for(let j = 0;favs.length > j ; j++){
+              bodyData.push([ favs[j].title,favs[j].year,favs[j].type]);
+          }//save json data to bodydata in order to print in the pdf table
+  
+          const doc = new jsPDF({orientation:"portrait"});
+          var time = new Date().toLocaleString();
+          doc.setFontSize(20);
+          doc.text(`My Playlist`, 105, 13, null, null, "center");
+          doc.setFontSize(10);
+          doc.text(`(Generated on ${time})`, 105, 17, null, null, "center");
+          doc.setFontSize(12);
+          doc.text("FlickPlix © 2021 All rights reserved.", 105, 22, null, null, "center");
+          
+          doc.autoTable({
+              theme : 'grid',
+              styles: {halign:'center'},
+              headStyles:{fillColor:[71, 201, 76]},
+              startY:27,
+              head: [['Movie Title','Year','Genre']],
+              body: bodyData
+          })
+          doc.save(`${props.name}-playlist.pdf`);
+      }
 
 
     return (
@@ -172,7 +195,7 @@ function Playlist(props) {
           <Form onSubmit={submitHandler}>
             <Form.Label>Name</Form.Label>
             <Form.Control type="text"
-                         
+                         value={tname}
                         
                           onChange={(e) => {settname(e.target.value);}} 
                          
@@ -180,7 +203,7 @@ function Playlist(props) {
 
             <Form.Label>Description</Form.Label>
             <Form.Control type="text" 
-                  
+                           value={pdesc}
                           
                         
                           onChange={(e) => {setpdesc(e.target.value);}}
@@ -258,6 +281,7 @@ function Playlist(props) {
               variant="contained"
               color="primary"
               className={classes.button}
+              onClick={pdf}
               endIcon={<BookmarkIcon></BookmarkIcon>}
             >
               Save

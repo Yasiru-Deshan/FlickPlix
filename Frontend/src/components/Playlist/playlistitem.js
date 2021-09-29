@@ -22,7 +22,7 @@ function PlayListItem(props){
          
       
         <Link to={`/movie/${props.id}`}><img  className="mimg" src={props.img} alt=''/></Link>
-                                        <p className="playTitle">{props.name}  - {props.year}</p>
+                                        <p className="playTitle">{props.title}  - {props.year}</p>
   
         
 

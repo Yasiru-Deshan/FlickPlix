@@ -1,13 +1,6 @@
 import React,{ useEffect, useState, useRef} from 'react';
 import { MDBInput, MDBCol } from "mdbreact"
 import FavoritesItem from '../../components/Favorites/favoriteItem';
-import FavoritesItem1 from '../../components/Favorites/favoriteItem copy';
-import FavoritesItem2 from '../../components/Favorites/favoriteItem copy 2';
-import FavoritesItem3 from '../../components/Favorites/favoriteItem copy 3';
-import FavoritesItem4 from '../../components/Favorites/favoriteItem copy 4';
-import FavoritesItem5 from '../../components/Favorites/favoriteItem copy 5';
-import FavoritesItem6 from '../../components/Favorites/favoriteItem copy 6';
-import FavoritesItem7 from '../../components/Favorites/favoriteItem copy 7';
 import Carousel from "react-elastic-carousel";
 import './favorites.css';
 import Playlist from '../../components/Playlist/playlist';
@@ -81,10 +74,10 @@ function Favorites() {
           <FavoritesItem
                key = {mName.id}
                id  =   {mName.movieId}
-               name = {mName.title}
+               title = {mName.title}
                 img = {mName.img}
                 year={mName.year}
-                genre={mName.genre}  
+                type={mName.genre}  
                 />
         )
       })
@@ -173,7 +166,7 @@ function Favorites() {
   
           let bodyData = [];
           for(let j = 0;favs.length > j ; j++){
-              bodyData.push([ favs[j].name,favs[j].year,favs[j].genre]);
+              bodyData.push([ favs[j].title,favs[j].year,favs[j].type]);
           }//save json data to bodydata in order to print in the pdf table
   
           const doc = new jsPDF({orientation:"portrait"});

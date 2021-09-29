@@ -1,21 +1,8 @@
-import React,{ useEffect, useState, useRef} from 'react';
-import { MDBInput, MDBCol } from "mdbreact";
+import React,{ useEffect, useState} from 'react';
+import {  MDBCol } from "mdbreact";
 import FavoritesItem from '../../components/Favorites/favoriteItem';
-import FavoritesItem1 from '../../components/Favorites/favoriteItem copy';
-import FavoritesItem2 from '../../components/Favorites/favoriteItem copy 2';
-import FavoritesItem3 from '../../components/Favorites/favoriteItem copy 3';
-import FavoritesItem4 from '../../components/Favorites/favoriteItem copy 4';
-import FavoritesItem5 from '../../components/Favorites/favoriteItem copy 5';
-import FavoritesItem6 from '../../components/Favorites/favoriteItem copy 6';
-import FavoritesItem7 from '../../components/Favorites/favoriteItem copy 7';
-import FavoritesItem8 from '../../components/Favorites/favoriteItem';
-import FavoritesItem9 from '../../components/Favorites/favoriteItem';
-import FavoritesItem10 from '../../components/Favorites/favoriteItem';
-import FavoritesItem11 from '../../components/Favorites/favoriteItem';
-import FavoritesItem12 from '../../components/Favorites/favoriteItem';
 import Carousel from "react-elastic-carousel";
 import './Browse.css';
-import { Link } from 'react-router-dom';
 import axios from 'axios'
 
 
@@ -51,7 +38,7 @@ function Browse() {
           key={pName.id}
           id={pName._id}
           img = {pName.img}
-          name={pName.title}
+          title={pName.title}
           desc={pName.desc} 
           year={pName.year}
           />
@@ -106,14 +93,7 @@ function Browse() {
         <Carousel breakPoints={breakPoints}>
 
          <AllMovies/>
-           {/*  <FavoritesItem/>
-            <FavoritesItem1/>
-             <FavoritesItem2/>
-             <FavoritesItem3/>
-             <FavoritesItem4/>
-             <FavoritesItem5/>
-             <FavoritesItem6/>
-             <FavoritesItem7/>*/}
+        
         </Carousel>
       </div>
       </div>
@@ -134,13 +114,7 @@ function Browse() {
 
 <div className="carousel">
 <Carousel breakPoints={breakPoints}>
-<FavoritesItem7/>
-<FavoritesItem6/>
-<FavoritesItem5/>
-<FavoritesItem4/>
-<FavoritesItem3/>
-<FavoritesItem2/>
-<FavoritesItem1/>
+ <AllMovies/>
 </Carousel>
 </div>
 </div>
@@ -160,11 +134,7 @@ function Browse() {
 
 <div className="carousel">
 <Carousel breakPoints={breakPoints}>
-<FavoritesItem7/>
-<FavoritesItem6/>
-<FavoritesItem5/>
-<FavoritesItem2/>
-<FavoritesItem1/>
+ <AllMovies/>
 </Carousel>
 </div>
 </div>
@@ -184,13 +154,7 @@ function Browse() {
 
 <div className="carousel">
 <Carousel breakPoints={breakPoints}>
-<FavoritesItem2/>
-<FavoritesItem6/>
-<FavoritesItem3/>
-<FavoritesItem1/>
-<FavoritesItem7/>
-<FavoritesItem6/>
-<FavoritesItem4/>
+ <AllMovies/>
 </Carousel>
 </div>
 </div>

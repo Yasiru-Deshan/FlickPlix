@@ -58,6 +58,7 @@ const Movie = () =>{
            title: title,
            img: image,
            year: year,
+           genre: genre
            //movieId:'6145eb2e19467e39980d27e7',
         
        }
