@@ -41,6 +41,7 @@ function Playlist(props) {
     const [tname, settname] = useState("");
     const [pdesc, setpdesc] = useState("");
     const [favs,setFavs]  = useState([]);
+    const [pMovies,setPMovies] = useState([]);
 
 
      useEffect(()=>{
@@ -76,10 +77,28 @@ function Playlist(props) {
             const response = (await axios.get(`http://localhost:8070/api/playlists/find/${props.id}`)).data;
             settname(response.name);
             setpdesc(response.desc);
+            setPMovies(response.movies);
            
         }
         fetchData();
     },[])
+
+    
+    const PlayListMovies = ()=>{
+      return pMovies.map((lName)=>{
+
+        return(
+          <PlayListItem
+               key = {lName.id}
+               id  =   {lName._id}
+              title = {lName.title}
+                image = {lName.img}
+                year={lName.year}
+                type={lName.genre}  
+                />
+        )
+      })
+    }
 
   const submitHandler  = async(e)=>{
       let update;
@@ -257,8 +276,8 @@ function Playlist(props) {
 
 <div className="carousel">
 <Carousel breakPoints={breakPoints}>
-<FavoritesAll/>
 
+<PlayListMovies/>
 
 </Carousel>
 </div>

@@ -14,14 +14,14 @@ function PlayListItem(props){
   return(
   <div>
     <head>
-    <link rel="stylesheet" href="./favorites.css" ></link>
+    <link rel="stylesheet" href="./playlist.css" ></link>
 </head>
       
        <div className='wrapper' data-aos="fade-up">
         
          
       
-        <Link to={`/movie/${props.id}`}><img  className="mimg" src={props.img} alt=''/></Link>
+        <Link to={`/movie/${props.id}`}><img  className="mimg" src={props.image} alt=''/></Link>
                                         <p className="playTitle">{props.title}  - {props.year}</p>
   
         
