@@ -90,9 +90,9 @@ const App = ()=> {
       <Route path="/admin/viewmsg" component={ContactTable}/>
 
       {/*advertisement*/}
-      <DataProvider>
+     
     
-    <div className="App">
+   
    
             <Route path="/" exact component={Trailers} />
            <Route path="/detail/:id" exact component={DetailTrailer} />
@@ -110,9 +110,9 @@ const App = ()=> {
            <Route path="/favourite" exact component={Favourite} />
             <Route path="*" exact component={NotFound} />
          
-            </div>
+         
           
-            </DataProvider>
+   
    
       </Switch>
       
