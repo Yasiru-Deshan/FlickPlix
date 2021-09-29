@@ -24,4 +24,43 @@ router.get('/', async(req,res)=>{
     })
 })
 
+//delete playlist
+
+router.delete('/delete/:id', async (req, res) => {
+    try {
+        await PlayList.findByIdAndDelete(req.params.id);
+        res.status(200).json('The playlist has been deleted...');
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
+//get one playlist
+router.get('/find/:id', async (req, res) => {
+    try {
+        const playlist = await PlayList.findById(req.params.id);
+        res.status(200).json(playlist);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+
+//update playlist
+router.put("/edit/:id", async(req,res)=>{
+
+    try{
+        const playlist = await PlayList.findById(req.params.id);
+
+        await playlist.updateOne({ $set:req.body});
+        res.status(200).json("Playlist has been updated");
+
+   }catch(err){
+       res.status(500).json(err);
+   }
+})
+
+
+
 module.exports = router;

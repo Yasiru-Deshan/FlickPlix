@@ -51,6 +51,10 @@ import ContactTable from './components/ContactTable/ContactTable';
 import Browse from './pages/Browse/Browse';
 
 
+import AdminRoutes from './../src/pages/adminpages/AdminRoutes'
+
+
+
 const App = ()=> {
 
   const state = useContext(GlobalState)
@@ -71,9 +75,9 @@ const App = ()=> {
       <Switch>
      
         <Route path='/' component={Home} exact/>
-        <Route path='/movie' component={Movie} exact/>
+        <Route path='/movie/:id' component={Movie} exact/>
         <Route path='/watch' component={Watch} exact/>
-        <Route path='/favorites' component={Favorites} exact/>
+        <Route exact path='/favorites' component={Favorites}/>
         <Route path='/browse' component={Browse} exact/>
 
       {/*Customers */}
@@ -88,6 +92,7 @@ const App = ()=> {
       {/*Contact Page */}
       <Route path="/contact" component={Contact}/>
       <Route path="/admin/viewmsg" component={ContactTable}/>
+
 
       {/*advertisement*/}
       <DataProvider>
@@ -115,6 +120,11 @@ const App = ()=> {
             </DataProvider>
    
       </Switch>
+
+      <Route path='/products' component={Products}/>
+      <AdminRoutes/>
+</Switch>
+
       
 	  
 	  

@@ -14,7 +14,9 @@ import Playlist from '../../components/Playlist/playlist';
 import axios from 'axios';
 import Modal from 'react-modal';
 import { Button,Form } from 'react-bootstrap';
-
+import { Link, useLocation } from 'react-router-dom';
+import {jsPDF} from 'jspdf';
+import 'jspdf-autotable';
 
 
 
@@ -27,7 +29,9 @@ const breakPoints = [
 
 
 function Favorites() {
-
+    
+    const location = useLocation();
+    const movie = location.movie;
     const name = useRef();
     const desc = useRef();
     let [plist, setPlaylist] = useState([]);
@@ -36,14 +40,21 @@ function Favorites() {
 
     const submitHandler  = async(e)=>{
       e.preventDefault()
+      let newPlay;
+
       const newPlaylist = {
         userId: '611b74dd16f8353848675308',
         name: name.current.value,
         desc: desc.current.value,
       }
 
+      
       try{
-        await axios.post("http://localhost:8070/api/playlists/new", newPlaylist)
+        newPlay = await axios.post("http://localhost:8070/api/playlists/new", newPlaylist)
+
+        if(newPlay){
+            window.alert("New Play list has been added")
+        }
       }catch(err){
         console.log(err)
       }
@@ -68,6 +79,7 @@ function Favorites() {
         return(
           <Playlist
                key = {pName.id}
+               id  =   {pName._id}
                name = {pName.name}
                desc = {pName.desc} />
         )
@@ -80,6 +92,43 @@ function Favorites() {
           return i.name.toLowerCase().match(search.toLowerCase());
       });
     }
+
+    //Generate Order report
+        const pdf = () => {
+          const loading = document.getElementById('loading');
+          loading.style.display = "";//display loading icon
+          const dwnIcon = document.getElementById('dwn-icon');
+          dwnIcon.style.display = "none";//hide download icn
+  
+          setTimeout(() => {  
+              loading.style.display = "none";
+              dwnIcon.style.display = "";
+          }, 1300);//display loading icon for 2 seconds  
+  
+          let bodyData = [];
+          for(let i = 0;plist.length > i ; i++){
+              bodyData.push([plist[i].name,plist[i].desc]);
+          }//save json data to bodydata in order to print in the pdf table
+  
+          const doc = new jsPDF({orientation:"portrait"});
+          var time = new Date().toLocaleString();
+          doc.setFontSize(20);
+          doc.text(`Received Messages Report`, 105, 13, null, null, "center");
+          doc.setFontSize(10);
+          doc.text(`(Generated on ${time})`, 105, 17, null, null, "center");
+          doc.setFontSize(12);
+          doc.text("FlickPilx Online Platform", 105, 22, null, null, "center");
+          
+          doc.autoTable({
+              theme : 'grid',
+              styles: {halign:'center'},
+              headStyles:{fillColor:[71, 201, 76]},
+              startY:27,
+              head: [['PlayList Name','Title']],
+              body: bodyData
+          })
+          doc.save('ReceivedMessagesReport.pdf');
+      }
 
     return (
 
@@ -185,8 +234,10 @@ function Favorites() {
       </div>
 
      <PlaylistAll/>
-    
-            
+             
+             <button onClick={pdf} className="newPlaylist"><svg id="dwn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cloud-arrow-down-fill" viewBox="0 0 16 16">
+          <path d="M8 2a5.53 5.53 0 0 0-3.594 1.342c-.766.66-1.321 1.52-1.464 2.383C1.266 6.095 0 7.555 0 9.318 0 11.366 1.708 13 3.781 13h8.906C14.502 13 16 11.57 16 9.773c0-1.636-1.242-2.969-2.834-3.194C12.923 3.999 10.69 2 8 2zm2.354 6.854l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 9.293V5.5a.5.5 0 0 1 1 0v3.793l1.146-1.147a.5.5 0 0 1 .708.708z"/>
+          </svg><span className="spinner-border spinner-border-sm" id="loading" role="status" aria-hidden="true" style={{display:'none'}}></span> Download playlists</button>
         </React.Fragment>
         </div>
 
