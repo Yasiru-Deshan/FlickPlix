@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-let ItemSchema = new Schema({
-    movieId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Movie",
+const FavoritesSchema = mongoose.Schema({
+   movieId: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'MovieItem'
+	},
+    title:{
+        type: String
     },
-}, 
-)
+    img:{
+        type: String
+    }
+});
 
-const CartSchema = new Schema({
-    items: [ItemSchema],
-   
-}, 
-)
-module.exports = mongoose.model('favMovies', CartSchema);
+module.exports = mongoose.model('FavoriteMovies',FavoritesSchema)
