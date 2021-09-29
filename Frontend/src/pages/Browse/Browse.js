@@ -52,7 +52,9 @@ function Browse() {
           id={pName._id}
           img = {pName.img}
           name={pName.title}
-          desc={pName.desc} />
+          desc={pName.desc} 
+          year={pName.year}
+          />
       )
     })
   }

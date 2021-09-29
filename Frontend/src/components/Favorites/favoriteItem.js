@@ -18,11 +18,12 @@ function FavoritesItem(props){
     <link rel="stylesheet" href="./favorites.css" ></link>
 </head>
       
-       <div className='wrapper'>
+       <div className='wrapper' data-aos="fade-up">
         
          
       
-        <Link to={`/movie/${props.id}`}><img data-aos="fade-up" className="mimg" src={props.img} alt=''/></Link>
+        <Link to={`/movie/${props.id}`}><img  className="mimg" src={props.img} alt=''/></Link>
+                                        <p className="movieTitle">{props.name}  - {props.year}</p>
   
         
 
