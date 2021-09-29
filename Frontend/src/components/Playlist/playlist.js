@@ -71,15 +71,15 @@ function Playlist(props) {
     }
     
 
-  {/*useEffect (() => {
+  useEffect (() => {
         async function fetchData(){
-            const response = (await axios.get(`http://localhost:8070/api/playlists/find/6145943d4126af16b430b3ef`)).data;
-            settname(response.tname);
-            setpdesc(response.pdesc);
+            const response = (await axios.get(`http://localhost:8070/api/playlists/find/${props.id}`)).data;
+            settname(response.name);
+            setpdesc(response.desc);
            
         }
         fetchData();
-    },[])*/}
+    },[])
 
   const submitHandler  = async(e)=>{
       let update;
@@ -195,8 +195,8 @@ function Playlist(props) {
           <Form onSubmit={submitHandler}>
             <Form.Label>Name</Form.Label>
             <Form.Control type="text"
-                         value={tname}
                         
+                         value={tname}
                           onChange={(e) => {settname(e.target.value);}} 
                          
                           />

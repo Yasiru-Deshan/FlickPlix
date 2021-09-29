@@ -12,6 +12,16 @@ function Comments(props) {
       const [mdal,setModal] = useState(false);
       const [pdesc, setpdesc] = useState("");
 
+      useEffect (() => {
+        async function fetchData(){
+            const response = (await axios.get(`http://localhost:8070/api/comments/${props.id}/comments`)).data;
+            setpdesc(response.desc);
+           
+           
+        }
+        fetchData();
+    },[])
+
  const submitHandler  = async(e)=>{
       let update;
 
@@ -87,7 +97,7 @@ function Comments(props) {
 
             <Form.Control type="text" 
                   
-                        
+                         value={pdesc}
                           onChange={(e) => {setpdesc(e.target.value);}}
                         
                           />
