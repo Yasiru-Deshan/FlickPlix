@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const Movie = require("../models/Movie");
 const PlayList = require("../models/Playlist");
 
 //create a playlist
@@ -60,6 +61,30 @@ router.put("/edit/:id", async(req,res)=>{
        res.status(500).json(err);
    }
 })
+
+//add to playlist
+router.put("/:id/addtoPlaylist", async( req,res)=>{
+
+        try{
+            
+          const newItem = new Movie({
+                 movieId: req.body.movieId,
+                 title: req.body.title,
+                 img: req.body.img,
+                 year: req.body.year,
+                 genre: req.body.genre
+          })
+
+             const playlist = await PlayList.findById(req.params.id);
+
+                await playlist.updateOne({ $push :{movies: [newItem] }});
+                return res.status(200).json("Movie has been added to Playlist");
+            
+        }catch(err){
+            res.status(500).json(err)
+        }
+    
+});
 
 
 

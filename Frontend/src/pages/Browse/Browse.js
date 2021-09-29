@@ -78,6 +78,9 @@ function Browse() {
       movieList = movieList.filter((i) => {
           return i.title.toLowerCase().match(search.toLowerCase());
       });
+        actionMovieList = actionMovieList.filter((i) => {
+          return i.title.toLowerCase().match(search.toLowerCase());
+      });
     }
 
     return (
