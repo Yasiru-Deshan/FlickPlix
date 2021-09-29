@@ -21,6 +21,7 @@ import Modal from 'react-modal';
 import { Form } from 'react-bootstrap';
 import '../../pages/favorites/favorites.css';
 import { useParams} from "react-router";
+import PlayListItem from './playlistitem';
 
 
 
@@ -44,6 +45,35 @@ function Playlist(props) {
     const [mdal,setModal] = useState(false);
     const [tname, settname] = useState("");
     const [pdesc, setpdesc] = useState("");
+    const [favs,setFavs]  = useState([]);
+
+
+     useEffect(()=>{
+
+      const getFavs = () =>{
+        axios.get('http://localhost:8070/api/favorites/allfavs').then((res)=>{
+          setFavs(res.data);
+        })
+      }
+
+      getFavs();
+    },[])
+
+    const FavoritesAll = ()=>{
+      return favs.map((mName)=>{
+
+        return(
+          <PlayListItem
+               key = {mName.id}
+               id  =   {mName.movieId}
+               name = {mName.title}
+                img = {mName.img}
+                year={mName.year}
+                genre={mName.genre}  
+                />
+        )
+      })
+    }
     
 
   {/*useEffect (() => {
@@ -197,16 +227,14 @@ function Playlist(props) {
         ))}
       </Menu>
 */}
+<div><p className="playDesc">{props.desc}</p></div>
 </div>
 
-<div><p className="playDesc">{props.desc}</p></div>
+
 
 <div className="carousel">
 <Carousel breakPoints={breakPoints}>
-<PlaylistItem/>
-<PlaylistItem1/>
-<PlaylistItem2/>
-<PlaylistItem3/>
+<FavoritesAll/>
 
 
 </Carousel>
