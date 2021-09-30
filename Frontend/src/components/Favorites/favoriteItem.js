@@ -4,7 +4,6 @@ import "aos/dist/aos.css";
 import {Link} from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown'
 import axios from 'axios';
-import PlayListItem from '../Playlist/playlistitem';
 import DropdownMenu from '../../pages/favorites/dropdown';
 
    
@@ -40,12 +39,18 @@ function FavoritesItem(props){
                key = {pName.id}
                id  =   {pName._id}
                name = {pName.name}
-               desc = {pName.desc} />
+               desc = {pName.desc} 
+               title = {props.title}
+               year = {props.year}
+               img = {props.img}
+               movieId ={props.id}  
+               genre = {props.genre}
+               />
         )
       })
     }
 
-   
+
 
 
 
@@ -54,6 +59,7 @@ function FavoritesItem(props){
     <head>
     <link rel="stylesheet" href="./favorites.css" ></link>
 </head>
+
       
        <div className='wrapper' data-aos="fade-up">
         
@@ -67,7 +73,7 @@ function FavoritesItem(props){
   <Dropdown.Toggle variant="success" id="dropdown-basic">
   Add to a PlayList
   </Dropdown.Toggle>
-
+  
   <Dropdown.Menu>
     <PlaylistAll/>
   </Dropdown.Menu>
