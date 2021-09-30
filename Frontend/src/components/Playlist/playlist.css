@@ -6,7 +6,7 @@
     width: 100%;
     align-items: center;
     background-color:white;
-    margin-top: 250px;
+    margin-top: 300px;
     margin-bottom: -150px;
     border-radius: 20px;
   
@@ -61,7 +61,7 @@
 
 .newPlaylist{
     margin-left: calc(72vw + 26px);
-    margin-top: 20px;
+    margin-top: -70px;
     font-size: calc(0.2vw + 12px);
     border-radius: 4vw;
     padding: 1.8vw;

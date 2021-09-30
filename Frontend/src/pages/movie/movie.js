@@ -174,6 +174,7 @@ const Movie = () =>{
                                     <FavoriteIcon className="fi"/>
                                     <p className="likesCount">50</p>
                                     <AddBoxIcon className="bi" onClick={submitFavsHandler}/>
+                                     <p className="likesCount">Add to Favorites</p>
                                  </div>
                                  <Link to={`/watch/${id}`}>
                                  <button className="tbutton">Watch Now</button></Link>
