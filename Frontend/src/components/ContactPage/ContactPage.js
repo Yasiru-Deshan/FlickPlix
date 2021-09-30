@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import './ContactPage.css';
 import axios from 'axios';
+import img from '../../images/contact us.svg';
 
 export default function Contact(){
 
@@ -29,7 +30,7 @@ export default function Contact(){
 
     
         return (<>
-            {/*---- Include the above in your HEAD tag --------*/}
+            {/*---- Include the above in your HEAD tag --------*/}            
             <link
               href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700"
               rel="stylesheet"
@@ -88,7 +89,7 @@ export default function Contact(){
                           pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{3}"
                           className="form-control form-control-it19184722"
                           id="telephone"
-                          placeholder=" Enter 10-digit mobile no./ Ex: 781234567"
+                          placeholder=" Enter 9-digit mobile no./ Ex: 781234567"
                           required
                           onChange={(e)=>{
                             setPhoneNo(e.target.value);
