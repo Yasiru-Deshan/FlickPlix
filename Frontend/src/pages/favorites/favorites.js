@@ -21,6 +21,7 @@ const breakPoints = [
   ];
 
 
+
 function Favorites() {
     
     const location = useLocation();
@@ -31,6 +32,23 @@ function Favorites() {
     let [favs, setFavs] = useState([]);
     const [mdal,setModal] = useState(false);
     let [search, setSearch] = useState("");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     const submitHandler  = async(e)=>{
       e.preventDefault()

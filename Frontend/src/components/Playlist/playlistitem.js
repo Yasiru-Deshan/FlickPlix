@@ -11,6 +11,8 @@ function PlayListItem(props){
     Aos.init({duration: 2000 });
 },[])
 
+
+
   return(
   <div>
     <head>
@@ -24,7 +26,7 @@ function PlayListItem(props){
         <Link to={`/movie/${props.id}`}><img  className="mimg" src={props.image} alt=''/></Link>
                                         <p className="playTitle">{props.title}  - {props.year}</p>
   
-        
+     
 
            
 
