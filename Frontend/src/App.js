@@ -33,6 +33,7 @@ import Products from './components/mainpages/products/Products';
 import Browse from './pages/Browse/Browse';
 
 import AdminRoutes from './../src/pages/adminpages/AdminRoutes'
+import Browsemimi from './pages/Browse/Browse copy';
 
 
 const App = ()=> {
@@ -54,6 +55,7 @@ const App = ()=> {
         <Route path='/watch/:id' component={Watch} exact/>
         <Route exact path='/favorites' component={Favorites}/>
         <Route path='/browse' component={Browse} exact/>
+        <Route path='/browsemimi' component={Browsemimi} exact/>
 
       {/*Customers */}
       <Route exact path="/customers" component = {CustomerTable} exact></Route>

@@ -1,6 +1,6 @@
 import React,{ useEffect, useState} from 'react';
 import {  MDBCol } from "mdbreact";
-import FavoritesItem from '../../components/Favorites/favoriteItem';
+import BrowseItem from '../../components/Browse/browse';
 import Carousel from "react-elastic-carousel";
 import './Browse.css';
 import axios from 'axios'
@@ -18,12 +18,15 @@ function Browse() {
 
   let [movieList, setMovieList] = useState([]);
   let [actionMovieList, setActionMovieList] = useState([]);
+  let [horrorMovieList, setHorrorMovieList] = useState([]);
+  let [comedyMovieList, setComedyMovieList] = useState([]);
+  let [romanceMovieList, setRomanceMovieList] = useState([]);
   let [search, setSearch] = useState("");
 
   useEffect(() => {
 
     const getMovies = () => {
-      axios.get('http://localhost:8070/api/movies').then((res) => {
+      axios.get('http://localhost:8070/api/movies/movie/Thriller').then((res) => {
         setMovieList(res.data);
       })
     }
@@ -31,11 +34,11 @@ function Browse() {
     getMovies();
   }, [])
 
-  const AllMovies = () => {
+  const AllThrillerMovies = () => {
     return movieList.map((pName) => {
 
       return (
-        <FavoritesItem
+        <BrowseItem
           key={pName.id}
           id={pName._id}
           img = {pName.img}
@@ -61,7 +64,7 @@ function Browse() {
     return actionMovieList.map((aName) => {
 
       return (
-        <FavoritesItem
+        <BrowseItem
           key={aName.id}
           id={aName._id}
           img = {aName.img}
@@ -73,12 +76,104 @@ function Browse() {
     })
   }
 
+useEffect(() => {
+   const getHorrorMovies = () => {
+      axios.get('http://localhost:8070/api/movies/movie/Horror').then((res) => {
+        setHorrorMovieList(res.data);
+      })
+    }
+
+    getHorrorMovies();
+  }, [])
+
+  const AllHorrorMovies = () => {
+    return horrorMovieList.map((aName) => {
+
+      return (
+        <BrowseItem
+          key={aName.id}
+          id={aName._id}
+          img = {aName.img}
+          title={aName.title}
+          desc={aName.desc} 
+          year={aName.year}
+          />
+      )
+    })
+  }
+
+useEffect(() => {
+   const getComedyMovies = () => {
+      axios.get('http://localhost:8070/api/movies/movie/Comedy').then((res) => {
+        setComedyMovieList(res.data);
+      })
+    }
+
+    getComedyMovies();
+  }, [])
+
+  const AllComedyMovies = () => {
+    return comedyMovieList.map((aName) => {
+
+      return (
+        <BrowseItem
+          key={aName.id}
+          id={aName._id}
+          img = {aName.img}
+          title={aName.title}
+          desc={aName.desc} 
+          year={aName.year}
+          />
+      )
+    })
+  }
+
+  useEffect(() => {
+
+    const getMovies = () => {
+      axios.get('http://localhost:8070/api/movies/movie/Romance').then((res) => {
+        setRomanceMovieList(res.data);
+      })
+    }
+
+    getMovies();
+  }, [])
+
+  const AllRomanceMovies = () => {
+    return romanceMovieList.map((pName) => {
+
+      return (
+        <BrowseItem
+          key={pName.id}
+          id={pName._id}
+          img = {pName.img}
+          title={pName.title}
+          desc={pName.desc} 
+          year={pName.year}
+          />
+      )
+    })
+  }
+
+
+
+
+
   //search filter
     if(search.length > 0){
       movieList = movieList.filter((i) => {
           return i.title.toLowerCase().match(search.toLowerCase());
       });
         actionMovieList = actionMovieList.filter((i) => {
+          return i.title.toLowerCase().match(search.toLowerCase());
+      });
+        horrorMovieList = horrorMovieList.filter((i) => {
+          return i.title.toLowerCase().match(search.toLowerCase());
+      });
+        comedyMovieList = comedyMovieList.filter((i) => {
+          return i.title.toLowerCase().match(search.toLowerCase());
+      });
+        romanceMovieList = romanceMovieList.filter((i) => {
           return i.title.toLowerCase().match(search.toLowerCase());
       });
     }
@@ -111,7 +206,7 @@ function Browse() {
          
             <div className="headingWrapper">
             <div>
-        <h1 className="mHeading">Trending</h1>
+        <h1 className="mHeading">Thriller</h1>
         </div>
 
         </div>
@@ -122,7 +217,7 @@ function Browse() {
       <div className="carousel">
         <Carousel breakPoints={breakPoints}>
 
-         <AllMovies/>
+         <AllThrillerMovies/>
         
         </Carousel>
       </div>
@@ -134,7 +229,7 @@ function Browse() {
          
 <div className="headingWrapper">
 <div>
-<h1 className="mHeading">Horror</h1>
+<h1 className="mHeading">Action</h1>
 </div>
 
 </div>
@@ -154,7 +249,7 @@ function Browse() {
          
 <div className="headingWrapper">
 <div>
-<h1 className="mHeading">Sci-fi</h1>
+<h1 className="mHeading">Horror</h1>
 </div>
 
 </div>
@@ -164,10 +259,35 @@ function Browse() {
 
 <div className="carousel">
 <Carousel breakPoints={breakPoints}>
- <AllMovies/>
+ <AllHorrorMovies/>
 </Carousel>
 </div>
 </div>
+
+<div className="MenuContainer" >
+
+         
+<div className="headingWrapper">
+<div>
+<h1 className="mHeading">Romance</h1>
+</div>
+
+</div>
+
+
+
+
+<div className="carousel">
+<Carousel breakPoints={breakPoints}>
+ <AllRomanceMovies/>
+</Carousel>
+</div>
+</div>
+
+
+
+
+
 
 <div className="MenuContainer" >
 
@@ -184,10 +304,12 @@ function Browse() {
 
 <div className="carousel">
 <Carousel breakPoints={breakPoints}>
- <AllMovies/>
+ <AllComedyMovies/>
 </Carousel>
 </div>
 </div>
+
+
     
             
         </React.Fragment>

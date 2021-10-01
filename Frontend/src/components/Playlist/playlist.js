@@ -160,14 +160,14 @@ function Playlist(props) {
         
   
           let bodyData = [];
-          for(let j = 0;favs.length > j ; j++){
-              bodyData.push([ favs[j].title,favs[j].year,favs[j].type]);
+          for(let j = 0;pMovies.length > j ; j++){
+              bodyData.push([ pMovies[j].title,pMovies[j].year,pMovies[j].type]);
           }//save json data to bodydata in order to print in the pdf table
   
           const doc = new jsPDF({orientation:"portrait"});
           var time = new Date().toLocaleString();
           doc.setFontSize(20);
-          doc.text(`My Playlist`, 105, 13, null, null, "center");
+          doc.text(`${props.name}-Playlist`, 105, 13, null, null, "center");
           doc.setFontSize(10);
           doc.text(`(Generated on ${time})`, 105, 17, null, null, "center");
           doc.setFontSize(12);

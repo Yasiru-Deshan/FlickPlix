@@ -12,11 +12,13 @@ import {Link} from 'react-router-dom';
 import axios from 'axios'; 
 import Loading from '../../components/mainpages/utils/loading/Loading';
 import { useParams} from "react-router";
+import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownMenu from '../../pages/favorites/dropdown';
 
 
 
 
-const Movie = () =>{
+const Movie = (props) =>{
   
    const desc = useRef();
    const uname = useRef();
@@ -28,6 +30,7 @@ const Movie = () =>{
     const [trailer, setTrailer] = useState("");
     const [video, setVideo] = useState("");
     const [image,setImage] = useState("");
+      let [plist, setPlaylist] = useState([]);
 
        useEffect(()=>{
         Aos.init({duration: 2000 });
@@ -132,6 +135,39 @@ const Movie = () =>{
     
 
 
+    useEffect(()=>{
+
+      const getPlayLists = () =>{
+        axios.get('http://localhost:8070/api/playlists').then((res)=>{
+          setPlaylist(res.data);
+        })
+      }
+
+      getPlayLists();
+    },[])
+
+    const PlaylistAll = ()=>{
+      return plist.map((pName)=>{
+
+        return(
+          <DropdownMenu
+               key = {pName.id}
+               id  =   {pName._id}
+               name = {pName.name}
+               desc = {pName.desc} 
+               title = {title}
+               year = {year}
+               img = {image}
+               movieId ={id}  
+               genre = {genre}
+               />
+        )
+      })
+    }
+
+
+
+
 
 
 
@@ -176,6 +212,17 @@ const Movie = () =>{
                                     <AddBoxIcon className="bi" onClick={submitFavsHandler}/>
                                      <p className="likesCount">Add to Favorites</p>
                                  </div>
+
+                                    <Dropdown>
+                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                    Add to a PlayList
+                                          </Dropdown.Toggle>
+  
+                                            <Dropdown.Menu>
+                                              <PlaylistAll/>
+                                                </Dropdown.Menu>
+                                    </Dropdown>
+
                                  <Link to={`/watch/${id}`}>
                                  <button className="tbutton">Watch Now</button></Link>
                                  <div>
