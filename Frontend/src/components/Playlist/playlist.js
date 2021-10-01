@@ -122,25 +122,6 @@ function Playlist(props) {
       }
     }
 
-  //morevert
-    {/*const MyOptions = [
-      "",
-      "Edit Playlist",
-      "Delete playlist",
-      "Save as PDF",
-    ];
-
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-    
-    const open = Boolean(anchorEl);
-    
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-  
-  */}
 
   const deletePlaylist = async (id) => {
     let deletion;

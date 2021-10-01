@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState} from 'react';
-import img from '../../images/movie.jpg';
-import img2 from '../../images/prof.jpg';
 import './movie.css';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AddBoxIcon from '@material-ui/icons/AddBox';
@@ -18,7 +16,7 @@ import DropdownMenu from '../../pages/favorites/dropdown';
 
 
 
-const Movie = ({}) =>{
+const Movie = () =>{
   
    const desc = useRef();
    const id = useParams().id;
