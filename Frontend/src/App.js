@@ -1,3 +1,4 @@
+
 import './App.css'; 
 import './globalIndex.css'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -62,7 +63,7 @@ const App = ()=> {
     }
   return (
 
-    <DataProvider>
+   
     <Router>
       <Sidebar isOpen={isOpen} toggle={toggle}/>
         <Navbar toggle={toggle}/>    
@@ -86,18 +87,40 @@ const App = ()=> {
       {/*Contact Page */}
       <Route path="/contact" component={Contact}/>
       <Route path="/admin/viewmsg" component={ContactTable}/>
-      
 
-      <div className="mimiApp">
+
+      {/*advertisement*/}
+      <DataProvider>
+    
+   
+
+            <Route path="/" exact component={Trailers} />
+           <Route path="/detail/:id" exact component={DetailTrailer} />
+        
+        <Route path="/login" exact component= {isLogged ? NotFound :Login }/>
+           <Route path="/register" exact component= {isLogged ? NotFound : Register} />
+          
+           <Route path="/category" exact component= {isArtist ? Categories : NotFound} />
+           <Route path="/create_trailer" exact component= {isArtist ? CreateTrailer : NotFound} />
+           <Route path="/edit_trailer/:id" exact component= {isArtist ? CreateTrailer : NotFound} />
+          
+           <Route path="/history" exact component= {isLogged ? OrderHistory : NotFound} />
+           <Route path="/history/:id" exact component= {isLogged ? OrderDetails : NotFound} />
+          
+           <Route path="/favourite" exact component={Favourite} />
+            <Route path="*" exact component={NotFound} />
+         
+         
+     <div className="mimiApp">
       <Header />
       <MainPages />
      </div>
-    
-      <AdminRoutes/>
+     </DataProvider>
+     <AdminRoutes/>
   </Switch>
       <Footer/>
 	</Router>
- </DataProvider>
+ 
  
   );
 }
