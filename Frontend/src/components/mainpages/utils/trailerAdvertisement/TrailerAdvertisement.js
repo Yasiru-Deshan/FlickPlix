@@ -4,8 +4,8 @@ import BtnRender from './BtnRender'
 
 //get product information to the user interface
 
-function TrailerAdvertisement({trailer,  isArtist, deleteTrailer,handleCheck}) {
-
+function TrailerAdvertisement({trailer, isArtist, deleteTrailer,handleCheck}) {
+    
     return (
         <div className="trailer_card">
             {

@@ -1,7 +1,10 @@
-import React, {useContext} from 'react';
+
 import './App.css'; 
+import './globalIndex.css'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {DataProvider} from './GlobalState'
+
+//rfce
+import React, {useContext} from 'react'
 
 
 
@@ -18,18 +21,10 @@ import Favorites from './pages/favorites/favorites';
 
 //ADVERTISEMENT
 
-import Trailers from './components/mainpages/trailers/Trailers'
-import DetailTrailer from './components/mainpages/detailTrailer/DetailTrailer'
-import Login from './components/mainpages/auth/Login'
-import Register from './components/mainpages/auth/Register'
-import OrderHistory from './components/mainpages/history/OrderHistory'
-import OrderDetails from './components/mainpages/history/OrderDetails'
-import Favourite from './components/mainpages/favourite/Favourite'
+import {DataProvider} from './GlobalState';
+import Header from './components/headers/Header';
+import MainPages from './components/mainpages/Pages';
 
-import NotFound from './components/mainpages/utils/not_found/NotFound'
-import Categories from './components/mainpages/categories/Categories'
-import CreateTrailer from './components/mainpages/createTrailer/CreateTrailer'
-import {GlobalState} from './GlobalState'
 
 //customers
 import CustomerTable from './components/customerTable/customerTable';
@@ -41,6 +36,7 @@ import CustomerUserProfile from './components/customerUserProfile/customerUserPr
 import PrivateRoute from './components/privateRoute/PrivateRoute';
 import PublicRoute from './components/publicRoute/PublicRoute';
 import CustomerPasswordReset from './components/customerPasswordReset/customerPasswordReset';
+
 
 //Contact Page
 import Contact from './components/ContactPage/ContactPage';
@@ -55,11 +51,10 @@ import AdminRoutes from './../src/pages/adminpages/AdminRoutes'
 
 
 
+
 const App = ()=> {
 
-  const state = useContext(GlobalState)
-   const [isLogged] =state.userAPI.isLogged
-   const [isArtist]= state.userAPI.isArtist
+ 
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -68,7 +63,7 @@ const App = ()=> {
     }
   return (
 
-    
+   
     <Router>
       <Sidebar isOpen={isOpen} toggle={toggle}/>
         <Navbar toggle={toggle}/>    
@@ -97,8 +92,8 @@ const App = ()=> {
       {/*advertisement*/}
       <DataProvider>
     
-    <div className="App">
    
+
             <Route path="/" exact component={Trailers} />
            <Route path="/detail/:id" exact component={DetailTrailer} />
         
@@ -115,22 +110,18 @@ const App = ()=> {
            <Route path="/favourite" exact component={Favourite} />
             <Route path="*" exact component={NotFound} />
          
-            </div>
-          
-            </DataProvider>
-   
-      </Switch>
-
-      <Route path='/products' component={Products}/>
-      <AdminRoutes/>
-</Switch>
-
-      
-	  
-	  
-    
-    <Footer/>
+         
+     <div className="mimiApp">
+      <Header />
+      <MainPages />
+     </div>
+     </DataProvider>
+     <AdminRoutes/>
+  </Switch>
+      <Footer/>
 	</Router>
+ 
+ 
   );
 }
 
