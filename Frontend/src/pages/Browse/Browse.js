@@ -17,16 +17,17 @@ const breakPoints = [
 function Browse() {
 
   let [movieList, setMovieList] = useState([]);
+  let [thrillerMovieList, setThrillerMovieList] = useState([]);
   let [actionMovieList, setActionMovieList] = useState([]);
   let [horrorMovieList, setHorrorMovieList] = useState([]);
   let [comedyMovieList, setComedyMovieList] = useState([]);
   let [romanceMovieList, setRomanceMovieList] = useState([]);
   let [search, setSearch] = useState("");
 
-  useEffect(() => {
+    useEffect(() => {
 
     const getMovies = () => {
-      axios.get('http://localhost:8070/api/movies/movie/Thriller').then((res) => {
+      axios.get('http://localhost:8070/api/movies/').then((res) => {
         setMovieList(res.data);
       })
     }
@@ -34,8 +35,35 @@ function Browse() {
     getMovies();
   }, [])
 
-  const AllThrillerMovies = () => {
+  const AllMovies = () => {
     return movieList.map((pName) => {
+
+      return (
+        <BrowseItem
+          key={pName.id}
+          id={pName._id}
+          img = {pName.img}
+          title={pName.title}
+          desc={pName.desc} 
+          year={pName.year}
+          />
+      )
+    })
+  }
+
+  useEffect(() => {
+
+    const getMovies = () => {
+      axios.get('http://localhost:8070/api/movies/movie/Thriller').then((res) => {
+        setThrillerMovieList(res.data);
+      })
+    }
+
+    getMovies();
+  }, [])
+
+  const AllThrillerMovies = () => {
+    return thrillerMovieList.map((pName) => {
 
       return (
         <BrowseItem
@@ -164,6 +192,10 @@ useEffect(() => {
       movieList = movieList.filter((i) => {
           return i.title.toLowerCase().match(search.toLowerCase());
       });
+        thrillerMovieList = thrillerMovieList.filter((i) => {
+          return i.title.toLowerCase().match(search.toLowerCase());
+      });
+
         actionMovieList = actionMovieList.filter((i) => {
           return i.title.toLowerCase().match(search.toLowerCase());
       });
@@ -185,7 +217,7 @@ useEffect(() => {
     background: '-webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027)',  /* Chrome 10-25, Safari 5.1-6 */
     background: 'linear-gradient(to right, #2C5364, #203A43, #0F2027)' /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             }}>
-        <React.Fragment>
+      
 
          .<center>
               
@@ -200,6 +232,30 @@ useEffect(() => {
 
            
           </center> 
+
+           <div className="MenuContainer" >
+
+         
+            <div className="headingWrapper">
+            <div>
+        <h1 className="mHeading">All Movies</h1>
+        </div>
+
+        </div>
+
+  
+    
+
+      <div className="carousel">
+        <Carousel breakPoints={breakPoints}>
+
+         <AllMovies/>
+        
+        </Carousel>
+      </div>
+      </div>
+
+
 
         <div className="MenuContainer" >
 
@@ -312,7 +368,7 @@ useEffect(() => {
 
     
             
-        </React.Fragment>
+
         </div>
 
         

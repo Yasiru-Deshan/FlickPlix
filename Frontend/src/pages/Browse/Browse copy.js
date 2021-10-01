@@ -43,10 +43,13 @@ function Browsemimi() {
           title={pName.title}
           desc={pName.desc} 
           year={pName.year}
+          genre={pName.genre}
           />
       )
     })
   }
+
+
 
  
 
@@ -73,7 +76,7 @@ function Browsemimi() {
   
           let bodyData = [];
           for(let j = 0;movieList.length > j ; j++){
-              bodyData.push([ movieList[j].title,movieList[j].year,movieList[j].type]);
+              bodyData.push([ movieList[j].title,movieList[j].year,movieList[j].genre]);
           }//save json data to bodydata in order to print in the pdf table
   
           const doc = new jsPDF({orientation:"portrait"});
@@ -90,7 +93,7 @@ function Browsemimi() {
               styles: {halign:'center'},
               headStyles:{fillColor:[71, 201, 76]},
               startY:27,
-              head: [['Movie Title','Year']],
+              head: [['Movie Title','Year','Genre']],
               body: bodyData
           })
           doc.save('Movies.pdf');
@@ -116,16 +119,21 @@ function Browsemimi() {
                        />
            </MDBCol>
 
-      <Table striped bordered hover="dark">
+      <Table striped bordered hover="dark" style={{width:"500px", color:"white"}}>
 
+<th>
           
+            <td style={{width:"300px"}}>Title</td>
+            <td style={{width:"100px"}}>Year</td>
+            <td style={{width:"100px"}}>Genre</td>
+          </th>
            
             <tbody>
                <AllThrillerMovies/>
             </tbody>
        
 
-</Table>
+      </Table>
          
           </center> 
                        <button onClick={pdf2} className="newPlaylist"><svg id="dwn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cloud-arrow-down-fill" viewBox="0 0 16 16">
