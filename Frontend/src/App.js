@@ -94,7 +94,7 @@ const App = ()=> {
     
    
 
-            <Route path="/" exact component={Trailers} />
+            <Route path="/trailers" exact component={Trailers} />
            <Route path="/detail/:id" exact component={DetailTrailer} />
         
         <Route path="/login" exact component= {isLogged ? NotFound :Login }/>
