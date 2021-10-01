@@ -53,6 +53,7 @@ import Browsemimi from './pages/Browse/Browse copy';
 
 
 
+
 const App = ()=> {
 
  
@@ -89,12 +90,12 @@ const App = ()=> {
       {/*Contact Page */}
       <Route path="/contact" component={Contact}/>
       <Route path="/admin/viewmsg" component={ContactTable}/>
-
+       <AdminRoutes/>
 
       {/*advertisement*/}
       <DataProvider>
     
-   
+   {/*
 
             {/* <Route path="/trailers" exact component={Trailers} />
            <Route path="/detail/:id" exact component={DetailTrailer} />
@@ -112,7 +113,7 @@ const App = ()=> {
            <Route path="/favourite" exact component={Favourite} />
             <Route path="*" exact component={NotFound} /> */}
          
-         
+         */}
      <div className="mimiApp">
       <Header />
       <MainPages />
