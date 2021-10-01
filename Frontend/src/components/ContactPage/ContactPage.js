@@ -88,7 +88,7 @@ export default function Contact(){
                           pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{3}"
                           className="form-control form-control-it19184722"
                           id="telephone"
-                          placeholder=" Enter 10-digit mobile no./ Ex: 781234567"
+                          placeholder=" Enter 9-digit mobile no./ Ex: 781234567"
                           required
                           onChange={(e)=>{
                             setPhoneNo(e.target.value);
