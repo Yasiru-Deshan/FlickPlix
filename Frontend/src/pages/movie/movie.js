@@ -18,19 +18,20 @@ import DropdownMenu from '../../pages/favorites/dropdown';
 
 
 
-const Movie = (props) =>{
+const Movie = ({}) =>{
   
    const desc = useRef();
-   const uname = useRef();
    const id = useParams().id;
    const [title, setTitle] = useState("");
    const [year, setYear] = useState("");
-    const [genre,setGenre] = useState("");
-    const [description, setDesc] = useState("");
-    const [trailer, setTrailer] = useState("");
-    const [video, setVideo] = useState("");
-    const [image,setImage] = useState("");
-      let [plist, setPlaylist] = useState([]);
+   const [genre,setGenre] = useState("");
+   const [description, setDesc] = useState("");
+   const [trailer, setTrailer] = useState("");
+   const [video, setVideo] = useState("");
+   const [image,setImage] = useState("");
+   let [plist, setPlaylist] = useState([]);
+   const [like,setlike] = useState();
+   const [isliked,setisLiked] = useState(false);
 
        useEffect(()=>{
         Aos.init({duration: 2000 });
@@ -45,10 +46,26 @@ const Movie = (props) =>{
             setDesc(response.desc);
             setTrailer(response.trailer);
             setVideo(response.video);
-            setImage(response.img)
+            setImage(response.img);
+            setlike(response.likes.length)
+        
         }
         fetchData();
     }, [id])
+
+ 
+ 
+    const likehandler=()=>{
+
+        try{
+            axios.put(`http://localhost:8070/api/movies/${id}/like`)
+        }catch(err){}
+
+        setlike(isliked ? like-1 : like+1);
+        setisLiked(!isliked);
+    }
+  
+
 
     
    const submitFavsHandler = async (e)=>{
@@ -207,8 +224,8 @@ const Movie = (props) =>{
                                
 
                                  <div className="icons">
-                                    <FavoriteIcon className="fi"/>
-                                    <p className="likesCount">50</p>
+                                    <FavoriteIcon className="fi" onClick={likehandler}/>
+                                    <p className="likesCount">{like}</p>
                                     <AddBoxIcon className="bi" onClick={submitFavsHandler}/>
                                      <p className="likesCount">Add to Favorites</p>
                                  </div>
