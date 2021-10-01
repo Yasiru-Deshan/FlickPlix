@@ -96,7 +96,7 @@ const App = ()=> {
     
    
 
-            <Route path="/trailers" exact component={Trailers} />
+            {/* <Route path="/trailers" exact component={Trailers} />
            <Route path="/detail/:id" exact component={DetailTrailer} />
         
         <Route path="/login" exact component= {isLogged ? NotFound :Login }/>
@@ -110,7 +110,7 @@ const App = ()=> {
            <Route path="/history/:id" exact component= {isLogged ? OrderDetails : NotFound} />
           
            <Route path="/favourite" exact component={Favourite} />
-            <Route path="*" exact component={NotFound} />
+            <Route path="*" exact component={NotFound} /> */}
          
          
      <div className="mimiApp">
