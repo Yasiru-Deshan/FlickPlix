@@ -52,7 +52,7 @@ export default function Contact(){
                 </h3>
               </div>
               <div className="it19184722-contact-section">
-                <div className="container">
+                <div className="container dila">
                   <form onSubmit={contact}>
                     <div className="it19184722-col-md-6">
                       <div className="it19184722-form-group">

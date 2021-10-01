@@ -28,7 +28,11 @@
   color: #fff;
 }
 .it19184722-contact-section {
-  padding-top: 40px;
+  margin-top: -240px;
+  background-image: url("../../images/contact us.svg");
+}
+.dila {
+  background-color: transparent;
 }
 .it19184722-contact-section .it19184722-col-md-6 {
   width: 50%;
