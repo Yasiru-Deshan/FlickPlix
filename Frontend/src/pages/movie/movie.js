@@ -11,25 +11,34 @@ import ReactPlayer from 'react-player';
 import {Link} from 'react-router-dom';
 import axios from 'axios'; 
 
-import Loading from '../../components/mainpages/utils/loading/Loading'
+import Loading from '../../components/mainpages/utils/loading/Loading';
+import { useParams} from "react-router";
 
 
 
 const Movie = () =>{
-
+  
    const desc = useRef();
    const uname = useRef();
+   const id = useParams().id;
  
    const submitHandler = async (e)=>{
        e.preventDefault()
+       let newc;
+
        const newComment = {
            userId: '611b74dd16f8353848675308',
            uname:'Liam Livingstone',
+           movieId: id,
+           //movieId:'6145eb2e19467e39980d27e7',
            desc: desc.current.value,
        }
 
        try{
-           await axios.post("http://localhost:8070/api/comments",newComment)
+           newc = await axios.post("http://localhost:8070/api/comments",newComment)
+           if(newc){
+               window.alert("Comment has been posted")
+           }
        }catch(err){
            console.log(err)
        }
@@ -49,12 +58,13 @@ const Movie = () =>{
     useEffect(()=>{
 
         const getComments = () =>{
-        axios.get('http://localhost:8070/api/comments/all').then((res)=>{
+        axios.get(`http://localhost:8070/api/comments/movie/${id}`).then((res)=>{
             setAllComments(res.data);
         })
     }
        getComments();
     },[])
+
 
     const CommentList = ()=>{
         return allComments.map((comment)=>{
@@ -62,6 +72,7 @@ const Movie = () =>{
             return(
                 <Comments
                    key={comment.id}
+                   id={comment._id}
                    userid = {comment.userId}
                    author={comment.uname}
                    desc={comment.desc}/>

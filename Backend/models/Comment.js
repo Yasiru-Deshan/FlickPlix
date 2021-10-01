@@ -10,6 +10,11 @@ const commentSchema = new mongoose.Schema(
 
         },
 
+        movieId:{
+            type: String,
+            required: true
+        },
+
         desc:{
             type: String,
             max: 500

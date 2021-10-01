@@ -97,10 +97,22 @@ getUser:async (req, res) =>{
     }catch(err){
     return res.status(500).json({msg: err.message})
         }
+    },
+    addFavourite:async (req, res) =>{
+        try {
+            const user = await Users.findById(req.user.id)
+            if(!user) return res.status(400). json({msg:"User does not exist."})
+            await Users.findOneAndUpdate({_id: req.user.id}, {
+                favourite:req.body.favourite
+            })
+            return res.json({msg: "Added to favourite"})
+        } catch (err) {
+            return res.status(500).json({msg: err.message})
+        }
     }
  }
-
-
+ 
+ 
 
 
 

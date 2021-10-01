@@ -16,7 +16,7 @@ const initialState = {
 }
 function CreateTrailer() {
     const state = useContext(GlobalState)
-    const [product, setTrailer] = useState(initialState)
+    const [trailer, setTrailer] = useState(initialState)
     const [categories] = state.categoriesAPI.categories
     const [images, setImages] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -29,7 +29,7 @@ function CreateTrailer() {
     
     const [trailers, setTrailers] = state.trailersAPI.trailers
     const [onEdit, setOnEdit] =useState(false)
-    const [callback, setCallback] = state.productsAPI.callback
+    const [callback, setCallback] = state.trailersAPI.callback
 
 
     useEffect(() => {
@@ -37,7 +37,7 @@ function CreateTrailer() {
             setOnEdit(true)
             trailers.forEach(trailer => {
                 if(trailer._id === param.id){
-                    setProduct(trailer)
+                    setTrailer(trailer)
                     setImages(trailer.images)
                 } 
             })
@@ -91,7 +91,7 @@ function CreateTrailer() {
     }
    const handleChangeInput = e =>{
        const{name, value} = e.target
-       setTrailer({...product, [name]:value})
+       setTrailer({...trailer, [name]:value})
 }
 const handleSubmit =async  e =>{
     e.preventDefault()

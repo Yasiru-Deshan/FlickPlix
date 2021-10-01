@@ -49,7 +49,7 @@ export default function Order(){
       //Delete order
         const deleteMsg = async(id,fullName) => {
           let deletion;
-     
+          
           if(window.confirm("Are you sure about deleting " + fullName + "'s message?")){
               deletion = await axios.delete(`http://localhost:8070/admin/viewmsg/delete/${id}`);
           }
