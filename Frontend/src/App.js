@@ -48,7 +48,7 @@ import Browse from './pages/Browse/Browse';
 
 
 import AdminRoutes from './../src/pages/adminpages/AdminRoutes'
-import Browsemimi from './pages/Browse/Browse copy';
+import Browsemimi from './components/mainpages/Report/reportm';
 
 
 
@@ -65,7 +65,7 @@ const App = ()=> {
     }
   return (
 
-   
+   <DataProvider>
     <Router>
       <Sidebar isOpen={isOpen} toggle={toggle}/>
         <Navbar toggle={toggle}/>    
@@ -79,7 +79,7 @@ const App = ()=> {
         <Route path='/browsemimi' component={Browsemimi} exact/>
 
       {/*Customers */}
-      <Route exact path="/customers" component = {CustomerTable} exact></Route>
+      <Route exact path="/customers" component = {CustomerTable} ></Route>
       <Route path="/customer/add" component = {AddCustomer} exact></Route>
 	    <Route path="/updateCustomer/:id" component = {UpdateCustomer} exact></Route>
       <PublicRoute path="/customer/login" component = {CustomerLogin} exact></PublicRoute>
@@ -93,7 +93,7 @@ const App = ()=> {
        <AdminRoutes/>
 
       {/*advertisement*/}
-      <DataProvider>
+      
     
    {/*
 
@@ -113,17 +113,17 @@ const App = ()=> {
            <Route path="/favourite" exact component={Favourite} />
             <Route path="*" exact component={NotFound} /> */}
          
-         */}
+        
      <div className="mimiApp">
       <Header />
       <MainPages />
      </div>
-     </DataProvider>
-     <AdminRoutes/>
+  
+   
   </Switch>
       <Footer/>
 	</Router>
- 
+ </DataProvider>
  
   );
 }
