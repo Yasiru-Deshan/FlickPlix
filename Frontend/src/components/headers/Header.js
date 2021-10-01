@@ -68,7 +68,7 @@ const loggedRouter = () =>{
        </li>
         </ul>
          {
-             isAdmin ? ''
+             isArtist ? ''
              :<div className ="favourite-icon">
             <span>{favourite.length}</span>
             <Link to ="/favourite">

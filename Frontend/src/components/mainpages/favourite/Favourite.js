@@ -3,15 +3,15 @@ import {GlobalState} from '../../../GlobalState'
 import axios from 'axios'
 //import PaypalButton from './PaypalButton'
 
-function Cart() {
+function Favourite() {
     const state = useContext(GlobalState)
-    const [cart, setCart] = state.userAPI.cart
+    const [favourite, setFavourite] = state.userAPI.favourite
     const [token] = state.token
     const [total, setTotal] = useState(0)
 
     useEffect(() =>{
         const getTotal = () =>{
-            const total = cart.reduce((prev, item) => {
+            const total = favourite.reduce((prev, item) => {
                 return prev + (item.price * item.quantity)
             },0)
 
@@ -20,90 +20,90 @@ function Cart() {
 
         getTotal()
 
-    },[cart])
+    },[favourite])
 
-    const addToCart = async (cart) =>{
-        await axios.patch('/user/addcart', {cart}, {
+    const addToFavourite = async (favourite) =>{
+        await axios.patch('/user/addfavourite', {favourite}, {
             headers: {Authorization: token}
         })
     }
 
 
     const increment = (id) =>{
-        cart.forEach(item => {
+        favourite.forEach(item => {
             if(item._id === id){
                 item.quantity += 1
             }
         })
 
-        setCart([...cart])
-        addToCart(cart)
+        setFavourite([...favourite])
+        addToFavourite(favourite)
     }
 
     const decrement = (id) =>{
-        cart.forEach(item => {
+        favourite.forEach(item => {
             if(item._id === id){
                 item.quantity === 1 ? item.quantity = 1 : item.quantity -= 1
             }
         })
 
-        setCart([...cart])
-        addToCart(cart)
+        setFavourite([...favourite])
+        addToFavourite(favourite)
     }
 
-    const removeProduct = id =>{
+    const removeTrailer = id =>{
         if(window.confirm("Do you want to delete this Advertiusement?")){
-            cart.forEach((item, index) => {
+            favourite.forEach((item, index) => {
                 if(item._id === id){
-                    cart.splice(index, 1)
+                    favourite.splice(index, 1)
                 }
             })
 
-            setCart([...cart])
-            addToCart(cart)
+            setFavourite([...favourite])
+            addToFavourite(favourite)
         }
     }
 
     const tranSuccess = async(payment) => {
         const {paymentID, address} = payment;
 
-        await axios.post('/api/payment', {cart, paymentID, address}, {
+        await axios.post('/api/payment', {favourite, paymentID, address}, {
             headers: {Authorization: token}
         })
 
-        setCart([])
-        addToCart([])
+        setFavourite([])
+        addToFavourite([])
         alert("You have successfully placed an order.")
     }
 
 
-    if(cart.length === 0) 
+    if(favourite.length === 0) 
         return <h2 style={{textAlign: "center", fontSize: "5rem"}}>Favourites Empty</h2> 
 
     return (
         <div>
             {
-                cart.map(product => (
-                    <div className="detail cart" key={product._id}>
-                        <img src={product.images.url} alt="" />
+               favourite.map(trailer => (
+                    <div className="detail favourite" key={trailer._id}>
+                        <img src={trailer.images.url} alt="" />
 
                         <div className="box-detail">
-                            <h2>{product.title}</h2>
+                            <h2>{trailer.title}</h2>
 
-                            <h3> {product.price}Viewers</h3>
-                            <h3> {product.quantity}Like</h3>
+                            <h3> {trailer.price}Viewers</h3>
+                            <h3> {trailer.quantity}Like</h3>
                             
-                            <p>{product.description}</p>
-                            <p>{product.content}</p>
+                            <p>{trailer.description}</p>
+                            <p>{trailer.content}</p>
 
                             <div className="amount">
-                                 <button onClick={() => decrement(product._id)}> UnLike </button>
-                                <span>{product.quantity}</span>
-                                 <button onClick={() => increment(product._id)}>Like </button>
+                                 <button onClick={() => decrement(trailer._id)}> UnLike </button>
+                                <span>{trailer.quantity}</span>
+                                 <button onClick={() => increment(trailer._id)}>Like </button>
                             </div>
                             
                             <div className="delete" 
-                            onClick={() => removeProduct(product._id)}>
+                            onClick={() => removeTrailer(trailer._id)}>
                                 X
                             </div>
                         </div>
@@ -122,5 +122,5 @@ function Cart() {
     )
 }
 
-export default Cart
+export default Favourite
 

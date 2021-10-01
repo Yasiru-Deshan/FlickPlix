@@ -5,9 +5,9 @@ function Filters() {
     const state = useContext(GlobalState)
     const [categories] = state.categoriesAPI.categories
 
-    const [category, setCategory] = state.productsAPI.category
-    const [sort, setSort] = state.productsAPI.sort
-    const [search, setSearch] = state.productsAPI.search
+    const [category, setCategory] = state.trailersAPI.category
+    const [sort, setSort] = state.trailersAPI.sort
+    const [search, setSearch] = state.trailersAPI.search
 
 
     const handleCategory = e => {
