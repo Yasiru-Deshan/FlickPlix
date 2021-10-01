@@ -233,27 +233,7 @@ useEffect(() => {
            
           </center> 
 
-           <div className="MenuContainer" >
-
-         
-            <div className="headingWrapper">
-            <div>
-        <h1 className="mHeading">All Movies</h1>
-        </div>
-
-        </div>
-
-  
-    
-
-      <div className="carousel">
-        <Carousel breakPoints={breakPoints}>
-
-         <AllMovies/>
         
-        </Carousel>
-      </div>
-      </div>
 
 
 

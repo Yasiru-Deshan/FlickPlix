@@ -1,7 +1,7 @@
 import React,{ useEffect, useState} from 'react';
 import {  MDBCol } from "mdbreact";
-import FavoritesTable from '../../components/Favorites/favoriteItem copy';
-import './Browse.css';
+import FavoritesTable from './item';
+import './../../../pages/Browse/Browse.css';
 import axios from 'axios'
 import {jsPDF} from 'jspdf';
 import 'jspdf-autotable';

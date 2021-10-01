@@ -18,8 +18,9 @@ function Pages() {
    const [isLogged] =state.userAPI.isLogged
    const [isArtist]= state.userAPI.isArtist
    return (
+      
       <Switch>
-          <Route path="/trailers" exact component={Trailers} />
+          <Route path="/trailer" exact component={Trailers} />
           <Route path="/detail/:id" exact component={DetailTrailer} />
        
        <Route path="/login/admin" exact component= {isLogged ? NotFound :Login }/>

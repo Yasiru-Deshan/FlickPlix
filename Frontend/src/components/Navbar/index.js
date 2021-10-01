@@ -74,7 +74,7 @@ const Navbar = ({ toggle}) => {
                                     offset={-80}>Favorites</NavLinks>
                       </NavItem>
                       <NavItem>
-                          <NavLinks to="/trailers/mim"
+                          <NavLinks to="/login/admin"
                                     smooth={true} 
                                     duration={500} 
                                     spy={true} 
