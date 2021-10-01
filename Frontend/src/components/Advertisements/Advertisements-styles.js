@@ -18,7 +18,7 @@ export const ServicesContainer = styled.div`
 `
 export const ServicesWrapper = styled.div`
    max-width: 1000px;
-   margin; 0 auto;
+   margin: 0 auto;
    display: grid;
    grid-template-columns: 1fr 1fr 1fr;
    align-items: center;
@@ -68,11 +68,12 @@ export const ServicesH1 = styled.h1`
     }
   `
 export const ServicesH2 = styled.h2`
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin-bottom: 10px;
+    font-style: bold;
     `
 export const Servicesp = styled.p`
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: center;
     `
         

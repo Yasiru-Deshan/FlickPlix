@@ -17,7 +17,25 @@ const playListSchema = new mongoose.Schema(
         desc:{
             type: String,
             max: 500
-        }
+        },
+        movies:[{
+
+         movieId: {
+		    type: mongoose.Schema.Types.ObjectId,
+		    ref: 'MovieItem'
+     	},
+            title:{
+            type: String
+        },
+            img:{
+            type: String
+        },
+            year:{
+            type: String
+        },
+            genre:{
+            type: String
+    }}]
     }
 );
 

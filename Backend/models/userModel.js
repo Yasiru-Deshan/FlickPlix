@@ -20,7 +20,8 @@ const userSchema = new mongoose.Schema({
         default: 0
     },
     cart: {
-        type: Array,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Movie",
         default: []
     }
 }, {

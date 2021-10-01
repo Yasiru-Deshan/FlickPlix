@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const app = express(); 
 const commentRoute = require("./routes/comment");
 const playlistRoute = require("./routes/playlist");
+const favoritesRoute = require("./routes/favorites");
 require("dotenv").config();
 
 //Customers
@@ -63,6 +64,9 @@ app.use("/api/comments", commentRoute);
 
 //playlists
 app.use("/api/playlists", playlistRoute);
+
+//favorites
+app.use("/api/favorites", favoritesRoute);
 
 // movie
 app.use("/api/movies", movieRoutes);

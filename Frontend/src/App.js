@@ -30,7 +30,11 @@ import ContactTable from './components/ContactTable/ContactTable';
 
 
 import Products from './components/mainpages/products/Products';
-import AdminRoutes from './pages/adminpages/AdminRoutes';
+import Browse from './pages/Browse/Browse';
+
+import AdminRoutes from './../src/pages/adminpages/AdminRoutes'
+import Browsemimi from './pages/Browse/Browse copy';
+
 
 const App = ()=> {
   const [isOpen, setIsOpen] = useState(false)
@@ -47,10 +51,11 @@ const App = ()=> {
       <Switch>
      
         <Route path='/' component={Home} exact/>
-        <Route path='/movie' component={Movie} exact/>
-        <Route path='/watch' component={Watch} exact/>
-        <Route path='/favorites' component={Favorites} exact/>
-      
+        <Route path='/movie/:id' component={Movie} exact/>
+        <Route path='/watch/:id' component={Watch} exact/>
+        <Route exact path='/favorites' component={Favorites}/>
+        <Route path='/browse' component={Browse} exact/>
+        <Route path='/browsemimi' component={Browsemimi} exact/>
 
       {/*Customers */}
       <Route exact path="/customers" component = {CustomerTable} exact></Route>

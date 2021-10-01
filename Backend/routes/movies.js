@@ -86,4 +86,36 @@ router.get('/', async (req, res) => {
 	}
 });
 
+//get movie by genre
+router.get("/movie/:genre", async(req,res)=>{
+	try{
+		const movies = await Movie.find({ genre: req.params.genre})
+		res.status(200).json(movies);
+	}catch(err){
+		res.status(500).json(err);
+	}
+})
+
+//like/dislike a post
+
+router.put("/:id/like", async(req,res)=>{
+    try{
+        const movie = await Movie.findById(req.params.id);
+        if(!movie.likes.includes(req.body.userId)){
+            await movie.updateOne({ $push: { likes: req.body.userId }});
+            res.status(200).json("The movie has been liked");
+        }else{
+            await movie.updateOne({ $pull: { likes: req.body.userId }});
+            res.status(200).json("The movie has been disliked");
+        }
+    }catch(err){
+        res.status(500).json(err);
+    }
+
+})
+
+
+
+
+
 module.exports = router;

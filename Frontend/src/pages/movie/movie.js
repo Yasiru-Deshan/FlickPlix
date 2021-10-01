@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState} from 'react';
-import img from '../../images/movie.jpg';
-import img2 from '../../images/prof.jpg';
 import './movie.css';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AddBoxIcon from '@material-ui/icons/AddBox';
@@ -11,32 +9,111 @@ import ReactPlayer from 'react-player';
 import {Link} from 'react-router-dom';
 import axios from 'axios'; 
 import Loading from '../../components/mainpages/utils/loading/Loading';
+import { useParams} from "react-router";
+import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownMenu from '../../pages/favorites/dropdown';
+
+
 
 
 const Movie = () =>{
-
+  
    const desc = useRef();
+   const id = useParams().id;
+   const [title, setTitle] = useState("");
+   const [year, setYear] = useState("");
+   const [genre,setGenre] = useState("");
+   const [description, setDesc] = useState("");
+   const [trailer, setTrailer] = useState("");
+   const [video, setVideo] = useState("");
+   const [image,setImage] = useState("");
+   let [plist, setPlaylist] = useState([]);
+   const [like,setlike] = useState();
+   const [isliked,setisLiked] = useState(false);
+
+       useEffect(()=>{
+        Aos.init({duration: 2000 });
+    },[])
+   
+    useEffect(() => {
+        async function fetchData() {
+            const response = (await axios.get(`http://localhost:8070/api/movies/find/${id}`)).data;
+            setTitle(response.title);
+            setYear(response.year);
+            setGenre(response.genre);
+            setDesc(response.desc);
+            setTrailer(response.trailer);
+            setVideo(response.video);
+            setImage(response.img);
+            setlike(response.likes.length)
+        
+        }
+        fetchData();
+    }, [id])
+
  
-   const submitHandler = async (e)=>{
+ 
+    const likehandler=()=>{
+
+        try{
+            axios.put(`http://localhost:8070/api/movies/${id}/like`)
+        }catch(err){}
+
+        setlike(isliked ? like-1 : like+1);
+        setisLiked(!isliked);
+    }
+  
+
+
+    
+   const submitFavsHandler = async (e)=>{
        e.preventDefault()
-       const newComment = {
-           userId: '611b74dd16f8353848675308',
-           desc: desc.current.value,
+       let newF;
+
+       const newFavorite = {
+           
+           movieId: id,
+           title: title,
+           img: image,
+           year: year,
+           genre: genre
+           //movieId:'6145eb2e19467e39980d27e7',
+        
        }
 
        try{
-           await axios.post("http://localhost:8070/api/comments",newComment)
+           newF = await axios.post("http://localhost:8070/api/favorites/addto",newFavorite)
+           if(newF){
+               window.alert("Movie has been added to favorites")
+           }
        }catch(err){
            console.log(err)
        }
    }
-    
-    useEffect(()=>{
-        Aos.init({duration: 2000 });
-    },[])
 
 
 
+   const submitHandler = async (e)=>{
+       e.preventDefault()
+       let newc;
+
+       const newComment = {
+           userId: '611b74dd16f8353848675308',
+           uname:'Liam Livingstone',
+           movieId: id,
+           //movieId:'6145eb2e19467e39980d27e7',
+           desc: desc.current.value,
+       }
+
+       try{
+           newc = await axios.post("http://localhost:8070/api/comments",newComment)
+           if(newc){
+               window.alert("Comment has been posted")
+           }
+       }catch(err){
+           console.log(err)
+       }
+   }
 
 
 
@@ -45,12 +122,13 @@ const Movie = () =>{
     useEffect(()=>{
 
         const getComments = () =>{
-        axios.get('http://localhost:8070/api/comments/all').then((res)=>{
+        axios.get(`http://localhost:8070/api/comments/movie/${id}`).then((res)=>{
             setAllComments(res.data);
         })
     }
        getComments();
     },[])
+
 
     const CommentList = ()=>{
         return allComments.map((comment)=>{
@@ -58,7 +136,9 @@ const Movie = () =>{
             return(
                 <Comments
                    key={comment.id}
-                   author={comment.userId}
+                   id={comment._id}
+                   userid = {comment.userId}
+                   author={comment.uname}
                    desc={comment.desc}/>
 
               
@@ -68,6 +148,39 @@ const Movie = () =>{
         
     }
     
+
+
+    useEffect(()=>{
+
+      const getPlayLists = () =>{
+        axios.get('http://localhost:8070/api/playlists').then((res)=>{
+          setPlaylist(res.data);
+        })
+      }
+
+      getPlayLists();
+    },[])
+
+    const PlaylistAll = ()=>{
+      return plist.map((pName)=>{
+
+        return(
+          <DropdownMenu
+               key = {pName.id}
+               id  =   {pName._id}
+               name = {pName.name}
+               desc = {pName.desc} 
+               title = {title}
+               year = {year}
+               img = {image}
+               movieId ={id}  
+               genre = {genre}
+               />
+        )
+      })
+    }
+
+
 
 
 
@@ -86,7 +199,7 @@ const Movie = () =>{
                      <div className="Column1">
                              <div className="ImgWrap">
 
-                              <img data-aos="fade-right" className="Img" src={img} alt=''/>
+                              <img data-aos="fade-right" className="Img" src={image} alt=''/>
                             
                             
                              </div>
@@ -97,23 +210,35 @@ const Movie = () =>{
                              <div className="TextWrapper">
 
                                  <h1 className="Heading">
-                                  JOLT
+                                  {title}
 
                                  </h1>
 
-                                 <p className="Year">2021</p>
+                                 <p className="Year">{year}</p>
                                  <p className="Genre">
-                                     Thriller
+                                    {genre}
                                  </p>
 
                                
 
                                  <div className="icons">
-                                    <FavoriteIcon className="fi"/>
-                                    <p className="likesCount">50</p>
-                                    <AddBoxIcon className="bi"/>
+                                    <FavoriteIcon className="fi" onClick={likehandler}/>
+                                    <p className="likesCount">{like}</p>
+                                    <AddBoxIcon className="bi" onClick={submitFavsHandler}/>
+                                     <p className="likesCount">Add to Favorites</p>
                                  </div>
-                                 <Link to='/watch'>
+
+                                    <Dropdown>
+                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                    Add to a PlayList
+                                          </Dropdown.Toggle>
+  
+                                            <Dropdown.Menu>
+                                              <PlaylistAll/>
+                                                </Dropdown.Menu>
+                                    </Dropdown>
+
+                                 <Link to={`/watch/${id}`}>
                                  <button className="tbutton">Watch Now</button></Link>
                                  <div>
                           {/*     <img className="profileuserimg"
@@ -132,11 +257,8 @@ const Movie = () =>{
                                      Synopsis
                                  </p>
                           <p className="Description">
-                                A bouncer with a slightly murderous anger-management problem that 
-                                she controls with the help of an electrode-lined vest she uses to shock
-                                 herself back to normalcy whenever she gets homicidal. After the first guy 
-                                 she's ever fallen for is murdered, she goes on a revenge-fueled rampage to
-                                  find the killer while the cops pursue her as their chief suspect.
+                            
+                                  {description}
                           </p>
                         
 
@@ -193,7 +315,7 @@ const Movie = () =>{
                             width="440px"
                             height="240px"
                             controls
-                            url="https://youtu.be/3BSSoD73TSk"/>
+                            url={trailer}/>
 </div>
 
             </div>
