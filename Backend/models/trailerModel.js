@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 
-const productSchema = new mongoose.Schema({
+const trailerSchema = new mongoose.Schema({
 
-        product_id: {
+        trailer_id: {
             type:String,
             unique: true,
             trim: true,
@@ -55,4 +55,4 @@ const productSchema = new mongoose.Schema({
         timestamps: true
     })
 
-module.exports =mongoose.model("Products", productSchema)
+module.exports =mongoose.model("Trailers", trailerSchema)

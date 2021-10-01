@@ -49,7 +49,7 @@ export default function Order(){
       //Delete order
         const deleteMsg = async(id,fullName) => {
           let deletion;
-     
+          
           if(window.confirm("Are you sure about deleting " + fullName + "'s message?")){
               deletion = await axios.delete(`http://localhost:8070/admin/viewmsg/delete/${id}`);
           }
@@ -85,7 +85,7 @@ export default function Order(){
           doc.setFontSize(10);
           doc.text(`(Generated on ${time})`, 105, 17, null, null, "center");
           doc.setFontSize(12);
-          doc.text("FlickPilx Online Platform", 105, 22, null, null, "center");
+          doc.text("FlickPlix © 2021 All rights reserved", 105, 22, null, null, "center");
           
           doc.autoTable({
               theme : 'grid',

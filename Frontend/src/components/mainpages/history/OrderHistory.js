@@ -6,14 +6,14 @@ import axios from 'axios'
 function OrderHistory() {
     const state = useContext(GlobalState)
     const [history, setHistory] = state.userAPI.history
-    const [isAdmin] = state.userAPI.isAdmin
+    const [isArtist] = state.userAPI.isArtist
     const [token] = state.token
     
 
     useEffect(() => {
         if(token){
             const getHistory = async() =>{
-                if(isAdmin){
+                if(isArtist){
                     const res = await axios.get('/api/payment', {
                         headers: {Authorization: token}
                     })
@@ -27,7 +27,7 @@ function OrderHistory() {
             }
             getHistory()
         }
-    },[token, isAdmin, setHistory])
+    },[token, isArtist, setHistory])
 
     return (
         <div className="history-page">

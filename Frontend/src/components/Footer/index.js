@@ -6,7 +6,6 @@ import {
           FooterLinkItems,
           FooterLinksContainer,
           FooterLinksWrapper,
-          FooterLinkTitle,
           FooterWrap,
           SocialIconLink,
           SocialIcons,
@@ -24,48 +23,45 @@ const Footer = () => {
                 <FooterLinksContainer>
                     <FooterLinksWrapper>
                         <FooterLinkItems>
-                            <FooterLinkTitle>About Us</FooterLinkTitle>
+                         
                                 
-                                <FooterLink to="/signin">How it works</FooterLink>
-                                <FooterLink to="/signin">Testimonials</FooterLink>
-                                <FooterLink to="/signin">Careers</FooterLink>
-                                <FooterLink to="/signin">Investors</FooterLink>
-                                <FooterLink to="/signin">Terms of Services</FooterLink>
+                                <FooterLink to="/signin">FAQ</FooterLink>
+                                <FooterLink to="/signin">Media Center</FooterLink>
+                                <FooterLink to="/signin">Ways to Watch</FooterLink>
+                                <FooterLink to="/signin">Speed Test</FooterLink>
                             
                         </FooterLinkItems>
 
                         <FooterLinkItems>
-                            <FooterLinkTitle>About Us</FooterLinkTitle>
+                         
                                 
-                                <FooterLink to="/signin">How it works</FooterLink>
-                                <FooterLink to="/signin">Testimonials</FooterLink>
-                                <FooterLink to="/signin">Careers</FooterLink>
-                                <FooterLink to="/signin">Investors</FooterLink>
-                                <FooterLink to="/signin">Terms of Services</FooterLink>
+                                <FooterLink to="/signin">Help Center</FooterLink>
+                                <FooterLink to="/signin">Investor Relations</FooterLink>
+                                <FooterLink to="/signin">Terms of Use</FooterLink>
+                                <FooterLink to="/signin">Corporate Information</FooterLink>
+                              
                             
                         </FooterLinkItems>
                     </FooterLinksWrapper>
 
                     <FooterLinksWrapper>
                         <FooterLinkItems>
-                            <FooterLinkTitle>About Us</FooterLinkTitle>
+                         
                                 
-                                <FooterLink to="/signin">How it works</FooterLink>
-                                <FooterLink to="/signin">Testimonials</FooterLink>
-                                <FooterLink to="/signin">Careers</FooterLink>
-                                <FooterLink to="/signin">Investors</FooterLink>
+                                <FooterLink to="/signin">Account</FooterLink>
+                                <FooterLink to="/signin">Jobs</FooterLink>
+                                <FooterLink to="/signin">Privacy</FooterLink>       
                                 <FooterLink to="/signin">Terms of Services</FooterLink>
                             
                         </FooterLinkItems>
 
                         <FooterLinkItems>
-                            <FooterLinkTitle>About Us</FooterLinkTitle>
+                         
                                 
-                                <FooterLink to="/signin">How it works</FooterLink>
-                                <FooterLink to="/signin">Testimonials</FooterLink>
-                                <FooterLink to="/signin">Careers</FooterLink>
-                                <FooterLink to="/signin">Investors</FooterLink>
-                                <FooterLink to="/signin">Terms of Services</FooterLink>
+                                <FooterLink to="/signin">Only on FlickPlix</FooterLink>
+                                 <FooterLink to="/signin">Contact Us</FooterLink>
+                                  <FooterLink to="/signin">Legal Notices</FooterLink>
+                                    <FooterLink to="/signin">Cookie Preferences</FooterLink>
                             
                         </FooterLinkItems>
                     </FooterLinksWrapper>

@@ -69,7 +69,7 @@ export default function CustomerTable() {
         doc.setFontSize(10);
         doc.text(`(Generated on ${time})`, 105, 17, null, null, "center");
         doc.setFontSize(12);
-        doc.text("FlickPlix Online Platform", 105, 22, null, null, "center");
+        doc.text("FlickPlix © 2021 All rights reserved", 105, 22, null, null, "center");
         doc.autoTable({
             theme : 'grid',
             styles: {halign:'center'},

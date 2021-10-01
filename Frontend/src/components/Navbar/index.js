@@ -58,7 +58,7 @@ const Navbar = ({ toggle}) => {
                                     >Home</NavLinks>
                       </NavItem>
                       <NavItem>
-                          <NavLinks to="browse"
+                          <NavLinks to="/browse"
                                     smooth={true} 
                                     duration={500} 
                                     spy={true} 
@@ -66,7 +66,7 @@ const Navbar = ({ toggle}) => {
                                     offset={-80}>Browse</NavLinks>
                       </NavItem>
                       <NavItem>
-                          <NavLinks to="favorites"
+                          <NavLinks to="/favorites"
                                     smooth={true} 
                                     duration={500} 
                                     spy={true} 
@@ -74,7 +74,7 @@ const Navbar = ({ toggle}) => {
                                     offset={-80}>Favorites</NavLinks>
                       </NavItem>
                       <NavItem>
-                          <NavLinks to="events"
+                          <NavLinks to="/trailers/mim"
                                     smooth={true} 
                                     duration={500} 
                                     spy={true} 

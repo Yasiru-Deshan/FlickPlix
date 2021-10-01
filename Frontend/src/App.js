@@ -1,6 +1,12 @@
-import React from 'react';
+
 import './App.css'; 
+import './globalIndex.css'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
+//rfce
+import React, {useContext} from 'react'
+
+
 
 
 import Home from './pages/home/index';
@@ -13,6 +19,13 @@ import Footer from './components/Footer';
 import './components/Footer/FooterElements'
 import Favorites from './pages/favorites/favorites';
 
+//ADVERTISEMENT
+
+import {DataProvider} from './GlobalState';
+import Header from './components/headers/Header';
+import MainPages from './components/mainpages/Pages';
+
+
 //customers
 import CustomerTable from './components/customerTable/customerTable';
 import AddCustomer from './components/addCustomer/addCustomer';
@@ -24,19 +37,27 @@ import PrivateRoute from './components/privateRoute/PrivateRoute';
 import PublicRoute from './components/publicRoute/PublicRoute';
 import CustomerPasswordReset from './components/customerPasswordReset/customerPasswordReset';
 
+
 //Contact Page
 import Contact from './components/ContactPage/ContactPage';
 import ContactTable from './components/ContactTable/ContactTable';
 
 
-import Products from './components/mainpages/products/Products';
+
 import Browse from './pages/Browse/Browse';
+
 
 import AdminRoutes from './../src/pages/adminpages/AdminRoutes'
 import Browsemimi from './pages/Browse/Browse copy';
 
 
+
+
+
 const App = ()=> {
+
+ 
+
   const [isOpen, setIsOpen] = useState(false)
 
     const toggle = ()=>{
@@ -44,7 +65,7 @@ const App = ()=> {
     }
   return (
 
-    
+   
     <Router>
       <Sidebar isOpen={isOpen} toggle={toggle}/>
         <Navbar toggle={toggle}/>    
@@ -69,16 +90,41 @@ const App = ()=> {
       {/*Contact Page */}
       <Route path="/contact" component={Contact}/>
       <Route path="/admin/viewmsg" component={ContactTable}/>
+       <AdminRoutes/>
 
-      <Route path='/products' component={Products}/>
-      <AdminRoutes/>
-      </Switch>
-      
-	  
-	  
+      {/*advertisement*/}
+      <DataProvider>
     
-    <Footer/>
+   {/*
+
+            {/* <Route path="/trailers" exact component={Trailers} />
+           <Route path="/detail/:id" exact component={DetailTrailer} />
+        
+        <Route path="/login" exact component= {isLogged ? NotFound :Login }/>
+           <Route path="/register" exact component= {isLogged ? NotFound : Register} />
+          
+           <Route path="/category" exact component= {isArtist ? Categories : NotFound} />
+           <Route path="/create_trailer" exact component= {isArtist ? CreateTrailer : NotFound} />
+           <Route path="/edit_trailer/:id" exact component= {isArtist ? CreateTrailer : NotFound} />
+          
+           <Route path="/history" exact component= {isLogged ? OrderHistory : NotFound} />
+           <Route path="/history/:id" exact component= {isLogged ? OrderDetails : NotFound} />
+          
+           <Route path="/favourite" exact component={Favourite} />
+            <Route path="*" exact component={NotFound} /> */}
+         
+         */}
+     <div className="mimiApp">
+      <Header />
+      <MainPages />
+     </div>
+     </DataProvider>
+     <AdminRoutes/>
+  </Switch>
+      <Footer/>
 	</Router>
+ 
+ 
   );
 }
 

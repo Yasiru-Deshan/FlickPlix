@@ -15,12 +15,15 @@ function FavoritesTable(props){
     <link rel="stylesheet" href="./favorites.css" ></link>
 </head>
 
-      <tr>
-        <td>
+      <tr> 
+        <td style={{width:"300px"}}>
           {props.title}
         </td>
-        <td>
+        <td style={{width:"100px"}}>
           {props.year}
+        </td>
+         <td style={{width:"100px"}}>
+          {props.genre}
         </td>
       </tr>
         
