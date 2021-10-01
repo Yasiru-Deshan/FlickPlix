@@ -1,8 +1,6 @@
-import React,{ useEffect, useState} from 'react';
-import Aos from 'aos';
+import React from 'react';
 import "aos/dist/aos.css";
-import {Link} from 'react-router-dom';
-import Table from 'react-bootstrap/Table'
+
 
 
    
