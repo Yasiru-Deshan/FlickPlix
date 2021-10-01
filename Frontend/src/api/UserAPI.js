@@ -5,7 +5,7 @@ function UserAPI(token) {
     const [isLogged, setIsLogged] = useState(false)
     const [isArtist, setIsArtist] = useState(false)
     const [favourite, setFavourite] = useState([])
-    //const [history, setHistory] = useState([])
+    const [history, setHistory] = useState([])
 
     useEffect(() =>{
 
@@ -18,8 +18,8 @@ function UserAPI(token) {
 
      setIsLogged(true)
     res.data.role === 1 ? setIsArtist(true) : setIsArtist(false)
-    console.log(res)
-  // setCart(res.data.cart)
+    //console.log(res)
+   setFavourite(res.data.favourite)
 
      } catch (err) {
   alert(err.response.data.msg)
@@ -32,7 +32,7 @@ function UserAPI(token) {
 },[token])
 
 const addFavourite = async (trailer) => {
-    if(!isLogged) return alert("Please login to continue buying")
+    if(!isLogged) return alert("Please login before adding to favourites")
 
     const check = favourite.every(item =>{
         return item._id !== trailer._id
@@ -54,8 +54,8 @@ return {
     isLogged: [isLogged, setIsLogged],
     isArtist: [isArtist, setIsArtist],
     favourite: [favourite, setFavourite],
-    addFavourite: addFavourite
-   // history: [history, setHistory]
+    addFavourite: addFavourite,
+    history: [history, setHistory]
 }
  
   
