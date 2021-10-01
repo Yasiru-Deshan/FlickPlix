@@ -19,8 +19,9 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    favourite: {
-        type: Array,
+    cart: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Movie",
         default: []
     }
 }, {
