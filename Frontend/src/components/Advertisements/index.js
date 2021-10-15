@@ -3,7 +3,6 @@ import Icon1 from '../../images/svg-7.svg'
 import Icon2 from '../../images/svg-2.svg'
 import Icon3 from '../../images/svg-3.svg'
 import {
-         ServicesH1,
          ServicesH2,
          ServicesContainer,
          ServicesWrapper,

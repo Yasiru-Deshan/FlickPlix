@@ -13,7 +13,7 @@ router.post('/', async(req,res)=>{
         res.status(200).json(savedComment);
     }catch(err){
         res.status(500).json(err);
-    };
+    }
 });
 
 //get comments of a movie

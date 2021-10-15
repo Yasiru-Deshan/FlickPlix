@@ -18,8 +18,9 @@ cloudinary.config({
 router.post('/upload',auth, authAdmin, (req, res) =>{
     try {
             console.log(req.files)
-            if(!req.files || Object.keys(req.files).length === 0)
+            if(!req.files || Object.keys(req.files).length === 0){
             return res.status(400).json({msg:'No files were uploaded.'})
+            }
 
             const file = req.files.file;
             if(file.size >2048*2048) {

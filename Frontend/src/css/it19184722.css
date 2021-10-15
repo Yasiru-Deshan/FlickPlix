@@ -5,7 +5,7 @@
   width: 100%;
   height: 1100px;
   background: #3a6186; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
+  background: webkit-linear-gradient(
     to left,
     #3a6186,
     #89253e
@@ -28,7 +28,7 @@
   padding-top: 110px;
   width: 100%;
   height: 800px;
-  background: #17202a; /* fallback for old browsers */
+  background: #17202a;
 }
 
 #it19184722-PWResetForm {
@@ -36,7 +36,7 @@
   width: 100%;
   height: 800px;
   background: #3a6186; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
+  background: webkit-linear-gradient(
     to left,
     #3a6186,
     #89253e

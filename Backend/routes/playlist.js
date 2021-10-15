@@ -12,7 +12,7 @@ router.post('/new', async(req,res)=>{
         res.status(200).json(savedPlaylist);
     }catch(err){
         res.status(500).json(err);
-    };
+    }
 });
 
 //get playlists
