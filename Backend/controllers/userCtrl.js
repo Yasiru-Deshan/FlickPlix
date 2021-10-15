@@ -12,11 +12,11 @@ const userCtrl = {
 
     if(user) return res.status(400).json({msg: "The email already exists."})
 
-     if(password.length < 6)
+     if(password.length < 6){
 
      return res.status(400).json({msg:"The password is atleast 6 charachters long "})
 
-
+     }
      //passwrod Encryption 
      const passwordHash = await bcrypt.hash(password, 10)
     //creating new user's encrypt password

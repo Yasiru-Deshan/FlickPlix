@@ -75,8 +75,9 @@ const trailerCtrl = {
                const {trailer_id, title, price, description, content,images,category} =req.body;
                 if(!images) return res.status(400).json({msg: "No image upload"})
                 const trailer = await Trailers.findOne({trailer_id})
-                if(trailer)
+                if(trailer){
                 return res.status(400).json({msg:"This trailer already exists"})
+                }
                 const newTrailer = new Trailers({
                     trailer_id, title:title.toLowerCase(), price , description , content, images,category  
                 })

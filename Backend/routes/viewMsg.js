@@ -32,7 +32,7 @@ router.route('/viewmsg/status').post(async(req, res)=>{
 
 })
 
-//delete specific message
+//Delete specific message
 router.delete('/viewmsg/delete/:id', async(req, res) => {
     const id = req.params.id;
     try {

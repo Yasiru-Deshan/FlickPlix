@@ -55,7 +55,7 @@ const loggedRouter = () =>{
             </h1>
           </div>
           <ul>
-        <li><Link to ="/">{isArtist ? 'Advertisements' : 'Advertisements'}</Link></li>
+        <li><Link to ="/">{isArtist ? 'Advertisements' : 'Trailer'}</Link></li>
         
         
         {isArtist && artistRouter()}

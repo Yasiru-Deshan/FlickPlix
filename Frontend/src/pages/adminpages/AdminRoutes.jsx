@@ -15,7 +15,7 @@ import ListList from './listList/ListList';
 import List from './list/List'
 import NewList from './newList/NewList';
 
-const AdminRoutes = ({}) => {
+const AdminRoutes = () => {
 	return (
 		<>
 			<Topbar />
@@ -32,8 +32,8 @@ const AdminRoutes = ({}) => {
 				</Route>
 
 				<Route exact path='/admin/movie/:movieId' >
-          <Movie />
-        </Route>
+          	<Movie />
+        	</Route>
 
 				<Route path='/admin/lists'>
 					<ListList />

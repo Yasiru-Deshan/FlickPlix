@@ -3,9 +3,6 @@ import './App.css';
 import './globalIndex.css'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-//rfce
-import React, {useContext} from 'react'
-
 
 
 
